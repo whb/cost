@@ -1,0 +1,14 @@
+zh-CN:
+  helpers:
+    links:
+      edit: "编辑"
+      destroy: "删除"
+      confirm: "确认"
+      new: "新建"
+      cancel: "取消"
+
+  time:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
