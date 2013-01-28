@@ -1,0 +1,33 @@
+<%= form_for @expense, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :no, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :no, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :request_on, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :request_on, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :staff, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :staff, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <% f.fields_for :items do |builder| %>
+    <p>
+      <%= builder.label :category %><br />
+      <%= builder.text_field :category %>
+    </p>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                expenses_path, :class => 'btn' %>
+  </div>
+<% end %>

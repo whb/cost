@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127081942) do
+ActiveRecord::Schema.define(:version => 20130128025735) do
+
+  create_table "expenses", :force => true do |t|
+    t.string   "no"
+    t.date     "request_on"
+    t.string   "staff"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "items", :force => true do |t|
+    t.integer  "expense_id"
+    t.string   "category"
+    t.string   "name"
+    t.integer  "amount"
+    t.string   "unit"
+    t.decimal  "unit_price", :precision => 10, :scale => 0
+    t.decimal  "price",      :precision => 10, :scale => 0
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
 
   create_table "products", :force => true do |t|
     t.string   "name"
