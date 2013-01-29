@@ -1,0 +1,21 @@
+zh-CN:  
+  helpers:
+    actions: 操作
+    submit:
+      create: 新增%{model}
+      submit: 储存%{model}
+      update: 更新%{model}
+    links:
+      edit: 编辑
+      destroy: 删除
+      confirm: 确认
+      new: 新建
+      cancel: 取消
+      back: 返回
+    titles:
+      edit: 编辑「%{model}」
+      destroy: 删除「%{model}」
+      new: 新建「%{model}」
+    select:
+      prompt: 请选择
+ 

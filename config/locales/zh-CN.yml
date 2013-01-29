@@ -124,13 +124,7 @@ zh-CN:
       header:
         one: 有 1 个错误发生导致「%{model}」无法被保存。
         other: 有 %{count} 个错误发生导致「%{model}」无法被保存。
-  helpers:
-    select:
-      prompt: 请选择
-    submit:
-      create: 新增%{model}
-      submit: 储存%{model}
-      update: 更新%{model}
+
   number:
     currency:
       format:
@@ -191,22 +185,3 @@ zh-CN:
       long: ! '%Y年%b%d日 %H:%M'
       short: ! '%b%d日 %H:%M'
     pm: 下午
-  
-  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
-  activemodel:
-    errors:
-      <<: *errors
-  activerecord:
-    attributes:
-      item:
-        category: 分类
-    errors:
-      <<: *errors
-
-  helpers:
-    links:
-      edit: 编辑
-      destroy: 删除
-      confirm: 确认
-      new: 新建
-      cancel: 取消

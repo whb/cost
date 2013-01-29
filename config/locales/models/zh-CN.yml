@@ -1,0 +1,22 @@
+zh-CN:
+  activerecord:
+    models:
+      expense: 
+        one: 费用申请单
+        other: 费用申请单列表
+      item: 费用项
+
+    attributes:
+      created_at: 创建时间
+      expense:
+          no: 编号
+          request_on: 申请日期
+          staff: 申请人
+          created_at: 创建时间
+      item:
+        category: 分类
+        name: 名称
+        amount: 数量
+        unit: 单位
+        unit_price: 单价
+        price: 价格
