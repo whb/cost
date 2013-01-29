@@ -24,5 +24,5 @@ function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
   var new_content = content.replace(regexp, new_id);
-  $('.fields:last').after(new_content);
+  $('.fields-table').append(new_content);
 }
