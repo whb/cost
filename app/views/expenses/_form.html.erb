@@ -26,17 +26,14 @@
       <th><%= Item.human_attribute_name(:unit) %></th>
       <th><%= Item.human_attribute_name(:unit_price) %></th>
       <th><%= Item.human_attribute_name(:price) %></th>
+      <th><%= Item.human_attribute_name(:_destroy) %></th>
     </tr>
-  <%= f.fields_for :items do |builder| %>
-      <tr><td><%= builder.text_field :category %></td>
-          <td><%= builder.text_field :name %></td>
-          <td><%= builder.text_field :amount, :class => "input-tiny" %></td>
-          <td><%= builder.text_field :unit, :class => "input-tiny" %></td>
-          <td><%= builder.text_field :unit_price, :class => "input-small" %></td>
-          <td><%= builder.text_field :price, :class => "input-small" %></td>
-      </tr>
-  <% end %>
+    <%= f.fields_for :items do |ff| %>
+      <%= render 'item_fields', :f => ff %>
+    <% end %>
+    
   </table>
+  <%= link_to_add_fields "Add Item", f, :items %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
