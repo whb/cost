@@ -26,14 +26,14 @@
       <th><%= Item.human_attribute_name(:unit) %></th>
       <th><%= Item.human_attribute_name(:unit_price) %></th>
       <th><%= Item.human_attribute_name(:price) %></th>
-      <th><%= Item.human_attribute_name(:_destroy) %></th>
+      <th></th>
     </tr>
     <%= f.fields_for :items do |ff| %>
       <%= render 'item_fields', :f => ff %>
     <% end %>
     
   </table>
-  <%= link_to_add_fields "Add Item", f, :items %>
+  <%= link_to_add_fields t('.add', :default => t("helpers.links.add")), f, :items %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

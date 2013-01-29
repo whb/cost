@@ -5,5 +5,5 @@
   <td><%= f.text_field :unit, :class => "input-tiny" %></td>
   <td><%= f.text_field :unit_price, :class => "input-small" %></td>
   <td><%= f.text_field :price, :class => "input-small" %></td>
-  <td><%= link_to_remove_fields "remove", f %></td>
+  <td><%= link_to_remove_fields t('.destroy', :default => t("helpers.links.destroy")), f %></td>
 </tr>
