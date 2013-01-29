@@ -12,6 +12,28 @@
   <dd><%= @expense.staff %></dd>
 </dl>
 
+
+<table class="table">
+<tr>
+  <th><%= Item.human_attribute_name(:category) %></th>
+  <th><%= Item.human_attribute_name(:name) %></th>
+  <th><%= Item.human_attribute_name(:amount) %></th>
+  <th><%= Item.human_attribute_name(:unit) %></th>
+  <th><%= Item.human_attribute_name(:unit_price) %></th>
+  <th><%= Item.human_attribute_name(:price) %></th>
+</tr>
+<% for item in @expense.items %>
+    <tr>
+      <td><%= item.category %></td>
+      <td><%= item.name %></td>
+      <td><%= item.amount %></td>
+      <td><%= item.unit %></td>
+      <td><%= item.unit_price %></td>
+      <td><%= item.price %></td>
+    </tr>
+<% end %>
+</table>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               expenses_path, :class => 'btn'  %>

@@ -197,6 +197,9 @@ zh-CN:
     errors:
       <<: *errors
   activerecord:
+    attributes:
+      item:
+        category: 分类
     errors:
       <<: *errors
 

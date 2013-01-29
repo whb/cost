@@ -18,12 +18,25 @@
     </div>
   </div>
 
-  <% f.fields_for :items do |builder| %>
-    <p>
-      <%= builder.label :category %><br />
-      <%= builder.text_field :category %>
-    </p>
+  <table class="table">
+    <tr>
+      <th><%= Item.human_attribute_name(:category) %></th>
+      <th><%= Item.human_attribute_name(:name) %></th>
+      <th><%= Item.human_attribute_name(:amount) %></th>
+      <th><%= Item.human_attribute_name(:unit) %></th>
+      <th><%= Item.human_attribute_name(:unit_price) %></th>
+      <th><%= Item.human_attribute_name(:price) %></th>
+    </tr>
+  <%= f.fields_for :items do |builder| %>
+      <tr><td><%= builder.text_field :category %></td>
+          <td><%= builder.text_field :name %></td>
+          <td><%= builder.text_field :amount, :class => "input-tiny" %></td>
+          <td><%= builder.text_field :unit, :class => "input-tiny" %></td>
+          <td><%= builder.text_field :unit_price, :class => "input-small" %></td>
+          <td><%= builder.text_field :price, :class => "input-small" %></td>
+      </tr>
   <% end %>
+  </table>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
