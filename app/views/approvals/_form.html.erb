@@ -1,34 +1,8 @@
-<%= form_for [@expense, @approval], :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :expense_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :expense_id, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :level, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :level, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :approve_on, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.date_select :approve_on, :class => 'date_select' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :agree, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :agree, :class => 'check_box' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :explain, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :explain, :class => 'text_field' %>
-    </div>
-  </div>
+<%= form_for [@expense, @approval], :html => { :class => 'form-inline' } do |f| %>
+  <%= f.label :agree, :class => 'control-label' %>
+  <%= f.check_box :agree, :class => 'check_box' %>
+  <%= f.label :explain, :class => 'control-label' %>
+  <%= f.text_field :explain, :class => 'input-xxlarge' %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
