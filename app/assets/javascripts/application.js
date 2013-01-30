@@ -30,10 +30,6 @@ function add_fields(link, association, content) {
   $('.fields-table').append(unique_content);
 }
 
-$(function() {
-  $("#expense_request_on").datepicker({
-    "format": "yyyy-mm-dd",
-    "weekStart": 1,
-    "autoclose": true
-  });
+$(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
+    $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true});
 });
