@@ -1,11 +1,9 @@
 Cost::Application.routes.draw do
-  resources :approvals
-
-
-  resources :expenses
-
-
-  resources :products
+  resources :expenses do
+    resources :approvals, :only => [:new, :create, :show]
+  end
+  resources :approvals, :only => [:index]
+#  resources :products
 
 
   # The priority is based upon order of creation:

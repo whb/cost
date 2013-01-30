@@ -1,19 +1,24 @@
 class ApprovalsController < ApplicationController
+  before_filter :load_expense, :except => [:index]
+  def load_expense
+    @expense = Expense.find(params[:expense_id])
+  end
+
   # GET /approvals
   # GET /approvals.json
   def index
-    @approvals = Approval.all
+    @expenses = Expense.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @approvals }
+      format.json { render json: @expenses }
     end
   end
 
   # GET /approvals/1
   # GET /approvals/1.json
   def show
-    @approval = Approval.find(params[:id])
+    @approval = @expense.approvals.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +29,7 @@ class ApprovalsController < ApplicationController
   # GET /approvals/new
   # GET /approvals/new.json
   def new
-    @approval = Approval.new
+    @approval = @expense.approvals.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +45,11 @@ class ApprovalsController < ApplicationController
   # POST /approvals
   # POST /approvals.json
   def create
-    @approval = Approval.new(params[:approval])
+    @approval = @expense.approvals.new(params[:approval])
 
     respond_to do |format|
       if @approval.save
-        format.html { redirect_to @approval, notice: 'Approval was successfully created.' }
+        format.html { redirect_to [@expense, @approval], notice: 'Approval was successfully created.' }
         format.json { render json: @approval, status: :created, location: @approval }
       else
         format.html { render action: "new" }
