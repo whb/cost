@@ -13,6 +13,7 @@ zh-CN:
       cancel: 取消
       back: 返回
       add: 添加
+      approve: 审批
     titles:
       edit: 编辑「%{model}」
       destroy: 删除「%{model}」
@@ -25,3 +26,6 @@ zh-CN:
         title: 费用申请单列表
       form:
         add: 添加费用项
+  approvals:
+      index:
+        title: 审批费用申请单

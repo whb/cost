@@ -1,20 +1,8 @@
 <%= form_for [@expense, @approval], :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :expense_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :expense_id, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :level, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :level, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
     <%= f.label :approve_on, :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :approve_on, :class => 'date_select' %>
+      <%= f.text_field :approve_on, 'data-behaviour' => 'datepicker' %>
     </div>
   </div>
   <div class="control-group">
