@@ -15,7 +15,6 @@
 //= require twitter/bootstrap
 //= require_tree .
 //= require bootstrap-datepicker/core
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.es
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
 
 function remove_fields(link) {
@@ -31,5 +30,5 @@ function add_fields(link, association, content) {
 }
 
 $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
-    $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true});
+    $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true, "language": "zh-CN"});
 });
