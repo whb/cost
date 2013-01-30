@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.es
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
 
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val(true);
@@ -26,3 +29,11 @@ function add_fields(link, association, content) {
   var unique_content = content.replace(regexp, new_id);
   $('.fields-table').append(unique_content);
 }
+
+$(function() {
+  $("#expense_request_on").datepicker({
+    "format": "yyyy-mm-dd",
+    "weekStart": 1,
+    "autoclose": true
+  });
+});
