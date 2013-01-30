@@ -23,6 +23,6 @@ function remove_fields(link) {
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
-  var new_content = content.replace(regexp, new_id);
-  $('.fields-table').append(new_content);
+  var unique_content = content.replace(regexp, new_id);
+  $('.fields-table').append(unique_content);
 }
