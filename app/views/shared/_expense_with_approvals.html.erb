@@ -1,0 +1,49 @@
+<%- model_class = Expense -%>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:no) %>:</strong></dt>
+  <dd><%= @expense.no %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:request_on) %>:</strong></dt>
+  <dd><%= @expense.request_on %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:staff) %>:</strong></dt>
+  <dd><%= @expense.staff %></dd>
+</dl>
+
+<table class="table">
+<tr>
+  <th><%= Item.human_attribute_name(:category) %></th>
+  <th><%= Item.human_attribute_name(:name) %></th>
+  <th><%= Item.human_attribute_name(:amount) %></th>
+  <th><%= Item.human_attribute_name(:unit) %></th>
+  <th><%= Item.human_attribute_name(:unit_price) %></th>
+  <th><%= Item.human_attribute_name(:price) %></th>
+</tr>
+<% for item in @expense.items %>
+    <tr>
+      <td><%= item.category %></td>
+      <td><%= item.name %></td>
+      <td><%= item.amount %></td>
+      <td><%= item.unit %></td>
+      <td><%= item.unit_price %></td>
+      <td><%= item.price %></td>
+    </tr>
+<% end %>
+</table>
+
+
+<%- associate_model_class = Approval -%>
+
+<table class="table">
+<% for approval in @expense.approvals %>
+  <% unless approval.new_record? %>
+    <tr>
+      <th><%= associate_model_class.human_attribute_name(:approve_on) %>:</th>
+      <td><%= approval.approve_on %></td>
+      <th><%= associate_model_class.human_attribute_name(:agree) %>:</th>
+      <td><%= approval.agree %></td>
+      <th><%= associate_model_class.human_attribute_name(:explain) %>:</th>
+      <td><%= approval.explain %></td>
+    </tr>
+  <% end %>
+<% end %>
+</table>
