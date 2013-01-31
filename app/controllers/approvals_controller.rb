@@ -46,6 +46,7 @@ class ApprovalsController < ApplicationController
   # POST /approvals.json
   def create
     @approval = @expense.approvals.new(params[:approval])
+    @approval.approve_on = Time.now
 
     respond_to do |format|
       if @approval.save
