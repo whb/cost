@@ -23,4 +23,16 @@ class Expense < ActiveRecord::Base
   def editable?
     status == :edit
   end
+
+  def refuse
+    status = :edit
+  end
+
+  def manager_approve
+    status = :manager_approval
+  end
+
+  def general_manager_approve
+    status = :general_manager_approval
+  end
 end

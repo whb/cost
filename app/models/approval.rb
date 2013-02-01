@@ -9,4 +9,15 @@ class Approval < ActiveRecord::Base
     :general_manager_approval => "总经理审批",
   }
   enum :level, LEVEL_TYPES
+
+  def commit
+    if agree
+      level == :manager_approval ? expense.manager_approve : expense.general_manager_approve
+    else
+      expense.refuse
+    end
+    
+    expense.save!
+    save
+  end
 end

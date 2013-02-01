@@ -37,6 +37,8 @@
 <% for approval in @expense.approvals %>
   <% unless approval.new_record? %>
     <tr>
+      <th><%= associate_model_class.human_attribute_name(:level) %>:</th>
+      <td><%= approval.level %></td>
       <th><%= associate_model_class.human_attribute_name(:approve_on) %>:</th>
       <td><%= approval.approve_on %></td>
       <th><%= associate_model_class.human_attribute_name(:agree) %>:</th>

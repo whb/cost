@@ -50,7 +50,7 @@ class ApprovalsController < ApplicationController
     @approval.approve_on = Time.now
 
     respond_to do |format|
-      if @approval.save
+      if @approval.commit
         format.html { redirect_to [@expense, @approval], notice: 'Approval was successfully created.' }
         format.json { render json: @approval, status: :created, location: @approval }
       else
