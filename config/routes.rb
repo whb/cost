@@ -2,6 +2,10 @@ Cost::Application.routes.draw do
   resources :expenses do
     resources :approvals, :only => [:new, :create, :show]
   end
+  resources :expenses do
+    get :verify, :on => :member
+    put :commit, :on => :member  
+  end
   resources :approvals, :only => [:index]
 #  resources :products
 

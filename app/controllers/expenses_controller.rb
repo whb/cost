@@ -24,8 +24,7 @@ class ExpensesController < ApplicationController
   # GET /expenses/new
   # GET /expenses/new.json
   def new
-    @expense = Expense.new
-    3.times { @expense.items.build }
+    @expense = Expense.new_blank
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,10 +37,15 @@ class ExpensesController < ApplicationController
     @expense = Expense.find(params[:id])
   end
 
+  def verify
+    @expense = Expense.find(params[:id])
+  end
+
   # POST /expenses
   # POST /expenses.json
   def create
     @expense = Expense.new(params[:expense])
+    @expense.status = :edit
 
     respond_to do |format|
       if @expense.save
@@ -65,6 +69,21 @@ class ExpensesController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
+        format.json { render json: @expense.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def commit
+    @expense = Expense.find(params[:id])
+    @expense.status = :commit
+
+    respond_to do |format|
+      if @expense.save
+        format.html { redirect_to @expense, notice: 'Expense was successfully committed.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "confirm" }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
     end
