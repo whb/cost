@@ -1,5 +1,5 @@
 <%= form_for [@expense, @approval], :html => { :class => 'form-inline' } do |f| %>
-  <%= f.select :level, level_types %>
+  <%= f.select :level, level_types, {}, {:class => 'input-medium'} %>
   <%= f.label :agree, :class => 'control-label' %>
   <%= f.check_box :agree, :class => 'check_box' %>
   <%= f.label :explain, :class => 'control-label' %>
