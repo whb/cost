@@ -30,6 +30,7 @@ class ApprovalsController < ApplicationController
   # GET /approvals/new.json
   def new
     @approval = @expense.approvals.build
+    @approval.level = :general_manager_approval
 
     respond_to do |format|
       format.html # new.html.erb

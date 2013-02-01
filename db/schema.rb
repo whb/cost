@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201012644) do
+ActiveRecord::Schema.define(:version => 20130201070952) do
 
   create_table "approvals", :force => true do |t|
     t.integer  "expense_id"
-    t.integer  "level"
+    t.string   "level"
     t.date     "approve_on"
     t.boolean  "agree"
     t.string   "explain"
