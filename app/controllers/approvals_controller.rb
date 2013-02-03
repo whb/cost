@@ -51,7 +51,7 @@ class ApprovalsController < ApplicationController
 
     respond_to do |format|
       if @approval.commit!
-        format.html { redirect_to [@expense, @approval], notice: 'Approval was successfully created.' }
+        format.html { redirect_to [@expense, @approval], notice: t('Approval was successfully created.') }
         format.json { render json: @approval, status: :created, location: @approval }
       else
         format.html { render action: "new" }
@@ -67,7 +67,7 @@ class ApprovalsController < ApplicationController
 
     respond_to do |format|
       if @approval.update_attributes(params[:approval])
-        format.html { redirect_to @approval, notice: 'Approval was successfully updated.' }
+        format.html { redirect_to @approval, notice: t('Approval was successfully updated.') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
