@@ -10,14 +10,17 @@ class Approval < ActiveRecord::Base
   }
   enum :level, LEVEL_TYPES
 
-  def commit
-    if agree
-      level == :manager_approval ? expense.manager_approve : expense.general_manager_approve
-    else
-      expense.refuse
+  def commit!
+    transaction do
+      expense = self.expense
+      if self.agree
+        self.level == :manager_approval ? expense.manager_approve : expense.general_manager_approve
+      else
+        expense.refuse
+      end
+
+      expense.save
+      save
     end
-    
-    expense.save!
-    save
   end
 end
