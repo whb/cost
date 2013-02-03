@@ -10,6 +10,15 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def list_activing
+    @expenses = Expense.activing
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @expenses }
+    end
+  end
+
   # GET /expenses/1
   # GET /expenses/1.json
   def show
