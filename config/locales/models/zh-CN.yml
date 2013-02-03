@@ -5,6 +5,7 @@ zh-CN:
         one: 费用申请单
         other: 费用申请单列表
       item: 费用项
+      approval: 审批签字
 
     attributes:
       created_at: 创建时间
@@ -20,3 +21,8 @@ zh-CN:
         unit: 单位
         unit_price: 单价
         price: 价格
+      approval:
+        level: 级别
+        agree: 同意
+        explain: 说明
+        approve_on: 审批日期

@@ -6,6 +6,7 @@ zh-CN:
       submit: 储存%{model}
       update: 更新%{model}
       commit: 提交%{model}
+      approve: 审批%{model}
     links:
       edit: 编辑
       verify: 确认
@@ -30,4 +31,8 @@ zh-CN:
         add: 添加费用项
   approvals:
       index:
+        title: 待审批费用申请单列表
+      new:
         title: 审批费用申请单
+      form:
+        approve: 确认审批
