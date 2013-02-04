@@ -25,19 +25,22 @@ zh-CN:
       prompt: 请选择
 
   expenses:
-      index:
-        title: 活动费用申请单列表
-      query:
-        title: 查询费用申请单
-      form:
-        add: 添加费用项
+    index:
+      title: 活动费用申请单列表
+    query:
+      title: 查询费用申请单
+    form:
+      add: 添加费用项
   approvals:
-      index:
-        title: 待审批费用申请单列表
-      new:
-        title: 审批费用申请单
-      form:
-        approve: 确认审批
+    index:
+      title: 待审批费用申请单列表
+    new:
+      title: 审批费用申请单
+    form:
+      approve: 确认审批
+  organizations:
+    index:
+        title: 组织机构列表
 
   Expense was successfully created: 费用申请单保存成功
   Expense was successfully updated: 费用申请单更新成功
