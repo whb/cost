@@ -6,15 +6,16 @@ zh-CN:
         other: 费用申请单列表
       item: 费用项
       approval: 审批签字
+      organization: 组织机构
 
     attributes:
       created_at: 创建时间
       expense:
-          no: 编号
-          request_on: 申请日期
-          staff: 申请人
-          created_at: 创建时间
-          status: 状态
+        no: 编号
+        request_on: 申请日期
+        staff: 申请人
+        created_at: 创建时间
+        status: 状态
       item:
         category: 分类
         name: 名称
@@ -27,3 +28,6 @@ zh-CN:
         agree: 同意
         explain: 说明
         approve_on: 审批日期
+      organization:
+        name: 名称
+        superior_id: 上级机构

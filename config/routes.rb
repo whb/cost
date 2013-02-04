@@ -1,4 +1,7 @@
 Cost::Application.routes.draw do
+  resources :organizations
+
+
   resources :expenses do
     get :query, :on => :collection
     get :verify, :on => :member
