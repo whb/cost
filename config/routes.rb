@@ -1,6 +1,6 @@
 Cost::Application.routes.draw do
   resources :expenses do
-    get :list_activing, :on => :collection
+    get :query, :on => :collection
     get :verify, :on => :member
     put :commit, :on => :member
     resources :approvals, :only => [:new, :create, :show]

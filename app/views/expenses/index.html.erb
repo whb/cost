@@ -5,22 +5,20 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:no) %></th>
       <th><%= model_class.human_attribute_name(:request_on) %></th>
       <th><%= model_class.human_attribute_name(:staff) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @expenses.each do |expense| %>
       <tr>
-        <td><%= link_to expense.id, expense_path(expense) %></td>
-        <td><%= expense.no %></td>
+        <td><%= link_to expense.no, expense_path(expense) %></td>
         <td><%= expense.request_on %></td>
         <td><%= expense.staff %></td>
-        <td><%=l expense.created_at %></td>
+        <td><%= expense.status %></td>
         <td>
         <% if expense.editable? %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

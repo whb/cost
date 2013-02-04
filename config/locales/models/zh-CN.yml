@@ -14,6 +14,7 @@ zh-CN:
           request_on: 申请日期
           staff: 申请人
           created_at: 创建时间
+          status: 状态
       item:
         category: 分类
         name: 名称

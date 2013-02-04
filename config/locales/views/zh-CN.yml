@@ -26,9 +26,9 @@ zh-CN:
 
   expenses:
       index:
-        title: 所有费用申请单列表
-      list_activing:
         title: 活动费用申请单列表
+      query:
+        title: 查询费用申请单
       form:
         add: 添加费用项
   approvals:
@@ -41,5 +41,6 @@ zh-CN:
 
   Expense was successfully created: 费用申请单保存成功
   Expense was successfully updated: 费用申请单更新成功
+  Expense was successfully committed: 费用申请单提交成功
   Approval was successfully created: 完成审批
   Approval was successfully updated: 更新审批

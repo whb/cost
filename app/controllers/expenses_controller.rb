@@ -2,7 +2,7 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = Expense.all
+    @expenses = Expense.activing
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,8 +10,8 @@ class ExpensesController < ApplicationController
     end
   end
 
-  def list_activing
-    @expenses = Expense.activing
+  def query
+    @expenses = Expense.all
 
     respond_to do |format|
       format.html
@@ -58,7 +58,7 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
+        format.html { redirect_to @expense, notice: t('Expense was successfully created.') }
         format.json { render json: @expense, status: :created, location: @expense }
       else
         format.html { render action: "new" }
@@ -89,7 +89,7 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to @expense, notice: 'Expense was successfully committed.' }
+        format.html { redirect_to @expense, notice: t('Expense was successfully committed.') }
         format.json { head :no_content }
       else
         format.html { render action: "confirm" }
