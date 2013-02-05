@@ -7,6 +7,7 @@ zh-CN:
       item: 费用项
       approval: 审批签字
       organization: 组织机构
+      user: 用户
 
     attributes:
       created_at: 创建时间
@@ -32,3 +33,11 @@ zh-CN:
         code: 编号
         name: 名称
         superior_id: 上级机构
+      user:
+        username: 用户名
+        displayname: 姓名
+        password_digest: 密码
+        password: 密码
+        password_confirmation: 确认密码
+        enabled: 有效
+        organization_id: 所属机构
