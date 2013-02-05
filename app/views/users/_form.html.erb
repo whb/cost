@@ -1,54 +1,13 @@
-<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="control-group">
-    <%= f.label :username, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :username, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :displayname, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :displayname, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :password, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password, :class => 'password_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :password_confirmation, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password_confirmation, :class => 'password_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :enabled, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :enabled, :class => 'check_box' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :organization_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.collection_select(:organization_id, Organization.all, :id, :name, {:prompt => true}) %>
-    </div>
-  </div>
+<%= simple_form_for @user do |f| %>
+  <%= f.input :username %>
+  <%= f.input :displayname %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.input :enabled %>
+  <%= f.association :organization, collection: Organization.all %>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 users_path, :class => 'btn' %>
   </div>
