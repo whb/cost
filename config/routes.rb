@@ -1,18 +1,19 @@
 Cost::Application.routes.draw do
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
+  resources :sessions
+
   resources :users
-
-
   resources :organizations
-
-
   resources :expenses do
     get :query, :on => :collection
     get :verify, :on => :member
     put :commit, :on => :member
     resources :approvals, :only => [:new, :create, :show]
   end
-
   resources :approvals, :only => [:index]
+
+  root :to => 'expenses#index'
 #  resources :products
 
 
