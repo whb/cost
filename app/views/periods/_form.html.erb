@@ -2,11 +2,13 @@
   <%= f.input :year %>
   <%= f.input :explain %>
   
-  <table class="table fields-table">
-    <%= f.simple_fields_for :budgets do |ff| %>
-      <%= render 'budget_fields', :f => ff %>
-    <% end %>
-  </table>
+  <hr />  
+
+  <%= f.simple_fields_for :budgets do |ff| %>
+    <%= ff.hidden_field :category_id %>
+    <%= ff.input :amount, label: ff.object.category.name %>
+  <% end %>
+
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
