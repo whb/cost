@@ -26,7 +26,7 @@ zh-CN:
 
   expenses:
     index:
-      title: 活动费用申请单列表
+      title: 未完成费用申请单列表
     query:
       title: 查询费用申请单
     form:
