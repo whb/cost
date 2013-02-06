@@ -44,7 +44,7 @@ class PeriodsController < ApplicationController
 
     respond_to do |format|
       if @period.save
-        format.html { redirect_to @period, notice: 'Period was successfully created.' }
+        format.html { redirect_to @period, notice: t('Period was successfully created.') }
         format.json { render json: @period, status: :created, location: @period }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class PeriodsController < ApplicationController
 
     respond_to do |format|
       if @period.update_attributes(params[:period])
-        format.html { redirect_to @period, notice: 'Period was successfully updated.' }
+        format.html { redirect_to @period, notice: t('Period was successfully updated.') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

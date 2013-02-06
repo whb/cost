@@ -8,6 +8,9 @@ zh-CN:
       approval: 审批签字
       organization: 组织机构
       user: 用户
+      category: 费用类型
+      period: 年度预算
+      budget: 预算
 
     attributes:
       created_at: 创建时间
@@ -42,3 +45,12 @@ zh-CN:
         enabled: 有效
         organization_id: 所属机构
         organization: 所属机构
+      category:
+        code: 编号
+        name: 名称
+      period: 
+        year: 年份
+        explain: 说明
+      budget:
+        category: 费用类型
+        amount: 金额

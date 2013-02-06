@@ -41,6 +41,12 @@ zh-CN:
   organizations:
     index:
         title: 组织机构列表
+  periods:
+    index:
+        title: 年度预算列表
+  categories:
+    index:
+        title: 费用类型列表
   users:
     index:
         title: 用户列表
@@ -52,5 +58,9 @@ zh-CN:
   Approval was successfully updated: 更新审批
   Organization was successfully created: 组织机构保存成功
   Organization was successfully updated: 组织机构更新成功
+  Category was successfully created: 费用类型保存成功
+  Category was successfully updated: 费用类型更新成功
+  Period was successfully created: 年度预算保存成功
+  Period was successfully updated: 年度预算更新成功
   User was successfully created: 用户保存成功
   User was successfully updated: 用户更新成功

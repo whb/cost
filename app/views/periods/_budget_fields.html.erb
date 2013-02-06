@@ -1,4 +1,2 @@
-<tr class="fields">
-  <td><%= f.association :category, collection: Category.all %></td>
-  <td><%= f.input :amount %></td>
-</tr>
+<%= f.hidden_field :category_id %>
+<%= f.input :amount, label: f.object.category.name %>

@@ -5,20 +5,16 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:year) %></th>
       <th><%= model_class.human_attribute_name(:explain) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @periods.each do |period| %>
       <tr>
-        <td><%= link_to period.id, period_path(period) %></td>
-        <td><%= period.year %></td>
+        <td><%= link_to period.year, period_path(period) %></td>
         <td><%= period.explain %></td>
-        <td><%=l period.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_period_path(period), :class => 'btn btn-mini' %>

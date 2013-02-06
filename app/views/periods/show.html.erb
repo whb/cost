@@ -10,6 +10,20 @@
   <dd><%= @period.explain %></dd>
 </dl>
 
+<table class="table">
+<tr>
+  <th><%= Budget.human_attribute_name(:category) %></th>
+  <th><%= Budget.human_attribute_name(:amount) %></th>
+</tr>
+<% for budget in @period.budgets %>
+    <tr>
+      <td><%= budget.category.name %></td>
+      <td><%= budget.amount %></td>
+    </tr>
+<% end %>
+</table>
+
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               periods_path, :class => 'btn'  %>
