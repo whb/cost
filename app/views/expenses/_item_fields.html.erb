@@ -1,5 +1,5 @@
 <tr class="fields">
-  <td><%= f.association :category, collection: Category.all, label: false %></td>
+  <td><%= f.association :category, collection: Category.all, label: false, input_html: { class: 'input-medium' }  %></td>
   <td><%= f.input :name, label: false, input_html: { class: 'input-xlarge' } %></td>
   <td><%= f.input :amount, label: false, input_html: { class: 'input-mini' } %></td>
   <td><%= f.input :unit, label: false, input_html: { class: 'input-mini' } %></td>

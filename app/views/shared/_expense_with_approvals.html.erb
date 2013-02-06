@@ -20,7 +20,7 @@
 </tr>
 <% for item in @expense.items %>
     <tr>
-      <td><%= item.category %></td>
+      <td><%= item.category.name %></td>
       <td><%= item.name %></td>
       <td><%= item.amount %></td>
       <td><%= item.unit %></td>

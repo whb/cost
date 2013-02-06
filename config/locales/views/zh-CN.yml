@@ -1,4 +1,7 @@
-zh-CN:  
+zh-CN: 
+  simple_form:  
+     error_notification:  
+      default_message: 请检查下面的错误数据：   
   helpers:
     actions: 操作
     submit:
