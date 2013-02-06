@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205003259) do
+ActiveRecord::Schema.define(:version => 20130206061250) do
 
   create_table "approvals", :force => true do |t|
     t.integer  "expense_id"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(:version => 20130205003259) do
     t.date     "approve_on"
     t.boolean  "agree"
     t.string   "explain"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "budgets", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "period_id"
+    t.decimal  "amount",      :precision => 10, :scale => 0
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -50,6 +65,13 @@ ActiveRecord::Schema.define(:version => 20130205003259) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "code"
+  end
+
+  create_table "periods", :force => true do |t|
+    t.integer  "year"
+    t.string   "explain"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "products", :force => true do |t|

@@ -1,4 +1,10 @@
 Cost::Application.routes.draw do
+  resources :periods
+
+
+  resources :categories
+
+
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   resources :sessions

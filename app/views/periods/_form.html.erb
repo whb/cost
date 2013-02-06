@@ -1,0 +1,23 @@
+<%= simple_form_for @period, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :year %>
+  <%= f.input :explain %>
+  
+
+  <table class="table fields-table">
+    <tr>
+      <th><%= Budget.human_attribute_name(:category) %></th>
+      <th><%= Budget.human_attribute_name(:amount) %></th>
+    </tr>
+    
+    <%= f.simple_fields_for :budgets do |ff| %>
+      <%= render 'budget_fields', :f => ff %>
+    <% end %>
+    
+  </table>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                periods_path, :class => 'btn' %>
+  </div>
+<% end %>
