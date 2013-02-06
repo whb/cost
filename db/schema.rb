@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206061250) do
+ActiveRecord::Schema.define(:version => 20130206113702) do
 
   create_table "approvals", :force => true do |t|
     t.integer  "expense_id"
@@ -49,14 +49,14 @@ ActiveRecord::Schema.define(:version => 20130206061250) do
 
   create_table "items", :force => true do |t|
     t.integer  "expense_id"
-    t.string   "category"
     t.string   "name"
     t.integer  "amount"
     t.string   "unit"
-    t.decimal  "unit_price", :precision => 10, :scale => 0
-    t.decimal  "price",      :precision => 10, :scale => 0
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.decimal  "unit_price",  :precision => 10, :scale => 0
+    t.decimal  "price",       :precision => 10, :scale => 0
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.integer  "category_id"
   end
 
   create_table "organizations", :force => true do |t|

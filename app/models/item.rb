@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
 	belongs_to :expense
-  attr_accessible :amount, :category, :expense_id, :name, :price, :unit, :unit_price
-
+  belongs_to :category
+  attr_accessible :amount, :category_id, :expense_id, :name, :price, :unit, :unit_price
+  validates_presence_of :amount
 end

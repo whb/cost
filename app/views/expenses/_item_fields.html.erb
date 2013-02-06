@@ -1,9 +1,9 @@
 <tr class="fields">
-  <td><%= f.text_field :category, :class => "input-mini" %></td>
-  <td><%= f.text_field :name, :class => 'input-xlarge' %></td>
-  <td><%= f.text_field :amount, :class => "input-mini" %></td>
-  <td><%= f.text_field :unit, :class => "input-mini" %></td>
-  <td><%= f.text_field :unit_price, :class => "input-mini" %></td>
-  <td><%= f.text_field :price, :class => "input-mini" %></td>
+  <td><%= f.association :category, collection: Category.all, label: false %></td>
+  <td><%= f.input :name, label: false, input_html: { class: 'input-xlarge' } %></td>
+  <td><%= f.input :amount, label: false, input_html: { class: 'input-mini' } %></td>
+  <td><%= f.input :unit, label: false, input_html: { class: 'input-mini' } %></td>
+  <td><%= f.input :unit_price, label: false, input_html: { class: 'input-mini' } %></td>
+  <td><%= f.input :price, label: false, input_html: { class: 'input-mini' } %></td>
   <td><%= link_to_remove_fields t('.destroy', :default => t("helpers.links.destroy")), f %></td>
 </tr>
