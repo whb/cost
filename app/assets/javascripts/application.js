@@ -30,5 +30,23 @@ function add_fields(link, association, content) {
 }
 
 $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
-    $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true, "language": "zh-CN"});
+  $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true, "language": "zh-CN"});
 });
+
+function redraw_ref_budget() {
+  $("select[id^='expense_items_attributes']").each(function(e) {
+    var id = 'ref_budget_' + $(this).val();
+    alert(id);
+
+    $("tr[id^='ref_budget_']").show();
+  }); 
+}
+
+
+$(document).ready(function(){
+  $("tr[id^='ref_budget_']").hide();
+  $("select[id^='expense_items_attributes']").change(function(e) {
+    redraw_ref_budget();
+  });
+});
+

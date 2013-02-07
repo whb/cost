@@ -1,4 +1,9 @@
 class ExpensesController < ApplicationController
+  before_filter :load_period, :only => [:show, :new, :edit, :verify]
+  def load_period
+    @period = Period.find_by_year(2013)
+  end
+
   # GET /expenses
   # GET /expenses.json
   def index

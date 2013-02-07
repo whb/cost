@@ -34,6 +34,11 @@ zh-CN:
       title: 查询费用申请单
     form:
       add: 添加费用项
+    budgets_sidebar:
+      category: 预算费用类型
+      available: 可用预算
+      current: 本次金额
+      balance: 剩余预算
   approvals:
     index:
       title: 待审批费用申请单列表

@@ -1,0 +1,18 @@
+<%content_for :sidebar do%>
+  <table class="table">
+  <tr>
+    <th><%= t ".category" %></th>
+    <th><%= t ".available" %></th>
+    <th><%= t ".current" %></th>
+    <th><%= t ".balance" %></th>
+  </tr>
+  <% for budget in @period.budgets %>
+      <tr id="ref_budget_<%= budget.category.id %>">
+        <td><%= budget.category.name %></td>
+        <td><%= budget.available %></td>
+        <td><%= budget.available %></td>
+        <td><%= budget.available %></td>
+      </tr>
+  <% end %>
+  </table>
+<%end%>
