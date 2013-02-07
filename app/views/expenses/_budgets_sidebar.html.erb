@@ -9,9 +9,9 @@
   <% for budget in @period.budgets %>
       <tr id="ref_budget_<%= budget.category.id %>">
         <td><%= budget.category.name %></td>
-        <td><%= budget.available %></td>
-        <td><%= budget.available %></td>
-        <td><%= budget.available %></td>
+        <td class='available'><%= budget.available %></td>
+        <td class='current'><%= 2 %></td>
+        <td class='balance'><%= 3 %></td>
       </tr>
   <% end %>
   </table>

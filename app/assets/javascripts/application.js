@@ -40,13 +40,26 @@ function hide_ref_budget() {
 }
 
 function show_ref_budget() {
-  $("select[id^='expense_items_attributes']").each(function(e) {
+  $("select[id^=expense_items_attributes]").each(function(e) {
     var id = $(this).val();
     if ( id ) {
-      var select = "[id^='ref_budget_%ID%']".replace(/%ID%/, id);
-      $(select).show();
+      cal_ref_budget(id);
+
+      var ref_budget = "[id^=ref_budget_%ID%]".replace(/%ID%/, id);
+      $(ref_budget).show();
     }
   }); 
+}
+
+function cal_ref_budget(id) {
+  // $("input[id^=expense_items_attributes_][id$=_price]").each(function(e) {
+    
+  // }); 
+
+  var current = "[id^=ref_budget_%ID%] .current".replace(/%ID%/, id);
+  $(current).text('999');
+  var balance = "[id^=ref_budget_%ID%] .balance".replace(/%ID%/, id);
+  $(balance).text('888');
 }
 
 function redraw_ref_budget() {
@@ -57,7 +70,10 @@ function redraw_ref_budget() {
 
 $(document).ready(function(){
   hide_ref_budget();
-  $("select[id^='expense_items_attributes']").change(function(e) {
+  $("select[id^=expense_items_attributes]").change(function(e) {
+    redraw_ref_budget();
+  });
+  $("input[id^=expense_items_attributes_][id$=_price]").change(function(e) {
     redraw_ref_budget();
   });
 });
