@@ -16,6 +16,7 @@ class Expense < ActiveRecord::Base
 
   def self.new_blank
     expense = Expense.new
+    expense.request_on = Time.now.to_date
     3.times { expense.items.build }
     expense
   end
