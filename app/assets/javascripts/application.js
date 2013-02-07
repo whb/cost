@@ -33,18 +33,30 @@ $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
   $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true, "language": "zh-CN"});
 });
 
-function redraw_ref_budget() {
-  $("select[id^='expense_items_attributes']").each(function(e) {
-    var id = 'ref_budget_' + $(this).val();
-    alert(id);
 
-    $("tr[id^='ref_budget_']").show();
+
+function hide_ref_budget() {
+  $("[id^='ref_budget_']").hide();
+}
+
+function show_ref_budget() {
+  $("select[id^='expense_items_attributes']").each(function(e) {
+    var id = $(this).val();
+    if ( id ) {
+      var select = "[id^='ref_budget_%ID%']".replace(/%ID%/, id);
+      $(select).show();
+    }
   }); 
+}
+
+function redraw_ref_budget() {
+  hide_ref_budget(); 
+  show_ref_budget();
 }
 
 
 $(document).ready(function(){
-  $("tr[id^='ref_budget_']").hide();
+  hide_ref_budget();
   $("select[id^='expense_items_attributes']").change(function(e) {
     redraw_ref_budget();
   });
