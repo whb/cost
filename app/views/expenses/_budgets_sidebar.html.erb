@@ -10,8 +10,8 @@
       <tr id="ref_budget_<%= budget.category.id %>">
         <td><%= budget.category.name %></td>
         <td class='available'><%= budget.available %></td>
-        <td class='current'><%= 2 %></td>
-        <td class='balance'><%= 3 %></td>
+        <td class='current'><%= @expense.category_price(budget.category.id) %></td>
+        <td class='balance'><%= subtraction(budget.available, @expense.category_price(budget.category.id))%></td>
       </tr>
   <% end %>
   </table>

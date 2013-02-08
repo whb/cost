@@ -36,4 +36,12 @@ class Expense < ActiveRecord::Base
   def general_manager_approve
     self.status = :general_manager_approval
   end
+
+  def category_price(category_id) 
+    sum_category_price = 0
+    items.each do |item|
+      sum_category_price += item.price if category_id == item.category_id
+    end
+    sum_category_price
+  end
 end

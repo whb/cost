@@ -1,4 +1,6 @@
-<%= render 'budgets_sidebar' %>
+<% if @period != nil %>
+  <%= render 'budgets_sidebar' %>
+<% end %>
 
 <%= simple_form_for @expense do |f| %>
   <div class='form-horizontal'>
