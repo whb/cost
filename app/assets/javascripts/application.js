@@ -65,8 +65,8 @@ function cal_ref_budget() {
     if ( !$.isNumeric(category_id) ) return;
 
     var index = $(this).attr('id').split('_')[3];
-    var price_input_selector = '#expense_items_attributes_' + index + '_price';
-    var price = $(price_input_selector).val();
+    var price_selector = '#expense_items_attributes_' + index + '_price';
+    var price = $(price_selector).val();
     if ($.isNumeric(price))  category_price_map.add(category_id, price);
 
     var available = "[id^=ref_budget_%ID%] .available".replace(/%ID%/, category_id);
@@ -77,8 +77,13 @@ function cal_ref_budget() {
   }); 
 }
 
-function build_price_map(index, category_id) {
-  
+function cal_price(object) {
+  var index = object.attr('id').split('_')[3];
+  var amount_selector = '#expense_items_attributes_' + index + '_amount';
+  var unit_price_selector = '#expense_items_attributes_' + index + '_unit_price';
+  var price_selector = '#expense_items_attributes_' + index + '_price';
+  $(price_selector).val( $(amount_selector).val() * $(unit_price_selector).val() );
+  $(price_selector).change();
 }
 
 function redraw_ref_budget() {
@@ -93,6 +98,12 @@ function regist_events() {
   });
   $("input[id^=expense_items_attributes_][id$=_price]").change(function(e) {
     redraw_ref_budget();
+  });
+  $("input[id^=expense_items_attributes_][id$=_amount]").change(function(e) {
+    cal_price($(this));
+  });
+  $("input[id^=expense_items_attributes_][id$=_unit_price]").change(function(e) {
+    cal_price($(this));
   });
 }
 
