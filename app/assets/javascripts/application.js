@@ -49,10 +49,14 @@ function show_ref_budget() {
   }); 
 }
 
+function parseFix(value) {
+  return parseFloat(value).toFixed(2);
+}
+
 function cal_ref_budget() {
   var category_price_map = {  
       set : function(key,value){ this[key] = parseFloat(value) },  
-      get : function(key){ return $.isNumeric(this[key]) ? this[key] : 0 },  
+      get : function(key){ return $.isNumeric(this[key]) ? parseFix(this[key]) : 0 },  
       add : function(key,value){ this[key] = $.isNumeric(this[key]) ? parseFloat(this[key]) + parseFloat(value) : parseFloat(value) },  
   };
 
@@ -65,10 +69,11 @@ function cal_ref_budget() {
     var price = $(price_input_selector).val();
     if ($.isNumeric(price))  category_price_map.add(category_id, price);
 
+    var available = "[id^=ref_budget_%ID%] .available".replace(/%ID%/, category_id);
     var current = "[id^=ref_budget_%ID%] .current".replace(/%ID%/, category_id);
     $(current).text(category_price_map.get(category_id));
     var balance = "[id^=ref_budget_%ID%] .balance".replace(/%ID%/, category_id);
-    $(balance).text('888');
+    $(balance).text($(available).text() - category_price_map.get(category_id));
   }); 
 }
 
