@@ -33,7 +33,7 @@ $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
   $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true, "language": "zh-CN"});
 });
 
-
+// ====================================================
 
 function hide_ref_budget() {
   $("[id^='ref_budget_']").hide();
@@ -41,40 +41,59 @@ function hide_ref_budget() {
 
 function show_ref_budget() {
   $("select[id^=expense_items_attributes]").each(function(e) {
-    var id = $(this).val();
-    if ( id ) {
-      cal_ref_budget(id);
-
-      var ref_budget = "[id^=ref_budget_%ID%]".replace(/%ID%/, id);
+    var category_id = $(this).val();
+    if ( category_id ) {
+      var ref_budget = "[id^=ref_budget_%ID%]".replace(/%ID%/, category_id);
       $(ref_budget).show();
     }
   }); 
 }
 
-function cal_ref_budget(id) {
-  // $("input[id^=expense_items_attributes_][id$=_price]").each(function(e) {
-    
-  // }); 
+function cal_ref_budget() {
+  var category_price_map = {  
+      set : function(key,value){ this[key] = parseFloat(value) },  
+      get : function(key){ return $.isNumeric(this[key]) ? this[key] : 0 },  
+      add : function(key,value){ this[key] = $.isNumeric(this[key]) ? parseFloat(this[key]) + parseFloat(value) : parseFloat(value) },  
+  };
 
-  var current = "[id^=ref_budget_%ID%] .current".replace(/%ID%/, id);
-  $(current).text('999');
-  var balance = "[id^=ref_budget_%ID%] .balance".replace(/%ID%/, id);
-  $(balance).text('888');
+  $("select[id^=expense_items_attributes]").each(function(e) {
+    var category_id = $(this).val();
+    if ( !$.isNumeric(category_id) ) return;
+
+    var index = $(this).attr('id').split('_')[3];
+    var price_input_selector = '#expense_items_attributes_' + index + '_price';
+    var price = $(price_input_selector).val();
+    if ($.isNumeric(price))  category_price_map.add(category_id, price);
+
+    var current = "[id^=ref_budget_%ID%] .current".replace(/%ID%/, category_id);
+    $(current).text(category_price_map.get(category_id));
+    var balance = "[id^=ref_budget_%ID%] .balance".replace(/%ID%/, category_id);
+    $(balance).text('888');
+  }); 
+}
+
+function build_price_map(index, category_id) {
+  
 }
 
 function redraw_ref_budget() {
   hide_ref_budget(); 
+  cal_ref_budget();
   show_ref_budget();
 }
 
-
-$(document).ready(function(){
-  hide_ref_budget();
+function regist_events() {
   $("select[id^=expense_items_attributes]").change(function(e) {
     redraw_ref_budget();
   });
   $("input[id^=expense_items_attributes_][id$=_price]").change(function(e) {
     redraw_ref_budget();
   });
+}
+
+
+$(document).ready(function(){
+  hide_ref_budget();
+  regist_events();
 });
 
