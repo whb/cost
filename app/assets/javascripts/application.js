@@ -16,10 +16,16 @@
 //= require_tree .
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
+$(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
+  $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true, "language": "zh-CN"});
+});
+
+// ====================================================
 
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val(true);
   $(link).parents(".fields").hide();
+  redraw_ref_budget();
 }
 
 function add_fields(link, association, content) {
@@ -27,11 +33,8 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g");
   var unique_content = content.replace(regexp, new_id);
   $('.fields-table').append(unique_content);
+  regist_events();
 }
-
-$(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
-  $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true, "language": "zh-CN"});
-});
 
 // ====================================================
 
@@ -40,7 +43,7 @@ function hide_ref_budget() {
 }
 
 function show_ref_budget() {
-  $("select[id^=expense_items_attributes]").each(function(e) {
+  $("select[id^=expense_items_attributes]:visible").each(function(e) {
     var category_id = $(this).val();
     if ( category_id ) {
       var ref_budget = "[id^=ref_budget_%ID%]".replace(/%ID%/, category_id);
@@ -60,7 +63,7 @@ function cal_ref_budget() {
       add : function(key,value){ this[key] = $.isNumeric(this[key]) ? parseFloat(this[key]) + parseFloat(value) : parseFloat(value) },  
   };
 
-  $("select[id^=expense_items_attributes]").each(function(e) {
+  $("select[id^=expense_items_attributes]:visible").each(function(e) {
     var category_id = $(this).val();
     if ( !$.isNumeric(category_id) ) return;
 
