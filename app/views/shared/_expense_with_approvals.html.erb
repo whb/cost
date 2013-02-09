@@ -1,5 +1,10 @@
 <%- model_class = Expense -%>
 
+<% if @period != nil %>
+  <%= render 'budgets_sidebar' %>
+<% end %>
+
+
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:no) %>:</strong></dt>
   <dd><%= @expense.no %></dd>

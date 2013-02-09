@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  before_filter :load_period, :only => [:show, :new, :edit, :verify, :create]
+  before_filter :load_period, :expect => [:index, :query, :destroy]
   def load_period
     @period = Period.find_by_year(2013)
   end
