@@ -1,0 +1,9 @@
+class ReferenceBudget
+  def initialize(budget)
+    @budget = budget
+  end
+
+  def available
+    @budget.available
+  end
+end

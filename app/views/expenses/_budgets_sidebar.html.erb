@@ -7,7 +7,7 @@
     <th><%= t ".balance" %></th>
   </tr>
   <% for budget in @period.budgets %>
-      <tr id="ref_budget_<%= budget.category.id %>">
+      <tr id="ref_budget_<%= budget.category.id %>" style="<%= style(budget, @expense) %>" >
         <td><%= budget.category.name %></td>
         <td class='available'><%= budget.available %></td>
         <td class='current'><%= @expense.category_price(budget.category.id) %></td>

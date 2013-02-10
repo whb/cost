@@ -112,8 +112,8 @@ function regist_events() {
 
 
 $(document).ready(function(){
-  hide_ref_budget();
-  show_ref_budget();
+  // hide_ref_budget();
+  // show_ref_budget();
   regist_events();
 });
 
