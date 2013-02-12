@@ -1,6 +1,6 @@
 class Expense < ActiveRecord::Base
-	has_many :items, :dependent => :destroy
-	accepts_nested_attributes_for :items, :allow_destroy => true, 
+  has_many :items, :dependent => :destroy
+  accepts_nested_attributes_for :items, :allow_destroy => true,
     :reject_if => lambda { |a| a[:category_id].blank? and a[:name].blank? and a[:amount].blank? and a[:unit].blank? and a[:unit_price].blank? }
   has_many :approvals
   attr_accessible :sn, :request_on, :staff, :items_attributes
@@ -45,7 +45,7 @@ class Expense < ActiveRecord::Base
     self.status = :general_manager_approval
   end
 
-  def category_price(category_id) 
+  def category_price(category_id)
     sum_category_price = 0
     items.each do |item|
       sum_category_price += item.price if (category_id == item.category_id and item.price != nil)

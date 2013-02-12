@@ -27,6 +27,12 @@ zh-CN:
     select:
       prompt: 请选择
 
+  shared:
+    budgets_sidebar:
+      category: 预算费用类型
+      available: 可用预算
+      current: 本次金额
+      balance: 剩余预算
   expenses:
     index:
       title: 未完成费用申请单列表
@@ -34,11 +40,6 @@ zh-CN:
       title: 查询费用申请单
     form:
       add: 添加费用项
-    budgets_sidebar:
-      category: 预算费用类型
-      available: 可用预算
-      current: 本次金额
-      balance: 剩余预算
     STATUS_TYPES: 
       edit: 编辑
       commit: 提交

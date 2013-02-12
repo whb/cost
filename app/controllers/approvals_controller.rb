@@ -4,6 +4,11 @@ class ApprovalsController < ApplicationController
     @expense = Expense.find(params[:expense_id])
   end
 
+  before_filter :load_period, :expect => [:index, :destroy]
+  def load_period
+    @period = Period.find_by_year(2013)
+  end
+
   # GET /approvals
   # GET /approvals.json
   def index
