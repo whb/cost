@@ -15,7 +15,7 @@ zh-CN:
     attributes:
       created_at: 创建时间
       expense:
-        no: 编号
+        sn: 编号
         request_on: 申请日期
         staff: 申请人
         created_at: 创建时间
