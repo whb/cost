@@ -5,6 +5,7 @@ class Expense < ActiveRecord::Base
   has_many :approvals
   attr_accessible :sn, :request_on, :staff, :items_attributes
   validates_presence_of :sn, :request_on, :staff, :items
+  validates_uniqueness_of :sn
 
   STATUS_TYPES = {
     :edit => "Edit",
@@ -18,9 +19,14 @@ class Expense < ActiveRecord::Base
 
   def self.new_blank
     expense = Expense.new
+    expense.sn = generate_sn
     expense.request_on = Time.now.to_date
     3.times { expense.items.build }
     expense
+  end
+
+  def self.generate_sn
+    "CST-%.6d" % (Expense.maximum('id') + 1)
   end
 
   def editable?
