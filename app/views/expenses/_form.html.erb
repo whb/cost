@@ -5,7 +5,7 @@
 <%= simple_form_for @expense do |f| %>
   <div class='form-horizontal'>
     <%= f.error_notification %> 
-    <%= f.input :sn %>
+    <%= f.input :sn, :readonly => true %>
     <div class="control-group">
       <%= f.label :request_on, :class => 'control-label' %>
       <div class="controls">
