@@ -1,4 +1,18 @@
 zh-CN: 
+  layouts:
+    application:
+      Cost System: 费用支出系统
+      Home: 首页
+      Expenses: 费用申请单
+      Expense request/commit: 费用申请
+      Expense approval: 费用审批
+      Reimbursement: 报销
+      Basic Data Admin: 基础数据管理
+      Organizations: 组织机构
+      Users: 用户
+      Categories: 费用类型
+      Periods: 年度预算
+      Log Out: 退出
   simple_form:  
      error_notification:  
       default_message: 请检查下面的错误数据：   

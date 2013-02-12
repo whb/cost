@@ -33,6 +33,7 @@ gem 'enum_simulator'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'simple_form'
+gem 'rails_bootstrap_navbar'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

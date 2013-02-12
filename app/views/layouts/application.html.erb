@@ -11,33 +11,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="#">Some Store</a>
-      <div class="nav-collapse">
-        <ul class="nav">
-          <li><%= link_to "Browse Products" %></li>
-          <li><%= link_to "Price List" %></li>
-          <li><%= link_to "Contact Us" %></li>
-          <li><%= link_to "Cart" %></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+
+<%= nav_bar :fixed => :top, :brand => t(".Cost System"), :responsive => true do %>
+  <%= menu_group do %>
+    <%= menu_item t(".Home"), root_path %>
+    <%= drop_down t(".Expenses") do %>
+      <%= menu_item t(".Expense request/commit"), expenses_path %>
+      <%= menu_item t(".Expense approval"), approvals_path %>
+    <% end %>
+    <%= menu_item t(".Reimbursement") %>
+    <%= drop_down t(".Basic Data Admin") do %>
+      <%= menu_item t(".Organizations"), organizations_path %>
+      <%= menu_item t(".Users"), users_path %>
+      <%= menu_item t(".Categories"), categories_path %>
+      <%= menu_item t(".Periods"), periods_path %>
+    <% end %>
+  <% end %>
+  <%= menu_group :pull => :right do %>
+    <% if current_user %>
+      <%= menu_item current_user.displayname %><%= menu_item t(".Log Out"), logout_path %>
+    <% end %>
+  <% end %>
+<% end %>
 
 <div class="container">
   <div class="row">
     <%= render partial: "shared/flash_messages", flash: flash %> 
     <div class="span9"><%= yield %></div>
     <div class="span3">
-      <h2><%= current_user.displayname if current_user %></h2>
       <%=yield :sidebar %>   
     </div>
   </div>
