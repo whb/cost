@@ -12,7 +12,8 @@
         <%= f.text_field :request_on, 'data-behaviour' => 'datepicker' %>
       </div>
     </div>
-    <%= f.association :organization, collection: Organization.all, :readonly => true %>
+    <%= f.association :organization, collection: Organization.all, disabled: true %>
+    <%= f.hidden_field :organization_id %>
     <%= f.input :staff, :readonly => true %>
   </div>
 
