@@ -3,10 +3,11 @@ zh-CN:
     application:
       Cost System: 祥龙物流费用支出系统
       Home: 首页
-      Expenses: 费用申请单
+      Expenses: 费用申请
       Expense request/commit: 费用申请
       Expense approval: 费用审批
       Reimbursement: 报销
+      Budget Supervise: 预算监督
       Basic Data Admin: 基础数据管理
       Organizations: 组织机构
       Users: 用户
