@@ -40,19 +40,13 @@
 
 <%- associate_model_class = Approval -%>
 
-<table class="table">
+<ul>
 <% for approval in @expense.approvals %>
   <% unless approval.new_record? %>
-    <tr>
-      <th><%= associate_model_class.human_attribute_name(:level) %>:</th>
-      <td><%= approval.level %></td>
-      <th><%= associate_model_class.human_attribute_name(:approve_on) %>:</th>
-      <td><%= approval.approve_on %></td>
-      <th><%= associate_model_class.human_attribute_name(:agree) %>:</th>
-      <td><%= approval.agree %></td>
-      <th><%= associate_model_class.human_attribute_name(:explain) %>:</th>
-      <td><%= approval.explain %></td>
-    </tr>
+    <li><%= approval.approve_on %>
+        <%= t "approvals.LEVEL_TYPES.#{approval.level}" %> (<%= approval.manager %>) : 
+        <strong><%= t "approvals.agree.#{approval.agree}" %></strong> 
+         <%= approval.explain %></li>
   <% end %>
 <% end %>
-</table>
+</ul>

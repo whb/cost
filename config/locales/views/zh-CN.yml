@@ -67,6 +67,12 @@ zh-CN:
       title: 审批费用申请单
     form:
       approve: 确认审批
+    agree:
+      'true': 同意
+      'false': 不同意
+    LEVEL_TYPES: 
+      manager_approval: 主管经理审批
+      general_manager_approval: 总经理审批
   organizations:
     index:
         title: 组织机构列表
