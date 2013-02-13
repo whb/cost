@@ -7,7 +7,7 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = Expense.activing
+    @expenses = Expense.activing.find_all_by_organization_id current_organization.subtree_ids
 
     respond_to do |format|
       format.html # index.html.erb
