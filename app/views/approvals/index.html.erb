@@ -2,27 +2,5 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:sn) %></th>
-      <th><%= model_class.human_attribute_name(:request_on) %></th>
-      <th><%= model_class.human_attribute_name(:staff) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @expenses.each do |expense| %>
-      <tr>
-        <td><%= link_to expense.sn, expense_path(expense) %></td>
-        <td><%= expense.request_on %></td>
-        <td><%= expense.staff %></td>
-        <td>
-          <%= link_to t('.approve', :default => t("helpers.links.approve")),
-                      new_expense_approval_path(expense),
-                      :class => 'btn btn-primary' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<%= render 'shared/expenses' %>

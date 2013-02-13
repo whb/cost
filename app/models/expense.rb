@@ -33,6 +33,10 @@ class Expense < ActiveRecord::Base
     self.status == :edit
   end
 
+  def approvaling?
+    self.status == :commit or self.status == :manager_approval
+  end
+
   def refuse
     self.status = :edit
   end
