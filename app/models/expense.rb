@@ -18,9 +18,15 @@ class Expense < ActiveRecord::Base
 
   scope :activing, where(:status => [:edit, :commit, :manager_approval])
 
-  def self.new_blank
+  def self.new_blank(current_user)
     expense = Expense.new
     expense.sn = generate_sn
+    if current_user
+      expense.organization = current_user.organization
+      expense.staff = current_user.displayname
+    else
+      expense.organization = Organization.default
+    end
     expense.request_on = Time.now.to_date
     3.times { expense.items.build }
     expense

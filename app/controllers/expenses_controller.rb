@@ -38,7 +38,7 @@ class ExpensesController < ApplicationController
   # GET /expenses/new
   # GET /expenses/new.json
   def new
-    @expense = Expense.new_blank
+    @expense = Expense.new_blank(current_user)
 
     respond_to do |format|
       format.html # new.html.erb
