@@ -12,6 +12,7 @@
         <%= f.text_field :request_on, 'data-behaviour' => 'datepicker' %>
       </div>
     </div>
+    <%= f.association :organization, collection: Organization.all %>
     <%= f.input :staff %>
   </div>
 

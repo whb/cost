@@ -10,6 +10,8 @@
   <dd><%= @expense.sn %></dd>
   <dt><strong><%= model_class.human_attribute_name(:request_on) %>:</strong></dt>
   <dd><%= @expense.request_on %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:organization) %>:</strong></dt>
+  <dd><%= @expense.organization.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:staff) %>:</strong></dt>
   <dd><%= @expense.staff %></dd>
 </dl>

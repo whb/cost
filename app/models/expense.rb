@@ -3,8 +3,9 @@ class Expense < ActiveRecord::Base
   accepts_nested_attributes_for :items, :allow_destroy => true,
     :reject_if => lambda { |a| a[:category_id].blank? and a[:name].blank? and a[:amount].blank? and a[:unit].blank? and a[:unit_price].blank? }
   has_many :approvals
-  attr_accessible :sn, :request_on, :staff, :items_attributes
-  validates_presence_of :sn, :request_on, :staff, :items
+  belongs_to :organization
+  attr_accessible :sn, :request_on, :staff, :organization_id, :items_attributes
+  validates_presence_of :sn, :request_on, :staff, :organization, :items
   validates_uniqueness_of :sn
 
   STATUS_TYPES = {
