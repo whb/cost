@@ -2,7 +2,7 @@
 
 class Approval < ActiveRecord::Base
   belongs_to :expense
-  attr_accessible :agree, :approve_on, :expense_id, :explain, :level
+  attr_accessible :agree, :approve_on, :expense_id, :explain, :level, :manager
 
   LEVEL_TYPES = {
     :manager_approval => "主管经理审批",

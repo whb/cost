@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130213012300) do
+ActiveRecord::Schema.define(:version => 20130213073253) do
 
   create_table "approvals", :force => true do |t|
     t.integer  "expense_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130213012300) do
     t.string   "explain"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "manager"
   end
 
   create_table "budgets", :force => true do |t|
