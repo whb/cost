@@ -1,7 +1,7 @@
 class Expense < ActiveRecord::Base
   has_many :items, :dependent => :destroy
   accepts_nested_attributes_for :items, :allow_destroy => true,
-    :reject_if => lambda { |a| a[:category_id].blank? and a[:name].blank? and a[:amount].blank? and a[:unit].blank? and a[:unit_price].blank? }
+    :reject_if => lambda { |a| a[:category_id].blank? and a[:name].blank? and a[:amount].blank? and a[:unit].blank? and a[:unit_price].blank? and a[:price].blank?}
   has_many :approvals
   belongs_to :organization
   attr_accessible :sn, :request_on, :staff, :organization_id, :items_attributes
@@ -34,7 +34,8 @@ class Expense < ActiveRecord::Base
   end
 
   def self.generate_sn
-    "CST-%.6d" % (Expense.maximum('id') + 1)
+    max_id = Expense.maximum('id') ? Expense.maximum('id') : 0
+    "CST-%.6d" % (max_id + 1)
   end
 
   def editable?
