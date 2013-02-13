@@ -12,7 +12,7 @@ class ApprovalsController < ApplicationController
   # GET /approvals
   # GET /approvals.json
   def index
-    @expenses = Expense.all
+    @expenses = Expense.approvalling.find_all_by_organization_id current_organization.subtree_ids
 
     respond_to do |format|
       format.html # index.html.erb

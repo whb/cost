@@ -32,7 +32,7 @@
         <% elsif expense.approvaling? %>
           <%= link_to t('.approve', :default => t("helpers.links.approve")),
                       new_expense_approval_path(expense),
-                      :class => 'btn btn-primary' %>
+                      :class => 'btn btn-mini btn-primary' %>
         <% end %>
         </td>
       </tr>

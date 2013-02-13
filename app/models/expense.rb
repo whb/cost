@@ -17,6 +17,7 @@ class Expense < ActiveRecord::Base
   enum :status, STATUS_TYPES
 
   scope :activing, where(:status => [:edit, :commit, :manager_approval])
+  scope :approvalling, where(:status => [:commit, :manager_approval])
 
   def self.new_blank(current_user)
     expense = Expense.new
