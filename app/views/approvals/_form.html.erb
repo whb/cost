@@ -1,9 +1,9 @@
-<%= simple_form_for [@expense, @approval], :html => { :class => 'form-inline' } do |f| %>
-  <%= f.input_field :level, collection: level_types, disabled: true, class: 'input-medium' %>
+<%= simple_form_for [@expense, @approval], :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :level, collection: level_types, disabled: true, input_html: { class: 'input-medium' } %>
   <%= f.hidden_field :level %>
   <%= f.hidden_field :manager %>
-  <%= f.label :agree %><%= f.input_field :agree %>
-  <%= f.label :explain %><%= f.input_field :explain, class: 'input-xxlarge' %>
+  <%= f.input :agree %>
+  <%= f.input :explain, input_html: { class: 'input-xxlarge' } %>
 
   <div class="form-actions">
     <%= f.submit t('.approve'), :class => 'btn btn-primary' %>

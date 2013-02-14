@@ -45,8 +45,10 @@
   <% unless approval.new_record? %>
     <li><%= approval.approve_on %>
         <%= t "approvals.LEVEL_TYPES.#{approval.level}" %> (<%= approval.manager %>) : 
-        <strong><%= t "approvals.agree.#{approval.agree}" %></strong> 
-         <%= approval.explain %></li>
+        <span class="label <%= agree_label_class approval.agree%>">
+          <%= t "approvals.agree.#{approval.agree}" %>
+        </span>
+        <em><%= approval.explain %></em></li>
   <% end %>
 <% end %>
 </ul>

@@ -26,4 +26,8 @@ module ApplicationHelper
         flash_type.to_s
     end
   end
+
+  def agree_label_class agree
+    agree ? "label-success" : "label-inverse"
+  end
 end

@@ -1,0 +1,5 @@
+zh-CN:   
+  simple_form:
+    placeholders:
+      approval:
+        explain: 不同意时，请填写原因。

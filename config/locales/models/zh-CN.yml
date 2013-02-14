@@ -29,7 +29,7 @@ zh-CN:
         unit_price: 单价
         price: 价格
       approval:
-        level: 级别
+        level: 审批级别
         agree: 同意
         explain: 说明
         approve_on: 审批日期
@@ -55,3 +55,9 @@ zh-CN:
       budget:
         category: 费用类型
         amount: 金额
+    errors: 
+      models:
+        approval:
+          attributes:
+            explain: 
+              blank: 不同意时，请说明原因
