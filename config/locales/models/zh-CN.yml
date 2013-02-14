@@ -47,6 +47,7 @@ zh-CN:
         enabled: 有效
         organization_id: 所属机构
         organization: 所属机构
+        roles: 角色
       category:
         code: 编号
         name: 名称

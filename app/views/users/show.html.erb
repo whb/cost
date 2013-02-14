@@ -12,6 +12,8 @@
   <dd><%= @user.enabled %></dd>
   <dt><strong><%= model_class.human_attribute_name(:organization_id) %>:</strong></dt>
   <dd><%= @user.organization.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:roles) %>:</strong></dt>
+  <dd><%= display @user.roles %></dd>
 </dl>
 
 <div class="form-actions">
