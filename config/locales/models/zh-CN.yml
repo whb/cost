@@ -19,6 +19,7 @@ zh-CN:
         request_on: 申请日期
         staff: 申请人
         organization: 申请部门
+        explain: 说明
         created_at: 创建时间
         status: 状态
       item:

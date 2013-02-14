@@ -1,5 +1,10 @@
 zh-CN:   
   simple_form:
-    placeholders:
+    hints:
       approval:
-        explain: 不同意时，请填写原因。
+        agree: 同意请打√
+    placeholders:
+      expense:
+        explain: 填写支出理由、用途说明、购买要求等。
+      approval:
+        explain: 填写不同意原因，或者指导意见。

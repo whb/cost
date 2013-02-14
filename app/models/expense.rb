@@ -4,7 +4,7 @@ class Expense < ActiveRecord::Base
     :reject_if => lambda { |a| a[:category_id].blank? and a[:name].blank? and a[:amount].blank? and a[:unit].blank? and a[:unit_price].blank? and a[:price].blank?}
   has_many :approvals
   belongs_to :organization
-  attr_accessible :sn, :request_on, :staff, :organization_id, :items_attributes
+  attr_accessible :sn, :request_on, :staff, :organization_id, :explain, :items_attributes
   validates_presence_of :sn, :request_on, :staff, :organization, :items
   validates_uniqueness_of :sn
 

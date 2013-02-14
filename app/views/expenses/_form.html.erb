@@ -15,6 +15,7 @@
     <%= f.association :organization, collection: Organization.all, disabled: true %>
     <%= f.hidden_field :organization_id %>
     <%= f.input :staff, :readonly => true %>
+    <%= f.input :explain, input_html: { rows: 4, class: 'input-xxlarge' } %>
   </div>
 
   <table class="table fields-table">

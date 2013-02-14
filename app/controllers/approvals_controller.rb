@@ -56,13 +56,14 @@ class ApprovalsController < ApplicationController
     @approval.approve_on = Time.now
 
     respond_to do |format|
-      if @approval.commit!
+      begin
+        @approval.commit!
         format.html { redirect_to [@expense, @approval], notice: t('Approval was successfully created.') }
         format.json { render json: @approval, status: :created, location: @approval }
-      else
+      rescue ActiveRecord::RecordInvalid
         format.html { render action: "new" }
         format.json { render json: @approval.errors, status: :unprocessable_entity }
-      end
+      end  
     end
   end
 
