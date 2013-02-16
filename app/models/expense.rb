@@ -18,6 +18,8 @@ class Expense < ActiveRecord::Base
 
   scope :activing, where(:status => [:edit, :commit, :manager_approval])
   scope :approvalling, where(:status => [:commit, :manager_approval])
+  scope :waiting_manager_approval, where(:status => :commit)
+  scope :waiting_general_manager_approval, where(:status => :manager_approval)
 
   def self.new_blank(current_user)
     expense = Expense.new

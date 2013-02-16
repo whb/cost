@@ -1,13 +1,13 @@
-<h1>Log in</h1>
+<h1><%= t("Log in") %></h1>
 
 <%= form_tag sessions_path do %>
   <div class="field">
-    <%= label_tag :username %>
+    <%= label_tag t(".username") %>
     <%= text_field_tag :username, params[:username] %>
   </div>
   <div class="field">
-    <%= label_tag :password %>
+    <%= label_tag t(".password") %>
     <%= password_field_tag :password %>
   </div>
-  <div class="actions"><%= submit_tag "Log in" %></div>
+  <div class="actions"><%= submit_tag t("Log in") %></div>
 <% end %>

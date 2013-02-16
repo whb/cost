@@ -13,7 +13,11 @@ class ApprovalsController < ApplicationController
   # GET /approvals
   # GET /approvals.json
   def index
-    @expenses = Expense.approvalling.find_all_by_organization_id current_organization.subtree_ids
+    if current_user.is?(:general_manager)
+      @expenses = Expense.waiting_general_manager_approval.find_all_by_organization_id current_organization.subtree_ids
+    else
+      @expenses = Expense.waiting_manager_approval.find_all_by_organization_id current_organization.subtree_ids
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -36,8 +40,10 @@ class ApprovalsController < ApplicationController
   # GET /approvals/new.json
   def new
     @approval = @expense.approvals.build
-    @approval.level = :manager_approval
-    @approval.manager = current_user.displayname if current_user
+    if current_user
+      @approval.level = current_user.is?(:general_manager) ? :general_manager_approval : :manager_approval
+      @approval.manager = current_user.displayname
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -64,7 +70,7 @@ class ApprovalsController < ApplicationController
       rescue ActiveRecord::RecordInvalid
         format.html { render action: "new" }
         format.json { render json: @approval.errors, status: :unprocessable_entity }
-      end  
+      end
     end
   end
 

@@ -85,6 +85,10 @@ zh-CN:
   users:
     index:
         title: 用户列表
+  sessions:
+    new:
+        username: 用户名
+        password: 密码
 
   Expense was successfully created: 费用申请单保存成功
   Expense was successfully updated: 费用申请单更新成功
@@ -99,4 +103,8 @@ zh-CN:
   Period was successfully updated: 年度预算更新成功
   User was successfully created: 用户保存成功
   User was successfully updated: 用户更新成功
+  Log in: 登录
+  Logged in!: 登录成功!
+  Invalid username or password: 无效的用户名和密码
+  Logged out!: 退出成功
   
