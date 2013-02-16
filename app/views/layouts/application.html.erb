@@ -14,25 +14,41 @@
 
 <%= nav_bar :fixed => :top, :brand => t(".Cost System"), :responsive => true do %>
   <%= menu_group do %>
+
     <%= menu_item t(".Home"), root_path %>
-    <%= drop_down t(".Expenses") do %>
-      <%= menu_item t(".Expense request/commit"), expenses_path %>
-      <%= menu_item t(".Expense approval"), approvals_path %>
+
+    <% if can? :read, Expense %>
+      <%= drop_down t(".Expenses") do %>
+        <% if can? :create, Expense %>
+          <%= menu_item t(".Expense request/commit"), expenses_path %>
+        <% end %>
+        <% if can? :read, Approval %>
+          <%= menu_item t(".Expense approval"), approvals_path %>
+        <% end %>  
+      <% end %>
     <% end %>
+
     <%= menu_item t(".Reimbursement") %>
+
     <%= menu_item t(".Budget Supervise") %>
-    <%= drop_down t(".Basic Data Admin") do %>
-      <%= menu_item t(".Organizations"), organizations_path %>
-      <%= menu_item t(".Users"), users_path %>
-      <%= menu_item t(".Categories"), categories_path %>
-      <%= menu_item t(".Periods"), periods_path %>
+
+    <% if can? :manage, User %>
+      <%= drop_down t(".Basic Data Admin") do %>
+        <%= menu_item t(".Organizations"), organizations_path %>
+        <%= menu_item t(".Users"), users_path %>
+        <%= menu_item t(".Categories"), categories_path %>
+        <%= menu_item t(".Periods"), periods_path %>
+      <% end %>
     <% end %>
+    
   <% end %>
+
   <%= menu_group :pull => :right do %>
     <% if current_user %>
       <%= menu_item current_user.displayname %><%= menu_item t(".Log Out"), logout_path %>
     <% end %>
   <% end %>
+
 <% end %>
 
 <div class="container">
