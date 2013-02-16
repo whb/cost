@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
+  check_authorization
   private
 
   def current_user
@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   end
   
   helper_method :current_user, :current_organization
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to login_url, :alert => exception.message
+  end
 end

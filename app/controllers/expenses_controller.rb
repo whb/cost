@@ -1,4 +1,6 @@
 class ExpensesController < ApplicationController
+  load_and_authorize_resource
+  
   before_filter :load_period, :expect => [:index, :query, :destroy]
   def load_period
     @period = Period.find_by_year(2013)

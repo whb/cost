@@ -1,4 +1,5 @@
 class ApprovalsController < ApplicationController
+  load_and_authorize_resource
   before_filter :load_expense, :except => [:index]
   def load_expense
     @expense = Expense.find(params[:expense_id])

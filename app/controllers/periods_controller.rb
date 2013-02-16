@@ -1,4 +1,5 @@
 class PeriodsController < ApplicationController
+  load_and_authorize_resource
   # GET /periods
   # GET /periods.json
   def index
