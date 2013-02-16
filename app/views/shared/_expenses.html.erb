@@ -22,17 +22,21 @@
         <% if expense.editable? %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_expense_path(expense), :class => 'btn btn-mini' %>
-          <%= link_to t('.verify', :default => t("helpers.links.verify")),
-                      verify_expense_path(expense), :class => 'btn btn-mini' %>
+          <% if can? :commit, expense %>
+            <%= link_to t('.verify', :default => t("helpers.links.verify")),
+                        verify_expense_path(expense), :class => 'btn btn-mini' %>
+          <% end %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       expense_path(expense),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
         <% elsif expense.approvaling? %>
-          <%= link_to t('.approve', :default => t("helpers.links.approve")),
-                      new_expense_approval_path(expense),
-                      :class => 'btn btn-mini btn-primary' %>
+          <% if can? :manage, Approval %>
+            <%= link_to t('.approve', :default => t("helpers.links.approve")),
+                        new_expense_approval_path(expense),
+                        :class => 'btn btn-mini btn-primary' %>
+          <% end %>
         <% end %>
         </td>
       </tr>
