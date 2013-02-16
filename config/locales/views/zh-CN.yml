@@ -89,6 +89,10 @@ zh-CN:
     new:
         username: 用户名
         password: 密码
+  home:
+    index:
+        title: 祥龙物流费用支出系统
+        welcome: 欢迎使用祥龙物流费用支出系统
 
   Expense was successfully created: 费用申请单保存成功
   Expense was successfully updated: 费用申请单更新成功

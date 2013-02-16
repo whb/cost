@@ -1,4 +1,6 @@
 Cost::Application.routes.draw do
+  get "home/index"
+
   resources :periods
   resources :categories
   get "logout" => "sessions#destroy", :as => "logout"
@@ -15,7 +17,7 @@ Cost::Application.routes.draw do
   end
   resources :approvals, :only => [:index]
 
-  root :to => 'expenses#index'
+  root :to => 'home#index'
 #  resources :products
 
 

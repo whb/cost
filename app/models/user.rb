@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
   def is?(role)
     roles.include?(role.to_s)
   end
+
+  def is_valid?
+    !roles.empty?
+  end
 end
