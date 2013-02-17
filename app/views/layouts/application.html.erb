@@ -24,7 +24,8 @@
         <% end %>
         <% if can? :read, Approval %>
           <%= menu_item t(".Expense approval"), approvals_path %>
-        <% end %>  
+        <% end %> 
+        <%= menu_item t(".Expense query"), query_expenses_path %> 
       <% end %>
     <% end %>
 

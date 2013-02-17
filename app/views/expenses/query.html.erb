@@ -2,24 +2,25 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
-<table class="table table-striped">
+
+<table class="table table-striped table-bordered datatable">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:no) %></th>
+      <th><%= model_class.human_attribute_name(:sn) %></th>
       <th><%= model_class.human_attribute_name(:request_on) %></th>
+      <th><%= model_class.human_attribute_name(:organization) %></th>
       <th><%= model_class.human_attribute_name(:staff) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
-     
     </tr>
   </thead>
   <tbody>
     <% @expenses.each do |expense| %>
       <tr>
-        <td><%= link_to expense.no, expense_path(expense) %></td>
+        <td><%= link_to expense.sn, expense_path(expense) %></td>
         <td><%= expense.request_on %></td>
+        <td><%= expense.organization.name %></td>
         <td><%= expense.staff %></td>
-        <td><%= expense.status %></td>
-       
+        <td><%= t "expenses.STATUS_TYPES.#{expense.status}" %></td>
       </tr>
     <% end %>
   </tbody>
