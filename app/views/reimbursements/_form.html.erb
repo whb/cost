@@ -1,6 +1,11 @@
 <%= simple_form_for @reimbursement, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :sn %>
-  <%= f.input :reimburse_on %>
+  <div class="control-group">
+    <%= f.label :reimburse_on, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :reimburse_on, 'data-behaviour' => 'datepicker' %>
+    </div>
+  </div>
   <%= f.input :staff %>
   <%= f.input :status %>
   <%= f.input :organization_id %>
