@@ -30,7 +30,8 @@ class ExpensesController < ApplicationController
   # GET /expenses/1.json
   def show
     @expense = Expense.find(params[:id])
-
+    
+    session[:last_expenses_page] = request.env['HTTP_REFERER'] || expenses_url
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @expense }
