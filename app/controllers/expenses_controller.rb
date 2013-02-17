@@ -18,7 +18,7 @@ class ExpensesController < ApplicationController
   end
 
   def query
-    @expenses = Expense.all
+    @expenses = Expense.find_all_by_organization_id current_organization.subtree_ids
 
     respond_to do |format|
       format.html
@@ -30,7 +30,7 @@ class ExpensesController < ApplicationController
   # GET /expenses/1.json
   def show
     @expense = Expense.find(params[:id])
-    
+
     session[:last_expenses_page] = request.env['HTTP_REFERER'] || expenses_url
     respond_to do |format|
       format.html # show.html.erb
