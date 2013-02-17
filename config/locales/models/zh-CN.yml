@@ -11,6 +11,7 @@ zh-CN:
       category: 费用类型
       period: 年度预算
       budget: 预算
+      reimbursement: 支出证明单
 
     attributes:
       created_at: 创建时间
@@ -22,6 +23,17 @@ zh-CN:
         explain: 说明
         created_at: 创建时间
         status: 状态
+      reimbursement:
+        sn: 编号
+        reimburse_on: 日期
+        staff: 经办人
+        organization_id: 部门
+        abstract: 摘要及用途
+        created_at: 创建时间
+        status: 状态
+        amount: 金额
+        invoice_no: 发票号
+        expense_id: 费用申请单
       item:
         category: 分类
         name: 名称

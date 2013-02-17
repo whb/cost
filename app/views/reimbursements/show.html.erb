@@ -1,50 +1,37 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Reimbursement -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Sn:</b>
-  <%= @reimbursement.sn %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:sn) %>:</strong></dt>
+  <dd><%= @reimbursement.sn %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:reimburse_on) %>:</strong></dt>
+  <dd><%= @reimbursement.reimburse_on %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:staff) %>:</strong></dt>
+  <dd><%= @reimbursement.staff %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= @reimbursement.status %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:organization_id) %>:</strong></dt>
+  <dd><%= @reimbursement.organization_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:abstract) %>:</strong></dt>
+  <dd><%= @reimbursement.abstract %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:amount) %>:</strong></dt>
+  <dd><%= @reimbursement.amount %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:expense_id) %>:</strong></dt>
+  <dd><%= @reimbursement.expense_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:invoice_no) %>:</strong></dt>
+  <dd><%= @reimbursement.invoice_no %></dd>
+</dl>
 
-<p>
-  <b>Reimburse on:</b>
-  <%= @reimbursement.reimburse_on %>
-</p>
-
-<p>
-  <b>Staff:</b>
-  <%= @reimbursement.staff %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @reimbursement.status %>
-</p>
-
-<p>
-  <b>Organization:</b>
-  <%= @reimbursement.organization_id %>
-</p>
-
-<p>
-  <b>Abstract:</b>
-  <%= @reimbursement.abstract %>
-</p>
-
-<p>
-  <b>Amount:</b>
-  <%= @reimbursement.amount %>
-</p>
-
-<p>
-  <b>Expense:</b>
-  <%= @reimbursement.expense_id %>
-</p>
-
-<p>
-  <b>Invoice no:</b>
-  <%= @reimbursement.invoice_no %>
-</p>
-
-
-<%= link_to 'Edit', edit_reimbursement_path(@reimbursement) %> |
-<%= link_to 'Back', reimbursements_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              reimbursements_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_reimbursement_path(@reimbursement), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              reimbursement_path(@reimbursement),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
