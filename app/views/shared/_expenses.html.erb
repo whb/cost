@@ -16,7 +16,7 @@
         <td><%= link_to expense.sn, expense_path(expense) %></td>
         <td><%= expense.request_on %></td>
         <td><%= expense.organization.name %></td>
-        <td><%= expense.staff %><%= expense.created_at %></td>
+        <td><%= expense.staff %></td>
         <td><%= t "expenses.STATUS_TYPES.#{expense.status}" %></td>
         <td>
         <% if expense.editable? %>
