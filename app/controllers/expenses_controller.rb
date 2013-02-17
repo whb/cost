@@ -3,7 +3,7 @@ class ExpensesController < ApplicationController
   
   before_filter :load_period, :expect => [:index, :query, :destroy]
   def load_period
-    @period = Period.find_by_year(2013)
+    @period = Period.find_by_year(Date.today.year)
   end
 
   # GET /expenses
