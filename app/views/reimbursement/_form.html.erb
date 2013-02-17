@@ -1,0 +1,16 @@
+<%= simple_form_for @reimbursement, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :sn %>
+  <%= f.input :reimburse_on %>
+  <%= f.input :staff %>
+  <%= f.input :status %>
+  <%= f.input :organization_id %>
+  <%= f.input :abstract %>
+  <%= f.input :amount %>
+  <%= f.input :expense_id %>
+  <%= f.input :invoice_no %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                reimbursement_path, :class => 'btn' %>
+  </div>
+<% end %>

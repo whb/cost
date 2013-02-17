@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Sn:</b>
+  <%= @reimbursement.sn %>
+</p>
+
+<p>
+  <b>Reimburse on:</b>
+  <%= @reimbursement.reimburse_on %>
+</p>
+
+<p>
+  <b>Staff:</b>
+  <%= @reimbursement.staff %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @reimbursement.status %>
+</p>
+
+<p>
+  <b>Organization:</b>
+  <%= @reimbursement.organization_id %>
+</p>
+
+<p>
+  <b>Abstract:</b>
+  <%= @reimbursement.abstract %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @reimbursement.amount %>
+</p>
+
+<p>
+  <b>Expense:</b>
+  <%= @reimbursement.expense_id %>
+</p>
+
+<p>
+  <b>Invoice no:</b>
+  <%= @reimbursement.invoice_no %>
+</p>
+
+
+<%= link_to 'Edit', edit_reimbursement_path(@reimbursement) %> |
+<%= link_to 'Back', reimbursements_path %>

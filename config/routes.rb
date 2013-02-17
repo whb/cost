@@ -1,4 +1,7 @@
 Cost::Application.routes.draw do
+  resources :reimbursements
+
+
   get "home/index"
 
   resources :periods
