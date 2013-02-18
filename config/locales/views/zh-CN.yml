@@ -56,14 +56,14 @@ zh-CN:
       title: 查询费用申请单
     form:
       add: 添加费用项
-  reimbursements:
-    index:
-      title: 未完成支出证明单列表
     STATUS_TYPES: 
       edit: 编辑
       commit: 提交
       manager_approval: 主管经理审批
       general_manager_approval: 总经理审批
+  reimbursements:
+    index:
+      title: 未完成支出证明单列表
   approvals:
     index:
       title: 待审批费用申请单列表
