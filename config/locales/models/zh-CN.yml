@@ -28,6 +28,7 @@ zh-CN:
         reimburse_on: 日期
         staff: 经办人
         organization_id: 部门
+        organization: 部门
         abstract: 摘要及用途
         created_at: 创建时间
         status: 状态

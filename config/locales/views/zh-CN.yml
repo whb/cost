@@ -64,6 +64,9 @@ zh-CN:
   reimbursements:
     index:
       title: 未完成支出证明单列表
+    STATUS_TYPES: 
+      edit: 报销中
+      commit: 已报销
   approvals:
     index:
       title: 待审批费用申请单列表
@@ -111,6 +114,8 @@ zh-CN:
   Period was successfully updated: 年度预算更新成功
   User was successfully created: 用户保存成功
   User was successfully updated: 用户更新成功
+  Reimbursement was successfully created: 支出证明单保存成功
+  Reimbursement was successfully updated: 支出证明单更新成功
   Log in: 登录
   Logged in!: 登录成功!
   Invalid username or password: 无效的用户名和密码

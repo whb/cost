@@ -25,7 +25,7 @@ class ReimbursementsController < ApplicationController
   # GET /reimbursements/new
   # GET /reimbursements/new.json
   def new
-    @reimbursement = Reimbursement.new
+    @reimbursement = Reimbursement.new_blank(current_user)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,10 +42,11 @@ class ReimbursementsController < ApplicationController
   # POST /reimbursements.json
   def create
     @reimbursement = Reimbursement.new(params[:reimbursement])
+    @reimbursement.status = :edit
 
     respond_to do |format|
       if @reimbursement.save
-        format.html { redirect_to @reimbursement, notice: 'Reimbursement was successfully created.' }
+        format.html { redirect_to @reimbursement, notice: t('Reimbursement was successfully created.') }
         format.json { render json: @reimbursement, status: :created, location: @reimbursement }
       else
         format.html { render action: "new" }
@@ -61,7 +62,7 @@ class ReimbursementsController < ApplicationController
 
     respond_to do |format|
       if @reimbursement.update_attributes(params[:reimbursement])
-        format.html { redirect_to @reimbursement, notice: 'Reimbursement was successfully updated.' }
+        format.html { redirect_to @reimbursement, notice: t('Reimbursement was successfully updated.') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

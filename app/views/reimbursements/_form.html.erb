@@ -1,19 +1,33 @@
-<%= simple_form_for @reimbursement, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :sn %>
-  <div class="control-group">
-    <%= f.label :reimburse_on, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :reimburse_on, 'data-behaviour' => 'datepicker' %>
-    </div>
+<%= simple_form_for @reimbursement do |f| %>
+  <div class='form-horizontal'>
+    <%= f.error_notification %> 
+    <fieldset class="span4">
+      <%= f.input :sn, :readonly => true %>
+      <div class="control-group">
+        <%= f.label :reimburse_on, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :reimburse_on, 'data-behaviour' => 'datepicker' %>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset class="span4">
+      <%= f.association :organization, collection: Organization.all, disabled: true %>
+      <%= f.hidden_field :organization_id %>
+      <%= f.input :staff, :readonly => true  %>
+    </fieldset>
+
+    <fieldset class="span4">
+      <%= f.input :invoice_no %>
+    </fieldset>
+    <fieldset class="span4">
+      <%= f.input :amount %>
+    </fieldset>
+
+    <fieldset class="span8">
+      <%= f.input :abstract, input_html: { class: 'input-xxlarge' } %>
+    </fieldset>
   </div>
-  <%= f.input :staff %>
-  <%= f.input :status %>
-  <%= f.input :organization_id %>
-  <%= f.input :abstract %>
-  <%= f.input :amount %>
-  <%= f.input :expense_id %>
-  <%= f.input :invoice_no %>
-  <div class="form-actions">
+  <div class="form-actions span8">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 reimbursements_path, :class => 'btn' %>
