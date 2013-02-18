@@ -5,6 +5,7 @@ zh-CN:
         one: 费用申请单
         other: 费用申请单列表
       item: 费用项
+      detail: 费用项
       approval: 审批签字
       organization: 组织机构
       user: 用户
@@ -36,6 +37,13 @@ zh-CN:
         invoice_no: 发票号
         expense_id: 费用申请单
       item:
+        category: 分类
+        name: 名称
+        amount: 数量
+        unit: 单位
+        unit_price: 单价
+        price: 价格
+      detail:
         category: 分类
         name: 名称
         amount: 数量

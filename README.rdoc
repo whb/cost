@@ -1,1 +1,3 @@
 == Cost
+
+rails g model Detail reimbursement_id:integer category_id:integer name amount:integer unit unit_price:decimal{10-2} price:decimal{10-2}

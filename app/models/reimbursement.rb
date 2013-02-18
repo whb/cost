@@ -1,7 +1,10 @@
 class Reimbursement < ActiveRecord::Base
+  has_many :details, :dependent => :destroy
+  accepts_nested_attributes_for :details, :allow_destroy => true,
+    :reject_if => lambda { |a| a[:category_id].blank? and a[:name].blank? and a[:amount].blank? and a[:unit].blank? and a[:unit_price].blank? and a[:price].blank?}
   belongs_to :organization
   belongs_to :expense
-  attr_accessible :abstract, :amount, :expense_id, :invoice_no, :organization_id, :reimburse_on, :sn, :staff
+  attr_accessible :abstract, :amount, :expense_id, :invoice_no, :organization_id, :reimburse_on, :sn, :staff, :details_attributes
   validates_presence_of :sn, :reimburse_on, :staff, :organization, :abstract, :amount
   validates_uniqueness_of :sn
 
@@ -21,7 +24,7 @@ class Reimbursement < ActiveRecord::Base
       reimbursement.organization = Organization.default
     end
     reimbursement.reimburse_on = Time.now.to_date
-    
+    3.times { reimbursement.details.build }
     reimbursement
   end
 

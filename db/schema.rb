@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217063310) do
+ActiveRecord::Schema.define(:version => 20130218065934) do
 
   create_table "approvals", :force => true do |t|
     t.integer  "expense_id"
@@ -37,6 +37,18 @@ ActiveRecord::Schema.define(:version => 20130217063310) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "details", :force => true do |t|
+    t.integer  "reimbursement_id"
+    t.integer  "category_id"
+    t.string   "name"
+    t.integer  "amount"
+    t.string   "unit"
+    t.decimal  "unit_price",       :precision => 10, :scale => 2
+    t.decimal  "price",            :precision => 10, :scale => 2
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
   end
 
   create_table "expenses", :force => true do |t|

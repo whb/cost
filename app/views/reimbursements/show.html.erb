@@ -30,6 +30,27 @@
   <dd><%= @reimbursement.abstract %></dd>
 </dl>
 
+<table class="table">
+<tr>
+  <th><%= Detail.human_attribute_name(:category) %></th>
+  <th><%= Detail.human_attribute_name(:name) %></th>
+  <th><%= Detail.human_attribute_name(:amount) %></th>
+  <th><%= Detail.human_attribute_name(:unit) %></th>
+  <th><%= Detail.human_attribute_name(:unit_price) %></th>
+  <th><%= Detail.human_attribute_name(:price) %></th>
+</tr>
+<% for detail in @reimbursement.details %>
+    <tr>
+      <td><%= detail.category.name %></td>
+      <td><%= detail.name %></td>
+      <td><%= detail.amount %></td>
+      <td><%= detail.unit %></td>
+      <td><%= detail.unit_price %></td>
+      <td><%= detail.price %></td>
+    </tr>
+<% end %>
+</table>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               reimbursements_path, :class => 'btn'  %>
