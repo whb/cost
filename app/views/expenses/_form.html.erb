@@ -3,19 +3,25 @@
 <% end %>
 
 <%= simple_form_for @expense do |f| %>
+  <%= f.error_notification %> 
   <div class='form-horizontal'>
-    <%= f.error_notification %> 
-    <%= f.input :sn, :readonly => true %>
-    <div class="control-group">
-      <%= f.label :request_on, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :request_on, 'data-behaviour' => 'datepicker' %>
+    <fieldset class="span4">
+      <%= f.input :sn, :readonly => true %>
+      <div class="control-group">
+        <%= f.label :request_on, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :request_on, 'data-behaviour' => 'datepicker' %>
+        </div>
       </div>
-    </div>
-    <%= f.association :organization, collection: Organization.all, disabled: true %>
-    <%= f.hidden_field :organization_id %>
-    <%= f.input :staff, :readonly => true %>
-    <%= f.input :explain, input_html: { rows: 4, class: 'input-xxlarge' } %>
+    </fieldset>
+    <fieldset class="span4">
+      <%= f.association :organization, collection: Organization.all, disabled: true %>
+      <%= f.hidden_field :organization_id %>
+      <%= f.input :staff, :readonly => true %>
+    </fieldset>
+    <fieldset class="span9">
+      <%= f.input :explain, input_html: { rows: 4, class: 'input-xxlarge' } %>
+    </fieldset>
   </div>
 
   <table class="table fields-table">
