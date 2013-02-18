@@ -45,7 +45,7 @@ function hide_ref_budget() {
 }
 
 function show_ref_budget() {
-  $("select[id^=expense_items_attributes]:visible").each(function(e) {
+  $("select[id*=_attributes_]:visible").each(function(e) {
     var category_id = $(this).val();
     if ( category_id ) {
       var ref_budget = "[id^=ref_budget_%ID%]".replace(/%ID%/, category_id);
@@ -65,13 +65,14 @@ function cal_ref_budget() {
       add : function(key,value){ this[key] = $.isNumeric(this[key]) ? parseFloat(this[key]) + parseFloat(value) : parseFloat(value) },  
   };
 
-  $("select[id^=expense_items_attributes]:visible").each(function(e) {
+  $("select[id*=_attributes_]:visible").each(function(e) {
     var category_id = $(this).val();
     if ( !$.isNumeric(category_id) ) return;
 
     var index = $(this).attr('id').split('_')[3];
-    var price_selector = '#expense_items_attributes_' + index + '_price';
-    var price = $(price_selector).val();
+    var tr = $(this).parents(".fields");
+    var price_selector = "input[id$=%INDEX%_price]".replace(/%INDEX%/, index);
+    var price = tr.find(price_selector).val();
     if ($.isNumeric(price))  category_price_map.add(category_id, price);
 
     var available = "[id^=ref_budget_%ID%] .available".replace(/%ID%/, category_id);
