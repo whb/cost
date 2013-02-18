@@ -82,13 +82,15 @@ function cal_ref_budget() {
   }); 
 }
 
-function cal_price(object) {
-  var index = object.attr('id').split('_')[3];
-  var amount_selector = '#expense_items_attributes_' + index + '_amount';
-  var unit_price_selector = '#expense_items_attributes_' + index + '_unit_price';
-  var price_selector = '#expense_items_attributes_' + index + '_price';
-  $(price_selector).val( $(amount_selector).val() * $(unit_price_selector).val() );
-  $(price_selector).change();
+function cal_price(pinput) {
+  var tr = $(pinput).parents(".fields");
+  var amount = tr.find("input[id$=_amount]").val();
+  var unit_price = tr.find("input[id$=_unit_price]").val();
+
+  var index = $(pinput).attr('id').split('_')[3];
+  var price_selector = "input[id$=%INDEX%_price]".replace(/%INDEX%/, index);
+  tr.find(price_selector).val(amount * unit_price);
+  tr.find(price_selector).change();
 }
 
 function redraw_ref_budget() {
@@ -98,17 +100,17 @@ function redraw_ref_budget() {
 }
 
 function regist_events() {
-  $("select[id^=expense_items_attributes]").change(function(e) {
+  $("select[id*=_attributes_]").change(function(e) {
     redraw_ref_budget();
   });
-  $("input[id^=expense_items_attributes_][id$=_price]").change(function(e) {
+  $("input[id*=_attributes_][id$=_price]").change(function(e) {
     redraw_ref_budget();
   });
-  $("input[id^=expense_items_attributes_][id$=_amount]").change(function(e) {
-    cal_price($(this));
+  $("input[id*=_attributes_][id$=_amount]").change(function(e) {
+    cal_price(this);
   });
-  $("input[id^=expense_items_attributes_][id$=_unit_price]").change(function(e) {
-    cal_price($(this));
+  $("input[id*=_attributes_][id$=_unit_price]").change(function(e) {
+    cal_price(this);
   });
 }
 
