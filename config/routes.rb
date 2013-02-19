@@ -1,15 +1,11 @@
 Cost::Application.routes.draw do
-  resources :reimbursements
-
-
   get "home/index"
-
-  resources :periods
-  resources :categories
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
-  resources :sessions
 
+  resources :sessions
+  resources :periods
+  resources :categories
   resources :users
   resources :organizations
   resources :expenses do
@@ -19,6 +15,12 @@ Cost::Application.routes.draw do
     resources :approvals, :only => [:new, :create, :show]
   end
   resources :approvals, :only => [:index]
+
+  resources :reimbursements do
+    get :query, :on => :collection
+    get :verify, :on => :member
+    put :commit, :on => :member
+  end
 
   root :to => 'home#index'
 #  resources :products

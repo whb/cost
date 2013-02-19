@@ -29,7 +29,17 @@
       <% end %>
     <% end %>
 
-    <%= menu_item t(".Reimbursement"),  reimbursements_path %>
+    <% if can? :read, Reimbursement %>
+      <%= drop_down t(".Reimbursement") do %>
+        <% if can? :create, Reimbursement %>
+          <%= menu_item t(".Reimbursement create"), reimbursements_path %>
+        <% end %>
+        <% if can? :commit, Reimbursement %>
+          <%= menu_item t(".Reimbursement commit"), reimbursements_path %>
+        <% end %> 
+        <%= menu_item t(".Reimbursement query"), query_reimbursements_path %> 
+      <% end %>
+    <% end %>
 
     <%= menu_item t(".Budget Supervise") %>
 
