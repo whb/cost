@@ -1,13 +1,6 @@
 <%- model_class = Reimbursement -%>
 
-<ul class="nav nav-tabs">
-  <li class="active">
-    <%= link_to t('.edit'), reimbursements_path %>
-  </li>
-  <li><a href="#"><%= t('.new_from_expense')%></a></li>
-  &nbsp;
-  <%= link_to t('.new'), new_reimbursement_path, :class => 'btn btn-primary' %>
-</ul>
+<%= render 'navs' %>
 
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>

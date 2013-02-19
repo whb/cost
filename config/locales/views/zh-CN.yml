@@ -68,6 +68,7 @@ zh-CN:
     index:
       title: 未完成支出证明单列表
       expense_id: 费用申请单
+    navs:
       edit: 编辑
       new_from_expense: 费用申请单生成
       new: 新建空白

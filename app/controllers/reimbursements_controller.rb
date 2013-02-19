@@ -17,6 +17,15 @@ class ReimbursementsController < ApplicationController
     end
   end
 
+  def query_expenses
+    @expenses = Expense.find_all_by_organization_id current_organization.subtree_ids
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @expenses }
+    end
+  end
+
   # GET /reimbursements/1
   # GET /reimbursements/1.json
   def show
