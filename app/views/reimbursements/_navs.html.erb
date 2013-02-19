@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs">
-  <li><%= link_to t('.edit'), reimbursements_path %></li>
-  <li class="active"><%= link_to t('.new_from_expense'), query_expenses_reimbursements_path %></li>
+  <li class="<%= css_class[0] %>"><%= link_to t('.edit'), reimbursements_path %></li>
+  <li class="<%= css_class[1] %>"><%= link_to t('.new_from_expense'), query_expenses_reimbursements_path %></li>
   &nbsp;
   <%= link_to t('.new'), new_reimbursement_path, :class => 'btn btn-primary' %>
 </ul>
