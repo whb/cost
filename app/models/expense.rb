@@ -67,4 +67,11 @@ class Expense < ActiveRecord::Base
     end
     sum_category_price
   end
+
+  def has_category?(category_id)
+    items.each do |item|
+      return true if category_id == item.category_id
+    end
+    return false
+  end
 end

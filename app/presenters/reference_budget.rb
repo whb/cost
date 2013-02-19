@@ -13,10 +13,7 @@ class ReferenceBudget
   end
 
   def style()
-    @bill.items.each do |item|
-      return "" if @budget.category.id == item.category_id
-    end
-    return "display: none"
+    return @bill.has_category?(@budget.category.id) ? "" : "display: none"
   end
 
 
