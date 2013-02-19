@@ -9,9 +9,7 @@ class RefBudgetList
     end
   end
 
-  def each(&block)
-    @ref_budgets.each do |rb|
-      block.call(rb)
-    end
+  def each
+    @ref_budgets.each { |i| yield i }
   end
 end

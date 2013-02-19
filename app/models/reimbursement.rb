@@ -5,7 +5,7 @@ class Reimbursement < ActiveRecord::Base
   belongs_to :organization
   belongs_to :expense
   attr_accessible :abstract, :amount, :expense_id, :invoice_no, :organization_id, :reimburse_on, :sn, :staff, :details_attributes
-  validates_presence_of :sn, :reimburse_on, :staff, :organization, :abstract, :amount
+  validates_presence_of :sn, :reimburse_on, :staff, :organization, :abstract, :amount, :details
   validates_uniqueness_of :sn
 
   STATUS_TYPES = {
@@ -24,7 +24,7 @@ class Reimbursement < ActiveRecord::Base
       reimbursement.organization = Organization.default
     end
     reimbursement.reimburse_on = Time.now.to_date
-    3.times { reimbursement.details.build }
+    1.times { reimbursement.details.build }
     reimbursement
   end
 
