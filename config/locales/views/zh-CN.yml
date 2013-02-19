@@ -39,6 +39,7 @@ zh-CN:
       back: 返回
       add: 添加
       approve: 审批
+      build: 生成
     titles:
       edit: 编辑「%{model}」
       destroy: 删除「%{model}」

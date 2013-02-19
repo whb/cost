@@ -7,6 +7,7 @@
       <th><%= model_class.human_attribute_name(:organization) %></th>
       <th><%= model_class.human_attribute_name(:staff) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,8 @@
         <td><%= expense.organization.name %></td>
         <td><%= expense.staff %></td>
         <td><%= t "expenses.STATUS_TYPES.#{expense.status}" %></td>
+        <td><%= link_to t('.build', :default => t("helpers.links.build")),
+                      new_expense_reimbursement_path(expense), :class => 'btn btn-mini' %></td>
       </tr>
     <% end %>
   </tbody>
