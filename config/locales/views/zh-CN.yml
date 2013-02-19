@@ -60,6 +60,8 @@ zh-CN:
       title: 查询费用申请单
     form:
       add: 添加费用项
+    expenses_datatable:
+      build: 生成支出证明
     STATUS_TYPES: 
       edit: 编辑
       commit: 提交
@@ -67,7 +69,7 @@ zh-CN:
       general_manager_approval: 总经理审批
   reimbursements:
     index:
-      title: 未完成支出证明单列表
+      title: 未完成支出证明列表
       expense_id: 费用申请单
     navs:
       edit: 编辑
