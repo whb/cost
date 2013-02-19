@@ -6,12 +6,12 @@
     <th><%= t ".current" %></th>
     <th><%= t ".balance" %></th>
   </tr>
-  <% for budget in @period.budgets %>
-      <tr id="ref_budget_<%= budget.category.id %>" style="<%= style(budget, @expense) %>" >
-        <td><%= budget.category.name %></td>
+  <% ref_budget_list.each do |budget| %>
+      <tr id="<%= budget.id %>" style="<%= budget.style %>" >
+        <td><%= budget.name %></td>
         <td class='available'><%= budget.available %></td>
-        <td class='current'><%= @expense.category_price(budget.category.id) %></td>
-        <td class='balance'><%= subtraction(budget.available, @expense.category_price(budget.category.id))%></td>
+        <td class='current'><%= budget.current  %></td>
+        <td class='balance'><%= budget.balance %></td>
       </tr>
   <% end %>
   </table>

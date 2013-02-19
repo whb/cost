@@ -14,20 +14,29 @@ module ApplicationHelper
 
   def bootstrap_class_for flash_type
     case flash_type
-      when :success
-        "alert-success"
-      when :error
-        "alert-error"
-      when :alert
-        "alert-block"
-      when :notice
-        "alert-info"
-      else
-        flash_type.to_s
+    when :success
+      "alert-success"
+    when :error
+      "alert-error"
+    when :alert
+      "alert-block"
+    when :notice
+      "alert-info"
+    else
+      flash_type.to_s
     end
   end
 
   def agree_label_class agree
     agree ? "label-success" : "label-inverse"
+  end
+
+  def ref_budget_for(bill, budgets)
+    presenter = RefBudgetList.new(bill, budgets)
+    if block_given?
+      yield presenter
+    else
+      presenter
+    end
   end
 end

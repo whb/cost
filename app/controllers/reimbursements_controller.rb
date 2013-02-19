@@ -1,5 +1,11 @@
 class ReimbursementsController < ApplicationController
   skip_authorization_check
+
+  before_filter :load_period, :expect => [:index, :query, :destroy]
+  def load_period
+    @period = Period.find_by_year(Date.today.year)
+  end
+  
   # GET /reimbursements
   # GET /reimbursements.json
   def index

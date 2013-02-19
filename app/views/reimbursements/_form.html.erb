@@ -1,3 +1,7 @@
+<% if @period != nil %>
+  <%= render 'shared/budgets_sidebar' %>
+<% end %>
+
 <%= simple_form_for @reimbursement do |f| %>
   <div class='form-horizontal'>
     <%= f.error_notification %> 

@@ -3,6 +3,10 @@
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
+<% if @period != nil %>
+  <%= render 'shared/budgets_sidebar' %>
+<% end %>
+
 <dl class="dl-horizontal span4">
   <dt><strong><%= model_class.human_attribute_name(:sn) %>:</strong></dt>
   <dd><%= @reimbursement.sn %></dd>
