@@ -30,11 +30,28 @@ class ReimbursementsController < ApplicationController
 
   # GET /reimbursements/new
   # GET /reimbursements/new.json
+  # GET /expenses/5/reimbursements/new
+  # GET /expenses/5/reimbursements/new.json
   def new
-    @reimbursement = Reimbursement.new_blank(current_user)
+    if params[:expense_id] == nil
+      @reimbursement = Reimbursement.new_blank(current_user)
+    else
+      @expense = Expense.find(params[:expense_id])
+      @reimbursement = Reimbursement.new_from_expense(@expense, current_user)
+    end
 
     respond_to do |format|
       format.html # new.html.erb
+      format.json { render json: @reimbursement }
+    end
+  end
+
+  def new_from_expense
+    @expense = Expense.find(params[:id])
+    @reimbursement = Reimbursement.new_from_expense(@expense, current_user)
+
+    respond_to do |format|
+      format.html 
       format.json { render json: @reimbursement }
     end
   end

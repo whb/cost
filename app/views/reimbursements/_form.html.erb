@@ -2,9 +2,14 @@
   <%= render  'shared/budgets_sidebar', ref_budget_list: ref_budget_for(@reimbursement, @period.budgets) %>
 <% end %>
 
+<% if @reimbursement.expense != nil %>
+  <%= link_to @reimbursement.expense.sn, expense_path(@reimbursement.expense) %>
+<% end %>
+
 <%= simple_form_for @reimbursement do |f| %>
   <div class='form-horizontal'>
     <%= f.error_notification %> 
+    <%= f.hidden_field :expense_id %>
     <fieldset class="span4">
       <%= f.input :sn, :readonly => true %>
       <div class="control-group">

@@ -13,11 +13,13 @@ Cost::Application.routes.draw do
     get :verify, :on => :member
     put :commit, :on => :member
     resources :approvals, :only => [:new, :create, :show]
+    resources :reimbursements, :only => [:new]
   end
   resources :approvals, :only => [:index]
 
   resources :reimbursements do
     get :query, :on => :collection
+    get :new_from_expense, :on => :member
     get :verify, :on => :member
     put :commit, :on => :member
   end

@@ -40,3 +40,12 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_reimbursement_path,
             :class => 'btn btn-primary' %>
+
+<%= form_tag new_reimbursement_path, :html => { :method => 'get' } do %>
+  <div class="field">
+    <%= label_tag t(".expense_id") %>
+    <%= text_field_tag :id, params[:id] %>
+  </div>
+  <div class="actions"><%= submit_tag t(".new_from_expense") %></div>
+<% end %>   
+       

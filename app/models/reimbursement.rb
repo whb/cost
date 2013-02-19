@@ -14,17 +14,34 @@ class Reimbursement < ActiveRecord::Base
   }
   enum :status, STATUS_TYPES
 
+  def build_part(current_user)
+    self.sn = Reimbursement.generate_sn
+    if current_user
+      self.organization = current_user.organization
+      self.staff = current_user.displayname
+    else
+      self.organization = Organization.default
+    end
+    self.reimburse_on = Time.now.to_date
+  end
+
   def self.new_blank(current_user)
     reimbursement = Reimbursement.new
-    reimbursement.sn = generate_sn
-    if current_user
-      reimbursement.organization = current_user.organization
-      reimbursement.staff = current_user.displayname
-    else
-      reimbursement.organization = Organization.default
-    end
-    reimbursement.reimburse_on = Time.now.to_date
+    reimbursement.build_part current_user
+
     1.times { reimbursement.details.build }
+    reimbursement
+  end
+
+  def self.new_from_expense(expense, current_user)
+    reimbursement = expense.reimbursements.build
+    reimbursement.build_part current_user
+
+    expense.items.each do |item|
+      detail = reimbursement.details.build
+      detail.copy(item)
+    end
+    reimbursement.amount = reimbursement.cal_amount
     reimbursement
   end
 
@@ -46,5 +63,13 @@ class Reimbursement < ActiveRecord::Base
       return true if category_id == detail.category_id
     end
     return false
+  end
+
+  def cal_amount
+    amount = 0
+    details.each do |detail|
+      amount += detail.price
+    end
+    amount
   end
 end
