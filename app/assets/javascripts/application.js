@@ -69,9 +69,8 @@ function cal_ref_budget() {
     var category_id = $(this).val();
     if ( !$.isNumeric(category_id) ) return;
 
-    var index = $(this).attr('id').split('_')[3];
     var tr = $(this).parents(".fields");
-    var price_selector = "input[id$=%INDEX%_price]".replace(/%INDEX%/, index);
+    var price_selector = "input[id*=_attributes_][name$='[price]']";
     var price = tr.find(price_selector).val();
     if ($.isNumeric(price))  category_price_map.add(category_id, price);
 
@@ -88,8 +87,7 @@ function cal_price(pinput) {
   var amount = tr.find("input[id$=_amount]").val();
   var unit_price = tr.find("input[id$=_unit_price]").val();
 
-  var index = $(pinput).attr('id').split('_')[3];
-  var price_selector = "input[id$=%INDEX%_price]".replace(/%INDEX%/, index);
+  var price_selector = "input[id*=_attributes_][name$='[price]']";
   tr.find(price_selector).val(amount * unit_price);
   tr.find(price_selector).change();
 }
@@ -100,12 +98,21 @@ function redraw_ref_budget() {
   show_ref_budget();
 }
 
+function update_summary() {
+  var sum = 0;
+  $("input[id*=_attributes_][name$='[price]']:visible").each(function(e) {
+    sum += parseFloat($(this).val());
+  }); 
+  $("input[id=reimbursement_amount]").val(sum.toFixed(2));
+}
+
 function regist_events() {
   $("select[id*=_attributes_]").change(function(e) {
     redraw_ref_budget();
   });
-  $("input[id*=_attributes_][id$=_price]").change(function(e) {
+  $("input[id*=_attributes_][name$='[price]']").change(function(e) {
     redraw_ref_budget();
+    update_summary();
   });
   $("input[id*=_attributes_][id$=_amount]").change(function(e) {
     cal_price(this);
