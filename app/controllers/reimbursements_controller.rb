@@ -46,16 +46,6 @@ class ReimbursementsController < ApplicationController
     end
   end
 
-  def new_from_expense
-    @expense = Expense.find(params[:id])
-    @reimbursement = Reimbursement.new_from_expense(@expense, current_user)
-
-    respond_to do |format|
-      format.html 
-      format.json { render json: @reimbursement }
-    end
-  end
-
   # GET /reimbursements/1/edit
   def edit
     @reimbursement = Reimbursement.find(params[:id])

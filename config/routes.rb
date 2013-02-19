@@ -19,7 +19,6 @@ Cost::Application.routes.draw do
 
   resources :reimbursements do
     get :query, :on => :collection
-    get :new_from_expense, :on => :member
     get :verify, :on => :member
     put :commit, :on => :member
   end
