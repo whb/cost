@@ -32,4 +32,19 @@ class Reimbursement < ActiveRecord::Base
     max_id = Reimbursement.maximum('id') ? Reimbursement.maximum('id') : 0
     "VCH-%.6d" % (max_id + 1)
   end
+
+  def category_price(category_id)
+    sum_category_price = 0
+    details.each do |detail|
+      sum_category_price += detail.price if (category_id == detail.category_id and detail.price != nil)
+    end
+    sum_category_price
+  end
+
+  def has_category?(category_id)
+    details.each do |detail|
+      return true if category_id == detail.category_id
+    end
+    return false
+  end
 end

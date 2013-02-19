@@ -1,5 +1,5 @@
 <% if @period != nil %>
-  <%= render 'shared/budgets_sidebar' %>
+  <%= render  'shared/budgets_sidebar', ref_budget_list: ref_budget_for(@reimbursement, @period.budgets) %>
 <% end %>
 
 <%= simple_form_for @reimbursement do |f| %>
