@@ -1,4 +1,14 @@
 <%- model_class = Reimbursement -%>
+
+<ul class="nav nav-tabs">
+  <li class="active">
+    <%= link_to t('.edit'), reimbursements_path %>
+  </li>
+  <li><a href="#"><%= t('.new_from_expense')%></a></li>
+  &nbsp;
+  <%= link_to t('.new'), new_reimbursement_path, :class => 'btn btn-primary' %>
+</ul>
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
@@ -37,15 +47,6 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_reimbursement_path,
-            :class => 'btn btn-primary' %>
 
-<%= form_tag new_reimbursement_path, :html => { :method => 'get' } do %>
-  <div class="field">
-    <%= label_tag t(".expense_id") %>
-    <%= text_field_tag :id, params[:id] %>
-  </div>
-  <div class="actions"><%= submit_tag t(".new_from_expense") %></div>
-<% end %>   
+ 
        
