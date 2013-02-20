@@ -5,8 +5,8 @@ class Expense < ActiveRecord::Base
   has_many :approvals
   has_many :reimbursements
   belongs_to :organization
-  attr_accessible :sn, :request_on, :staff, :organization_id, :explain, :items_attributes
-  validates_presence_of :sn, :request_on, :staff, :organization, :items
+  attr_accessible :abstract, :sn, :request_on, :staff, :organization_id, :explain, :items_attributes
+  validates_presence_of :abstract, :sn, :request_on, :staff, :organization, :items
   validates_uniqueness_of :sn
 
   STATUS_TYPES = {

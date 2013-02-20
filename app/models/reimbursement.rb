@@ -37,6 +37,7 @@ class Reimbursement < ActiveRecord::Base
     reimbursement = expense.reimbursements.build
     reimbursement.build_part current_user
 
+    reimbursement.abstract = expense.abstract
     expense.items.each do |item|
       detail = reimbursement.details.build
       detail.copy(item)

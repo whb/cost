@@ -24,6 +24,7 @@ zh-CN:
         explain: 说明
         created_at: 创建时间
         status: 状态
+        abstract: 摘要及用途
       reimbursement:
         sn: 编号
         reimburse_on: 日期

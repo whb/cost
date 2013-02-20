@@ -4,6 +4,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:sn) %></th>
       <th><%= model_class.human_attribute_name(:request_on) %></th>
+      <th><%= model_class.human_attribute_name(:abstract) %></th>
       <th><%= model_class.human_attribute_name(:organization) %></th>
       <th><%= model_class.human_attribute_name(:staff) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
@@ -15,6 +16,7 @@
       <tr>
         <td><%= link_to expense.sn, expense_path(expense) %></td>
         <td><%= expense.request_on %></td>
+        <td><%= expense.abstract %></td>
         <td><%= expense.organization.name %></td>
         <td><%= expense.staff %></td>
         <td><%= t "expenses.STATUS_TYPES.#{expense.status}" %></td>
