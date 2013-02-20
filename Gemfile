@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'rails_bootstrap_navbar'
 gem 'cancan'
 gem 'jquery-datatables-rails'
+gem 'prawn_rails'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
