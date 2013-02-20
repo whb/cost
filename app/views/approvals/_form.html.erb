@@ -1,4 +1,5 @@
 <%= simple_form_for [@expense, @approval], :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.error_notification %> 
   <%= f.input :level, collection: level_types, disabled: true, input_html: { class: 'input-medium' } %>
   <%= f.hidden_field :level %>
   <%= f.hidden_field :manager %>

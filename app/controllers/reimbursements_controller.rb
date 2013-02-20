@@ -18,7 +18,8 @@ class ReimbursementsController < ApplicationController
   end
 
   def query_expenses
-    @expenses = Expense.find_all_by_organization_id current_organization.subtree_ids
+    @waiting_reimburse_expenses = Expense.waiting_reimburse.find_all_by_organization_id current_organization.subtree_ids
+    @expenses = Expense.reimbursed.find_all_by_organization_id current_organization.subtree_ids
 
     respond_to do |format|
       format.html

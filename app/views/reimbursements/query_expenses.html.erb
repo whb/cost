@@ -6,4 +6,6 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
 
+<%= render 'shared/expenses' %>
+
 <%= render 'expenses/expenses_datatable', :show_action => true %>

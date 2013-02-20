@@ -14,13 +14,17 @@ class Expense < ActiveRecord::Base
     :commit => "Commit",
     :manager_approval => "Manager Approval",
     :general_manager_approval => "General Manager Approval",
+    :reimbursed => "Reimbursed",
+    :invalid => "Invalid",
   }
   enum :status, STATUS_TYPES
 
-  scope :activing, where(:status => [:edit, :commit, :manager_approval])
+  scope :activing, where(:status => [:edit, :commit, :manager_approval, :general_manager_approval])
   scope :approvalling, where(:status => [:commit, :manager_approval])
   scope :waiting_manager_approval, where(:status => :commit)
   scope :waiting_general_manager_approval, where(:status => :manager_approval)
+  scope :waiting_reimburse, where(:status => :general_manager_approval)
+  scope :reimbursed, where(:status => :reimbursed)
 
   def self.new_blank(current_user)
     expense = Expense.new

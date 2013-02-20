@@ -67,6 +67,8 @@ zh-CN:
       commit: 提交
       manager_approval: 主管经理审批
       general_manager_approval: 总经理审批
+      reimbursed: 已报销
+      invalid: 作废
   reimbursements:
     index:
       title: 未完成支出证明列表
