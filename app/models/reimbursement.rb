@@ -16,6 +16,10 @@ class Reimbursement < ActiveRecord::Base
 
   scope :activing, where(:status => :edit)
 
+  def chinese_amount
+    "chinese_amount"
+  end
+
   def build_part(current_user)
     self.sn = Reimbursement.generate_sn
     if current_user
