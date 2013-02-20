@@ -4,8 +4,8 @@
   <dd><%= @reimbursement.sn %></dd>
   <dt><strong><%= model_class.human_attribute_name(:reimburse_on) %>:</strong></dt>
   <dd><%= @reimbursement.reimburse_on %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
-  <dd><%= t "reimbursements.STATUS_TYPES.#{@reimbursement.status}" %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:chinese_amount) %>:</strong></dt>
+  <dd><%= @reimbursement.chinese_amount %></dd>
   <dt><strong><%= model_class.human_attribute_name(:invoice_no) %>:</strong></dt>
   <dd><%= @reimbursement.invoice_no %></dd> 
 </dl>
@@ -19,13 +19,15 @@
   <dd><%= @reimbursement.amount %></dd>
   <dt><strong><%= model_class.human_attribute_name(:expense_id) %>:</strong></dt>
   <dd><%= @reimbursement.expense_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= t "reimbursements.STATUS_TYPES.#{@reimbursement.status}" %></dd>
 </dl>
 
 <dl class="dl-horizontal span8">
-  <dt><strong><%= model_class.human_attribute_name(:chinese_amount) %>:</strong></dt>
-  <dd><%= @reimbursement.chinese_amount %></dd>
   <dt><strong><%= model_class.human_attribute_name(:abstract) %>:</strong></dt>
   <dd><%= @reimbursement.abstract %></dd>
+
+
 </dl>
 
 <table class="table">

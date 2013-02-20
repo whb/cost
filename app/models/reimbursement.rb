@@ -1,4 +1,6 @@
 class Reimbursement < ActiveRecord::Base
+  include NumberToChineseAmountInWordsHelper
+
   has_many :details, :dependent => :destroy
   accepts_nested_attributes_for :details, :allow_destroy => true,
     :reject_if => lambda { |a| a[:category_id].blank? and a[:name].blank? and a[:amount].blank? and a[:unit].blank? and a[:unit_price].blank? and a[:price].blank?}
@@ -17,7 +19,7 @@ class Reimbursement < ActiveRecord::Base
   scope :activing, where(:status => :edit)
 
   def chinese_amount
-    "chinese_amount"
+    number_to_capital_zh(self.amount)
   end
 
   def build_part(current_user)
