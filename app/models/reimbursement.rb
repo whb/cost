@@ -77,4 +77,16 @@ class Reimbursement < ActiveRecord::Base
   def editable?
     self.status == :edit
   end
+
+  def commit!
+    transaction do
+      expense = self.expense
+      if expense
+        expense.reimbursed
+        expense.save!
+      end
+      self.status = :commit
+      save!
+    end
+  end
 end

@@ -69,6 +69,10 @@ class Expense < ActiveRecord::Base
     self.status = :general_manager_approval
   end
 
+  def reimbursed
+    self.status = :reimbursed
+  end
+
   def category_price(category_id)
     sum_category_price = 0
     items.each do |item|

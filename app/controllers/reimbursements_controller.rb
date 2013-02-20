@@ -100,13 +100,13 @@ class ReimbursementsController < ApplicationController
 
   def commit
     @reimbursement = Reimbursement.find(params[:id])
-    @reimbursement.status = :commit
 
     respond_to do |format|
-      if @reimbursement.save
+      begin
+        @reimbursement.commit!
         format.html { redirect_to @reimbursement, notice: t('Reimbursement was successfully committed.') }
         format.json { head :no_content }
-      else
+      rescue ActiveRecord::RecordInvalid
         format.html { render action: "verify" }
         format.json { render json: @reimbursement.errors, status: :unprocessable_entity }
       end
