@@ -149,5 +149,9 @@ $(document).ready(function(){
     }
   });
 
+  $("#toggle").click (function() {
+    $("#reimbursed_expenses").toggle();
+  });
+
 });
 

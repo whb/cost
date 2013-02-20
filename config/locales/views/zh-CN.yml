@@ -76,12 +76,15 @@ zh-CN:
     index:
       title: 未完成支出证明列表
       expense_id: 费用申请单
+    query:
+      title: 查询支出证明  
     navs:
       edit: 编辑
       new_from_expense: 费用申请单生成
       new: 新建空白
     query_expenses:
       title: 费用申请单列表
+      toggle reimbursed expenses: 显示/隐藏
     list_verify:
       title: 待审核支出证明列表
     STATUS_TYPES: 

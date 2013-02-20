@@ -1,0 +1,7 @@
+<%- model_class = Reimbursement -%>
+
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+
+<%= render 'reimbursements_datatable' %>
