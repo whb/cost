@@ -53,6 +53,10 @@ class Expense < ActiveRecord::Base
     self.status == :commit or self.status == :manager_approval
   end
 
+  def waiting_reimburse?
+    self.status == :general_manager_approval
+  end
+
   def refuse
     self.status = :edit
   end

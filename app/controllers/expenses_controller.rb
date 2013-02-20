@@ -100,9 +100,20 @@ class ExpensesController < ApplicationController
         format.html { redirect_to @expense, notice: t('Expense was successfully committed.') }
         format.json { head :no_content }
       else
-        format.html { render action: "confirm" }
+        format.html { render action: "verify" }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def discard
+    @expense = Expense.find(params[:id])
+    @expense.status = :invalid
+    @expense.save!
+
+    respond_to do |format|
+      format.html { redirect_to expenses_url }
+      format.json { head :no_content }
     end
   end
 

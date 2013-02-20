@@ -19,6 +19,7 @@ class Approval < ActiveRecord::Base
       else
         expense.refuse
       end
+
       save!
       expense.save!
     end

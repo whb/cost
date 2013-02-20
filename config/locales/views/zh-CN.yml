@@ -40,6 +40,7 @@ zh-CN:
       add: 添加
       approve: 审批
       build: 生成
+      discard: 作废
     titles:
       edit: 编辑「%{model}」
       destroy: 删除「%{model}」
