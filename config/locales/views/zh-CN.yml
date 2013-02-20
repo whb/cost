@@ -82,6 +82,8 @@ zh-CN:
       new: 新建空白
     query_expenses:
       title: 费用申请单列表
+    list_verify:
+      title: 待审核支出证明列表
     STATUS_TYPES: 
       edit: 报销中
       commit: 已报销

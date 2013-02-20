@@ -9,7 +9,7 @@ class ReimbursementsController < ApplicationController
   # GET /reimbursements
   # GET /reimbursements.json
   def index
-    @reimbursements = Reimbursement.all
+    @reimbursements = Reimbursement.activing.find_all_by_organization_id current_organization.subtree_ids
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,6 +24,15 @@ class ReimbursementsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @expenses }
+    end
+  end
+
+  def list_verify
+    @reimbursements = Reimbursement.activing
+
+    respond_to do |format|
+      format.html # list_verify.html.erb
+      format.json { render json: @reimbursements }
     end
   end
 

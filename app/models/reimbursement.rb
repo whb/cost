@@ -14,6 +14,8 @@ class Reimbursement < ActiveRecord::Base
   }
   enum :status, STATUS_TYPES
 
+  scope :activing, where(:status => :edit)
+
   def build_part(current_user)
     self.sn = Reimbursement.generate_sn
     if current_user

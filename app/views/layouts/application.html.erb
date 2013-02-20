@@ -35,7 +35,7 @@
           <%= menu_item t(".Reimbursement create"), reimbursements_path %>
         <% end %>
         <% if can? :commit, Reimbursement %>
-          <%= menu_item t(".Reimbursement commit"), reimbursements_path %>
+          <%= menu_item t(".Reimbursement commit"), list_verify_reimbursements_path %>
         <% end %> 
         <%= menu_item t(".Reimbursement query"), query_reimbursements_path %> 
       <% end %>
