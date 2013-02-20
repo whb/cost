@@ -18,8 +18,8 @@ class ReimbursementsController < ApplicationController
   end
 
   def query_expenses
-    @waiting_reimburse_expenses = Expense.waiting_reimburse.find_all_by_organization_id current_organization.subtree_ids
-    @expenses = Expense.reimbursed.find_all_by_organization_id current_organization.subtree_ids
+    @expenses = Expense.waiting_reimburse.find_all_by_organization_id current_organization.subtree_ids
+    @reimbursed_expenses = Expense.reimbursed.find_all_by_organization_id current_organization.subtree_ids
 
     respond_to do |format|
       format.html
@@ -61,6 +61,10 @@ class ReimbursementsController < ApplicationController
     @reimbursement = Reimbursement.find(params[:id])
   end
 
+  def verify
+    @reimbursement = Reimbursement.find(params[:id])
+  end
+
   # POST /reimbursements
   # POST /reimbursements.json
   def create
@@ -89,6 +93,21 @@ class ReimbursementsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
+        format.json { render json: @reimbursement.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def commit
+    @reimbursement = Reimbursement.find(params[:id])
+    @reimbursement.status = :commit
+
+    respond_to do |format|
+      if @reimbursement.save
+        format.html { redirect_to @reimbursement, notice: t('Reimbursement was successfully committed.') }
+        format.json { head :no_content }
+      else
+        format.html { render action: "verify" }
         format.json { render json: @reimbursement.errors, status: :unprocessable_entity }
       end
     end

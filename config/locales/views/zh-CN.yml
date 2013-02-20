@@ -54,6 +54,8 @@ zh-CN:
       available: 可用预算
       current: 本次金额
       balance: 剩余预算
+    expense_action:
+      build: 生成支出证明
   expenses:
     index:
       title: 未完成费用申请单列表
@@ -66,8 +68,8 @@ zh-CN:
     STATUS_TYPES: 
       edit: 编辑
       commit: 提交
-      manager_approval: 主管经理审批
-      general_manager_approval: 总经理审批
+      manager_approval: 主管经理批准
+      general_manager_approval: 总经理批准
       reimbursed: 已报销
       invalid: 作废
   reimbursements:
@@ -132,6 +134,7 @@ zh-CN:
   User was successfully updated: 用户更新成功
   Reimbursement was successfully created: 支出证明单保存成功
   Reimbursement was successfully updated: 支出证明单更新成功
+  Reimbursement was successfully committed: 支出证明单提交成功
   Log in: 登录
   Logged in!: 登录成功!
   Invalid username or password: 无效的用户名和密码

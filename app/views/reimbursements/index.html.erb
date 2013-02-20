@@ -27,13 +27,17 @@
         <td><%= reimbursement.organization.name %></td>
         <td><%= t "reimbursements.STATUS_TYPES.#{reimbursement.status}" %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_reimbursement_path(reimbursement), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      reimbursement_path(reimbursement),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+          <% if reimbursement.editable? %>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_reimbursement_path(reimbursement), :class => 'btn btn-mini' %>
+            <%= link_to t('.verify', :default => t("helpers.links.verify")),
+                        verify_reimbursement_path(reimbursement), :class => 'btn btn-mini' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        reimbursement_path(reimbursement),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-mini btn-danger' %>
+          <% end %>
         </td>
       </tr>
     <% end %>

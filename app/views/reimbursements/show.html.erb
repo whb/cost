@@ -4,60 +4,15 @@
 </div>
 
 <% if @period != nil %>
-  <%= render  'shared/budgets_sidebar', ref_budget_list: ref_budget_for(@reimbursement, @period.budgets) %>
+  <%= render 'shared/budgets_sidebar', ref_budget_list: ref_budget_for(@reimbursement, @period.budgets) %>
 <% end %>
 
-<dl class="dl-horizontal span4">
-  <dt><strong><%= model_class.human_attribute_name(:sn) %>:</strong></dt>
-  <dd><%= @reimbursement.sn %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:reimburse_on) %>:</strong></dt>
-  <dd><%= @reimbursement.reimburse_on %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
-  <dd><%= t "reimbursements.STATUS_TYPES.#{@reimbursement.status}" %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:invoice_no) %>:</strong></dt>
-  <dd><%= @reimbursement.invoice_no %></dd> 
-</dl>
-
-<dl class="dl-horizontal span4">
-  <dt><strong><%= model_class.human_attribute_name(:organization) %>:</strong></dt>
-  <dd><%= @reimbursement.organization.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:staff) %>:</strong></dt>
-  <dd><%= @reimbursement.staff %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:amount) %>:</strong></dt>
-  <dd><%= @reimbursement.amount %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:expense_id) %>:</strong></dt>
-  <dd><%= @reimbursement.expense_id %></dd>
-</dl>
-
-<dl class="dl-horizontal span8">
-  <dt><strong><%= model_class.human_attribute_name(:abstract) %>:</strong></dt>
-  <dd><%= @reimbursement.abstract %></dd>
-</dl>
-
-<table class="table">
-<tr>
-  <th><%= Detail.human_attribute_name(:category) %></th>
-  <th><%= Detail.human_attribute_name(:name) %></th>
-  <th><%= Detail.human_attribute_name(:amount) %></th>
-  <th><%= Detail.human_attribute_name(:unit) %></th>
-  <th><%= Detail.human_attribute_name(:unit_price) %></th>
-  <th><%= Detail.human_attribute_name(:price) %></th>
-</tr>
-<% for detail in @reimbursement.details %>
-    <tr>
-      <td><%= detail.category.name %></td>
-      <td><%= detail.name %></td>
-      <td><%= detail.amount %></td>
-      <td><%= detail.unit %></td>
-      <td><%= detail.unit_price %></td>
-      <td><%= detail.price %></td>
-    </tr>
-<% end %>
-</table>
+<%= render 'reimbursement' %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               reimbursements_path, :class => 'btn'  %>
+  <% if @reimbursement.editable? %>            
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_reimbursement_path(@reimbursement), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -65,4 +20,5 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+  <% end %>              
 </div>

@@ -73,4 +73,8 @@ class Reimbursement < ActiveRecord::Base
     end
     amount
   end
+
+  def editable?
+    self.status == :edit
+  end
 end

@@ -1,0 +1,18 @@
+<%- model_class = Reimbursement -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<% if @period != nil %>
+  <%= render  'shared/budgets_sidebar', ref_budget_list: ref_budget_for(@reimbursement, @period.budgets) %>
+<% end %>
+
+<%= render 'reimbursement' %>
+
+<%= form_for @reimbursement, :url => url_for(:action => 'commit') do |f| %>
+  <div class="form-actions">
+    <%= f.submit t('.commit', :default => t("helpers.submit.commit", :model => model_class.model_name.human)), :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                reimbursements_path, :class => 'btn' %>
+  </div>
+<% end %>
