@@ -5,6 +5,10 @@ class Budget < ActiveRecord::Base
   validates_presence_of :category_id
 
   def available
-    amount
+    amount == nil ? nil : amount - cost
+  end
+
+  def cost
+    @cost ||= Detail.committed.year(period.year).sum(:price, :conditions => "category_id = #{self.category_id}")
   end
 end

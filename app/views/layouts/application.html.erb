@@ -41,7 +41,7 @@
       <% end %>
     <% end %>
 
-    <%= menu_item t(".Budget Supervise") %>
+    <%= menu_item t(".Budget Supervise"), current_periods_path %>
 
     <% if can? :manage, User %>
       <%= drop_down t(".Basic Data Admin") do %>

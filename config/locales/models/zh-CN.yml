@@ -80,6 +80,8 @@ zh-CN:
       budget:
         category: 费用类型
         amount: 金额
+        cost: 支出金额
+        available: 剩余金额
     errors: 
       models:
         approval:

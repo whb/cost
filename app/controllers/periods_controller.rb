@@ -11,6 +11,15 @@ class PeriodsController < ApplicationController
     end
   end
 
+  def current
+    @period = Period.find_by_year(Date.today.year)
+
+    respond_to do |format|
+      format.html # current.html.erb
+      format.json { render json: @period }
+    end
+  end
+
   # GET /periods/1
   # GET /periods/1.json
   def show

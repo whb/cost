@@ -4,10 +4,13 @@ Cost::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
 
   resources :sessions
-  resources :periods
   resources :categories
   resources :users
   resources :organizations
+  resources :periods do
+    get :current, :on => :collection
+  end
+  
   resources :expenses do
     get :query, :on => :collection
     get :verify, :on => :member
