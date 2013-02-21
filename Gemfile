@@ -38,6 +38,9 @@ gem 'cancan'
 gem 'jquery-datatables-rails'
 gem 'prawn_rails'
 
+gem 'factory_girl_rails'
+
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

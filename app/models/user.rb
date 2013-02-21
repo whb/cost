@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :organization
-  attr_accessible :displayname, :enabled, :organization_id, :username, :password, :password_confirmation, :roles
+  attr_accessible :displayname, :enabled, :organization_id, :organization, :username, :password, :password_confirmation, :roles
 
   has_secure_password
   validates_presence_of :username, :displayname, :organization_id
