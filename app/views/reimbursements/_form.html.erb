@@ -60,6 +60,6 @@
   <div class="form-actions span8">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                reimbursements_path, :class => 'btn' %>
+                session[:last_reimbursement_collection_url], :class => 'btn' %>
   </div>
 <% end %>

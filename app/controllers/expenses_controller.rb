@@ -2,16 +2,18 @@ class ExpensesController < ApplicationController
   load_and_authorize_resource
   before_filter :remember_last_collections_url
   before_filter :load_period, :expect => [:index, :query, :destroy]
+  
+  def remember_last_collections_url
+    last_collections_url = request.env['HTTP_REFERER'] || expenses_url
+    if [expenses_url, query_expenses_url, query_expenses_reimbursements_url].include? last_collections_url
+      session[:last_expense_collection_url] = last_collections_url
+    end
+  end
+  
   def load_period
     @period = Period.find_by_year(Date.today.year)
   end
 
-  def remember_last_collections_url
-    last_expenses_url = request.env['HTTP_REFERER'] || expenses_url
-    if [expenses_url, query_expenses_url, query_expenses_reimbursements_url].include? last_expenses_url
-      session[:last_expense_collection_url] = last_expenses_url 
-    end
-  end
 
   # GET /expenses
   # GET /expenses.json

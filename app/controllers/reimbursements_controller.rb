@@ -1,11 +1,19 @@
 class ReimbursementsController < ApplicationController
   skip_authorization_check
-
+  before_filter :remember_last_collections_url
   before_filter :load_period, :expect => [:index, :query, :destroy]
+
+  def remember_last_collections_url
+    last_collections_url = request.env['HTTP_REFERER'] || reimbursements_url
+    if [reimbursements_url, query_reimbursements_url, list_verify_reimbursements_url].include? last_collections_url
+      session[:last_reimbursement_collection_url] = last_collections_url
+    end
+  end
+
   def load_period
     @period = Period.find_by_year(Date.today.year)
   end
-  
+
   # GET /reimbursements
   # GET /reimbursements.json
   def index
