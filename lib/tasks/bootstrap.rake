@@ -50,7 +50,7 @@ namespace :bootstrap do
 
   desc "Create the default periods"
   task :default_periods => :environment do
-    Period.create(:id => 1, :year => 2012, :explain => '2012年度预算' )
+    Period.create(:id => 1, :year => 2013, :explain => '2012年度预算' )
   end
 
   desc "Create the default budget"

@@ -13,6 +13,7 @@ class PeriodsController < ApplicationController
 
   def current
     @period = Period.find_by_year(Date.today.year)
+    raise "Can't find budgets of #{Date.today.year} period, try to fill budgets" unless @period
 
     respond_to do |format|
       format.html # current.html.erb
