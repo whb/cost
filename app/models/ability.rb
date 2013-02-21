@@ -11,7 +11,9 @@ class Ability
       can [:read, :create, :update, :destroy, :query], Expense
       can [:read, :create, :update, :destroy, :query], Reimbursement
     end
-    can :manage, Expense if user.is? :department_manager
+    if user.is? :department_manager
+      can :manage, Expense
+    end
     if user.is? :vice_manager
       can [:read, :query], Expense 
       can :manage, Approval

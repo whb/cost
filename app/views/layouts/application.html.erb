@@ -39,9 +39,9 @@
         <% end %> 
         <%= menu_item t(".Reimbursement query"), query_reimbursements_path %> 
       <% end %>
-    <% end %>
 
-    <%= menu_item t(".Budget Supervise"), current_periods_path %>
+      <%= menu_item t(".Budget Supervise"), current_periods_path %>
+    <% end %>
 
     <% if can? :manage, User %>
       <%= drop_down t(".Basic Data Admin") do %>
