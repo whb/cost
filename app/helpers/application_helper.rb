@@ -39,4 +39,8 @@ module ApplicationHelper
       presenter
     end
   end
+
+  def expense_sn(expense)
+    expense ? (link_to expense.sn, expense_path(expense)) : t(".none")
+  end
 end

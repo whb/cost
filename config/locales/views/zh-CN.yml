@@ -76,6 +76,8 @@ zh-CN:
     index:
       title: 未完成支出证明列表
       expense_id: 费用申请单
+    reimbursement:
+      none: <无>
     query:
       title: 查询支出证明  
     navs:

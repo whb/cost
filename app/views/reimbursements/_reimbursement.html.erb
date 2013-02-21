@@ -18,7 +18,7 @@
   <dt><strong><%= model_class.human_attribute_name(:amount) %>:</strong></dt>
   <dd><%= @reimbursement.amount %></dd>
   <dt><strong><%= model_class.human_attribute_name(:expense_id) %>:</strong></dt>
-  <dd><%= @reimbursement.expense_id %></dd>
+  <dd><%= expense_sn @reimbursement.expense %></dd>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
   <dd><%= t "reimbursements.STATUS_TYPES.#{@reimbursement.status}" %></dd>
 </dl>
@@ -26,8 +26,6 @@
 <dl class="dl-horizontal span8">
   <dt><strong><%= model_class.human_attribute_name(:abstract) %>:</strong></dt>
   <dd><%= @reimbursement.abstract %></dd>
-
-
 </dl>
 
 <table class="table">
