@@ -3,6 +3,7 @@ class Organization < ActiveRecord::Base
   belongs_to :superior, :class_name => "Organization"
   has_many :users
   attr_accessible :code, :name, :superior_id
+  validates_uniqueness_of :code, :name
 
   def self.default
     Organization.find(1)

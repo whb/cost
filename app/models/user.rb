@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   attr_accessible :displayname, :enabled, :organization_id, :username, :password, :password_confirmation, :roles
 
   has_secure_password
-  validates_presence_of :username, :displayname
+  validates_presence_of :username, :displayname, :organization_id
+  validates_uniqueness_of :username
 
   ROLES = %w[admin staff department_manager vice_manager general_manager financial_officer banned]
 
