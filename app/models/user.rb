@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :displayname, :enabled, :organization_id, :username, :password, :password_confirmation, :roles
 
   has_secure_password
-  validates_presence_of :username, :displayname, :organization_id
+  validates_presence_of :username, :displayname
 
   ROLES = %w[admin staff department_manager vice_manager general_manager financial_officer banned]
 
@@ -23,5 +23,9 @@ class User < ActiveRecord::Base
 
   def is_valid?
     !roles.empty?
+  end
+
+  def organization_name
+    organization ? organization.name : ""
   end
 end

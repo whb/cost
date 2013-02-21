@@ -11,7 +11,7 @@
   <dt><strong><%= model_class.human_attribute_name(:enabled) %>:</strong></dt>
   <dd><%= @user.enabled %></dd>
   <dt><strong><%= model_class.human_attribute_name(:organization_id) %>:</strong></dt>
-  <dd><%= @user.organization.name %></dd>
+  <dd><%= @user.organization_name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:roles) %>:</strong></dt>
   <dd><%= display @user.roles %></dd>
 </dl>

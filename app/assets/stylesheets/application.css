@@ -13,3 +13,20 @@
  *= require dataTables/jquery.dataTables.bootstrap
  *= require_tree . 
  */
+ 
+/*dl {
+    overflow: hidden;
+}
+dt, dd {
+    margin: 1px;
+    padding: 1px;
+}
+dt {
+    float: left;
+    font-weight: bold;
+    background: #e7ebf1;
+    border: 1px solid green;
+}
+dd {
+    float:left;
+}*/
