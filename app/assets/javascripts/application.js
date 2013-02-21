@@ -48,7 +48,7 @@ function show_ref_budget() {
   $("select[id*=_attributes_]:visible").each(function(e) {
     var category_id = $(this).val();
     if ( category_id ) {
-      var ref_budget = "[id^=ref_budget_%ID%]".replace(/%ID%/, category_id);
+      var ref_budget = "[id=ref_budget_%ID%]".replace(/%ID%/, category_id);
       $(ref_budget).show();
     }
   }); 
@@ -74,10 +74,10 @@ function cal_ref_budget() {
     var price = tr.find(price_selector).val();
     if ($.isNumeric(price))  category_price_map.add(category_id, price);
 
-    var available = "[id^=ref_budget_%ID%] .available".replace(/%ID%/, category_id);
-    var current = "[id^=ref_budget_%ID%] .current".replace(/%ID%/, category_id);
+    var available = "[id=ref_budget_%ID%] .available".replace(/%ID%/, category_id);
+    var current = "[id=ref_budget_%ID%] .current".replace(/%ID%/, category_id);
     $(current).text(category_price_map.get(category_id));
-    var balance = "[id^=ref_budget_%ID%] .balance".replace(/%ID%/, category_id);
+    var balance = "[id=ref_budget_%ID%] .balance".replace(/%ID%/, category_id);
     $(balance).text($(available).text() - category_price_map.get(category_id));
   }); 
 }
