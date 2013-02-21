@@ -46,6 +46,6 @@
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                expenses_path, :class => 'btn' %>
+                session[:last_expense_collection_url], :class => 'btn' %>
   </div>
 <% end %>
