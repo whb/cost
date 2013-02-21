@@ -6,8 +6,8 @@
 <%= render :partial => 'shared/expense_with_approvals' %>
 
 <div class="form-actions">
-  <% if session[:last_expenses_page] %>
-    <%= link_to t('.back', :default => t("helpers.links.back")), session[:last_expenses_page], :class => 'btn' %> 
+  <% if session[:last_expense_collection_url] %>
+    <%= link_to t('.back', :default => t("helpers.links.back")), session[:last_expense_collection_url], :class => 'btn' %> 
   <% end %>
   <% if @expense.editable? %>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
