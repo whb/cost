@@ -5,11 +5,11 @@
   <% end %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")), expense_path(expense), :class => 'btn btn-mini btn-danger',
               :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
-<% elsif expense.approvaling? %>
+<% elsif expense.approvaling? and controller_is "approvals" %>
   <% if can? :manage, Approval %>
     <%= link_to t('.approve', :default => t("helpers.links.approve")), new_expense_approval_path(expense), :class => 'btn btn-mini btn-primary' %>
   <% end %>
-<% elsif expense.waiting_reimburse? %>
+<% elsif expense.waiting_reimburse? and controller_is "reimbursements" %>
   <%= link_to t('.build', :default => t("helpers.links.build")), new_expense_reimbursement_path(expense), :class => 'btn btn-mini btn-primary' %>
   <%= link_to t('.discard', :default => t("helpers.links.discard")), discard_expense_path(expense), :class => 'btn btn-mini btn-danger',:method => :put, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
 <% end %>

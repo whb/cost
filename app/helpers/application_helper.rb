@@ -43,4 +43,8 @@ module ApplicationHelper
   def expense_sn(expense)
     expense ? (link_to expense.sn, expense_path(expense)) : t(".none")
   end
+
+  def controller_is(name)
+    @current_controller == name
+  end
 end
