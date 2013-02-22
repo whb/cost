@@ -1,20 +1,12 @@
 #encoding:utf-8
+require 'factory_girl'
+require File.expand_path("lib/tasks/factories.rb")
+include FactoryGirl::Syntax::Methods
 
 namespace :populate do
-  desc "Create the test users"
-  task :test_users => :environment do
-    require 'factory_girl'
-
-    humen_organization = Organization.create(:code => '007', :name => '人力资源部', :superior_id => 1 )
-
-    100.times do |i|
-      User.create(:username => "test#{i}", :displayname => "测试用户#{i}", 
-                  :password => 'a', :password_confirmation => 'a',
-                  :enabled => true, :roles => %w[admin staff], 
-                  :organization => humen_organization)
-    end
-  end
-
+  require File.expand_path("lib/tasks/base_data.rb")
+  require File.expand_path("lib/tasks/expense_data.rb")
+  
   desc "Run all populate tasks"
-  task :all => [:test_users]
+  task :all => [:base, :expense]
 end
