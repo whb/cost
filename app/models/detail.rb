@@ -10,6 +10,7 @@ class Detail < ActiveRecord::Base
   def copy(item) 
     self.category_id = item.category_id
     self.name = item.name
+    self.amount = item.amount
     self.unit = item.unit
     self.unit_price = item.unit_price
     self.price = item.price
