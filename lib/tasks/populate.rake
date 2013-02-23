@@ -5,8 +5,8 @@ include FactoryGirl::Syntax::Methods
 
 namespace :populate do
   require File.expand_path("lib/tasks/base_data.rb")
-  require File.expand_path("lib/tasks/expense_data.rb")
+  require File.expand_path("lib/tasks/bills_data.rb")
   
   desc "Run all populate tasks"
-  task :all => [:base, :expense]
+  task :all => [:base, :bills]
 end

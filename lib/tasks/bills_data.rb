@@ -7,5 +7,10 @@ task :expenses => :environment do
   create_list :expense, 10, status: :invalid, explain: "作废xxxxxxxxxxx"
 end
 
+desc "Add reimbursement bills"
+task :reimbursements => :environment do
+  create_list :reimbursement, 50
+end
+
 desc "Run expense tasks"
-task :expense => [ :expenses ]
+task :bills => [ :expenses, :reimbursements ]
