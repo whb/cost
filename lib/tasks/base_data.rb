@@ -18,7 +18,7 @@ end
 
 desc "Create the default users"
 task :default_users => :environment do
-  create :user, username: 'whb', displayname: '吴海波', roles: %w[staff department_manager], organization: @xinxi
+  @whb = create :user, username: 'whb', displayname: '吴海波', roles: %w[staff department_manager], organization: @xinxi
   create :user, username: 'guo', displayname: '郭文静', roles: %w[admin staff], organization: @xinxi
   create :user, username: 'wu', displayname: '吴继友', roles: %w[staff department_manager], organization: @qiguan
   create :user, username: 'han', displayname: '韩长生', roles: %w[vice_manager], organization: @qiguanxinxi 
