@@ -2,14 +2,14 @@
 
 desc "Add expense bills"
 task :expenses => :environment do
-  create_list :expense, 50
-  create_list :expense, 100, status: :reimbursed, explain: "已报销xxxxxxxxxxxxxx"
+  create_list :expense, 20
+  create_list :expense, 10, status: :reimbursed, explain: "已报销xxxxxxxxxxxxxx"
   create_list :expense, 10, status: :invalid, explain: "作废xxxxxxxxxxx"
 end
 
 desc "Add reimbursement bills"
 task :reimbursements => :environment do
-  create_list :reimbursement, 50
+  create_list :reimbursement, 20
 end
 
 desc "Run expense tasks"
