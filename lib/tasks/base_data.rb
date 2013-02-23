@@ -64,8 +64,8 @@ end
 desc "Create the test users"
 task :test_users => :environment do
   create :user,  username: 'test', displayname: '测试用户', 
-                 roles: %w[admin staff department_manager vice_manager general_manager financial_officer], 
-                 organization: @xinxi
+                 roles: %w[admin staff department_manager vice_manager financial_officer], 
+                 organization: @xllg
 end
 
 desc "Run base tasks"
