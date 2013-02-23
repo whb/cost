@@ -2,7 +2,7 @@
 
 desc "Add expense with reimbursement bills"
 task :expense_with_reimbursements => :environment do
-  create_list :expense, 10, :bill_part, :generate_reimbursement
+  create_list :expense, 5, :bill_part, :generate_reimbursement
 end
 
 task :expenses => :environment do
