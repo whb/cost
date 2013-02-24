@@ -12,7 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require twitter/bootstrap/bootstrap-transition 
+//= require twitter/bootstrap/bootstrap-alert 
+//= require twitter/bootstrap/bootstrap-modal 
+//= require twitter/bootstrap/bootstrap-dropdown 
+//= require twitter/bootstrap/bootstrap-scrollspy 
+//= require twitter/bootstrap/bootstrap-tab 
+//= require twitter/bootstrap/bootstrap-tooltip 
+//= require twitter/bootstrap/bootstrap-popover 
+//= require twitter/bootstrap/bootstrap-button 
+//= require twitter/bootstrap/bootstrap-collapse 
+//= require twitter/bootstrap/bootstrap-carousel 
+//  WARNING: require twitter/bootstrap/bootstrap-typeahead REPLACE by dhenze / bootstrap-typeahead.js
+//= require twitter/bootstrap/bootstrap-affix
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
 //= require dataTables/jquery.dataTables
@@ -157,7 +169,10 @@ $(document).ready(function(){
       return $.get('/expenses/lookup_item_names', { q: name }, function (data) {
         return process(data);
       });
-    }
+    },
+
+    property: "name",
+
   });
 
 });
