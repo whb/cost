@@ -40,6 +40,8 @@ gem 'prawn_rails'
 
 gem 'factory_girl_rails'
 
+gem "select2-rails"
+
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

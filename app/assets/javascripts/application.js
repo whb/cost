@@ -29,6 +29,7 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
+//= require select2
 //= require_tree .
 $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
   $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true, "language": "zh-CN"});
@@ -47,6 +48,11 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g");
   var unique_content = content.replace(regexp, new_id);
   $('.fields-table').append(unique_content);
+
+  // one select only should run once
+  var new_id_selector = "select[id$=_%ID%_category_id]".replace(/%ID%/, new_id);
+  $(new_id_selector).select2();
+
   regist_events();
 }
 
@@ -141,6 +147,8 @@ function regist_events() {
     },
     property: "name"
   });
+
+  
 }
 
 $(document).ready(function(){
@@ -172,6 +180,9 @@ $(document).ready(function(){
   $("#toggle").click (function() {
     $("#reimbursed_expenses").toggle();
   });
+
+  // one select only should run once
+  $("select[id*=_attributes_]").select2();
 
 });
 
