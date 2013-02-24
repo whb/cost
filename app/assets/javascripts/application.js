@@ -23,7 +23,7 @@
 //= require twitter/bootstrap/bootstrap-button 
 //= require twitter/bootstrap/bootstrap-collapse 
 //= require twitter/bootstrap/bootstrap-carousel 
-//  WARNING: require twitter/bootstrap/bootstrap-typeahead REPLACE by dhenze / bootstrap-typeahead.js
+//= require twitter/bootstrap/bootstrap-typeahead
 //= require twitter/bootstrap/bootstrap-affix
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
@@ -55,8 +55,7 @@ function add_fields(link, association, content) {
       return $.get('/expenses/lookup_item_names', { q: name }, function (data) {
         return process(data);
       });
-    },
-    property: "name"
+    }
   });
   // one select only should run once
   var new_category_selector = "select[id$=_%ID%_category_id]".replace(/%ID%/, new_id);
@@ -185,8 +184,7 @@ $(document).ready(function(){
       return $.get('/expenses/lookup_item_names', { q: name }, function (data) {
         return process(data);
       });
-    },
-    property: "name"
+    }
   });
 
   // one select only should run once

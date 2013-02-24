@@ -16,7 +16,7 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/lookup_item_names?q=xx (default: json)
   def lookup_item_names
-    @item_names = Item.select("DISTINCT name").where("name like ?", "%#{params[:q]}%")
+    @item_names = Item.select("DISTINCT name").where("name like ?", "%#{params[:q]}%").map(&:name)
     respond_to do |format|
       format.json { render json: @item_names }
     end
