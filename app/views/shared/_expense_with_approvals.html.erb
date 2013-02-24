@@ -4,26 +4,27 @@
   <%= render  'shared/budgets_sidebar', ref_budget_list: ref_budget_for(@expense, @period.budgets) %>
 <% end %>
 
+<dl class="dl-horizontal">
+  <div class="span4">
+    <dt><strong><%= model_class.human_attribute_name(:sn) %>:</strong></dt>
+    <dd><%= @expense.sn %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:request_on) %>:</strong></dt>
+    <dd><%= @expense.request_on %></dd>
+  </div>
 
-<dl class="dl-horizontal span4">
-  <dt><strong><%= model_class.human_attribute_name(:sn) %>:</strong></dt>
-  <dd><%= @expense.sn %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:request_on) %>:</strong></dt>
-  <dd><%= @expense.request_on %></dd>
-</dl>
+  <div class="span4">
+    <dt><strong><%= model_class.human_attribute_name(:organization) %>:</strong></dt>
+    <dd><%= @expense.organization.name %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:staff) %>:</strong></dt>
+    <dd><%= @expense.staff %></dd>
+  </div>
 
-<dl class="dl-horizontal span4">
-  <dt><strong><%= model_class.human_attribute_name(:organization) %>:</strong></dt>
-  <dd><%= @expense.organization.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:staff) %>:</strong></dt>
-  <dd><%= @expense.staff %></dd>
-</dl>
-
-<dl class="dl-horizontal span8">
-  <dt><strong><%= model_class.human_attribute_name(:abstract) %>:</strong></dt>
-  <dd><%= @expense.abstract %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:explain) %>:</strong></dt>
-  <dd><pre><%= @expense.explain %></pre></dd>
+  <div class="span8">
+    <dt><strong><%= model_class.human_attribute_name(:abstract) %>:</strong></dt>
+    <dd><%= @expense.abstract %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:explain) %>:</strong></dt>
+    <dd><pre><%= @expense.explain %></pre></dd>
+  </div>
 </dl>
 
 <table class="table">

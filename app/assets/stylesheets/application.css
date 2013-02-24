@@ -15,19 +15,9 @@
  *= require_tree . 
  */
  
-/*dl {
-    overflow: hidden;
+/*Prevent Twitter bootstrap empty <dd> filling with next <dd> value*/
+.dl-horizontal > dd:after {
+  display: table;
+  content: "";
+  clear: both;
 }
-dt, dd {
-    margin: 1px;
-    padding: 1px;
-}
-dt {
-    float: left;
-    font-weight: bold;
-    background: #e7ebf1;
-    border: 1px solid green;
-}
-dd {
-    float:left;
-}*/
