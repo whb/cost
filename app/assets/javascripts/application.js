@@ -48,10 +48,19 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g");
   var unique_content = content.replace(regexp, new_id);
   $('.fields-table').append(unique_content);
-
+  
+  var new_name_selector = "input[id$=_%ID%_name]".replace(/%ID%/, new_id);
+  $(new_name_selector).typeahead({
+    source: function (name, process) {
+      return $.get('/expenses/lookup_item_names', { q: name }, function (data) {
+        return process(data);
+      });
+    },
+    property: "name"
+  });
   // one select only should run once
-  var new_id_selector = "select[id$=_%ID%_category_id]".replace(/%ID%/, new_id);
-  $(new_id_selector).select2();
+  var new_category_selector = "select[id$=_%ID%_category_id]".replace(/%ID%/, new_id);
+  $(new_category_selector).select2();
 
   regist_events();
 }
@@ -138,17 +147,6 @@ function regist_events() {
   $("input[id*=_attributes_][id$=_unit_price]").change(function(e) {
     cal_price(this);
   });
-
-  $('.lookup_item_names').typeahead({
-    source: function (name, process) {
-      return $.get('/expenses/lookup_item_names', { q: name }, function (data) {
-        return process(data);
-      });
-    },
-    property: "name"
-  });
-
-  
 }
 
 $(document).ready(function(){
@@ -179,6 +177,16 @@ $(document).ready(function(){
 
   $("#toggle").click (function() {
     $("#reimbursed_expenses").toggle();
+  });
+
+
+  $("input[id*=_attributes_][id$=_name]").typeahead({
+    source: function (name, process) {
+      return $.get('/expenses/lookup_item_names', { q: name }, function (data) {
+        return process(data);
+      });
+    },
+    property: "name"
   });
 
   // one select only should run once
