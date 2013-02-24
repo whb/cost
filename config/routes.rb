@@ -12,6 +12,7 @@ Cost::Application.routes.draw do
   end
   
   resources :expenses do
+    get :lookup_item_names, :on => :collection, :defaults => { :format => 'json' }
     get :query, :on => :collection
     get :verify, :on => :member
     put :commit, :on => :member

@@ -122,7 +122,6 @@ function regist_events() {
   });
 }
 
-
 $(document).ready(function(){
   regist_events();
 
@@ -151,6 +150,14 @@ $(document).ready(function(){
 
   $("#toggle").click (function() {
     $("#reimbursed_expenses").toggle();
+  });
+
+  $('.typeahead').typeahead({
+    source: function (name, process) {
+      return $.get('/expenses/lookup_item_names', { q: name }, function (data) {
+        return process(data);
+      });
+    }
   });
 
 });

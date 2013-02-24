@@ -14,6 +14,13 @@ class ExpensesController < ApplicationController
     @period = Period.find_by_year(Date.today.year)
   end
 
+  def lookup_item_names
+    @item_names = Item.select("DISTINCT name").where("name like ?", "%#{params[:q]}%").map(&:name)
+    respond_to do |format|
+      format.json { render json: @item_names }
+    end
+  end
+
 
   # GET /expenses
   # GET /expenses.json
