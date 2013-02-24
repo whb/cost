@@ -132,6 +132,15 @@ function regist_events() {
   $("input[id*=_attributes_][id$=_unit_price]").change(function(e) {
     cal_price(this);
   });
+
+  $('.lookup_item_names').typeahead({
+    source: function (name, process) {
+      return $.get('/expenses/lookup_item_names', { q: name }, function (data) {
+        return process(data);
+      });
+    },
+    property: "name"
+  });
 }
 
 $(document).ready(function(){
@@ -162,17 +171,6 @@ $(document).ready(function(){
 
   $("#toggle").click (function() {
     $("#reimbursed_expenses").toggle();
-  });
-
-  $('.typeahead').typeahead({
-    source: function (name, process) {
-      return $.get('/expenses/lookup_item_names', { q: name }, function (data) {
-        return process(data);
-      });
-    },
-
-    property: "name",
-
   });
 
 });
