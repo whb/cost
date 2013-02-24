@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
   load_and_authorize_resource
-  before_filter :remember_last_collections_url
-  before_filter :load_period, :expect => [:index, :query, :destroy]
+  before_filter :remember_last_collections_url, :expect => [:lookup_item_names]
+  before_filter :load_period, :expect => [:index, :query, :destroy, :lookup_item_names]
   
   def remember_last_collections_url
     last_collections_url = request.env['HTTP_REFERER'] || expenses_url
@@ -14,6 +14,7 @@ class ExpensesController < ApplicationController
     @period = Period.find_by_year(Date.today.year)
   end
 
+  # GET /expenses/lookup_item_names?q=xx (default: json)
   def lookup_item_names
     @item_names = Item.select("DISTINCT name").where("name like ?", "%#{params[:q]}%").map(&:name)
     respond_to do |format|
