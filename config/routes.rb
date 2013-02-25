@@ -1,4 +1,6 @@
 Cost::Application.routes.draw do
+  get "cost_names/lookup", :defaults => { :format => 'json' }
+
   get "home/index"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
