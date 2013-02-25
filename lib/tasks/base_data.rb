@@ -28,17 +28,17 @@ end
 
 desc "Create the default categories"
 task :default_categories => :environment do
-  @c_1 = create :category, code: '01-001', name: '办公家具'
-  @c_2 = create :category, code: '01-002', name: '办公设备'
-  @c_3 = create :category, code: '01-003', name: '办公耗材'
-  @c_4 = create :category, code: '02-001', name: '差旅费'
-  @c_5 = create :category, code: '02-002', name: '会务费'
-  @c_6 = create :category, code: '03-001', name: '慰问费(行政)'
-  @c_7 = create :category, code: '03-002', name: '慰问费(政工)'
-  @c_8 = create :category, code: '04-001', name: '计算机设备'
-  @c_9 = create :category, code: '04-002', name: '网络设备'
-  @c_10 = create :category, code: '04-003', name: '计算机维修费'
-  @c_11 = create :category, code: '05-001', name: '软件开发费'
+  @c_1 = create :category, code: '0101', name: '办公家具'
+  @c_2 = create :category, code: '0102', name: '办公设备'
+  @c_3 = create :category, code: '0103', name: '办公耗材'
+  @c_4 = create :category, code: '0201', name: '差旅费'
+  @c_5 = create :category, code: '0202', name: '会务费'
+  @c_6 = create :category, code: '0301', name: '慰问费(行政)'
+  @c_7 = create :category, code: '0302', name: '慰问费(政工)'
+  @c_8 = create :category, code: '0401', name: '计算机设备'
+  @c_9 = create :category, code: '0402', name: '网络设备'
+  @c_10 = create :category, code: '0403', name: '计算机维修费'
+  @c_11 = create :category, code: '0501', name: '软件开发费'
 end
 
 desc "Create the default periods"

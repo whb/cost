@@ -55,7 +55,8 @@ function add_fields(link, association, content) {
       return $.get('/cost_names/lookup', { q: name }, function (data) {
         return process(data);
       });
-    }
+    },
+    items: 10
   });
   // one select only should run once
   var new_category_selector = "select[id$=_%ID%_category_id]".replace(/%ID%/, new_id);
@@ -184,7 +185,8 @@ $(document).ready(function(){
       return $.get('/cost_names/lookup', { q: name }, function (data) {
         return process(data);
       });
-    }
+    },
+    items: 10
   });
 
   // one select only should run once
