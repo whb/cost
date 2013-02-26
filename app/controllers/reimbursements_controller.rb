@@ -55,12 +55,14 @@ class ReimbursementsController < ApplicationController
 
   # GET /reimbursements/1
   # GET /reimbursements/1.json
+  # GET /reimbursements/1.pdf
   def show
     @reimbursement = Reimbursement.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @reimbursement }
+      format.pdf { render :layout => false }
     end
   end
 
