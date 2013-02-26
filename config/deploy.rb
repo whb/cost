@@ -1,6 +1,7 @@
 require 'capistrano/ext/multistage'
 
 default_run_options[:pty] = true
+set :use_sudo, false
 
 set :stages, ["staging", "production"]
 set :default_stage, "staging"
