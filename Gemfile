@@ -42,15 +42,16 @@ gem 'factory_girl_rails'
 
 gem "select2-rails"
 
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-ext'
+end
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
