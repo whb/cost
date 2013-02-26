@@ -1,8 +1,8 @@
-class CostNamesController < ApplicationController
+class LookupController < ApplicationController
   skip_authorization_check
 
-  # GET /cost_names/lookup?q=xx (default: json)
-  def lookup
+  # GET /lookup/cost_names?q=xx (default: json)
+  def cost_names
     @cost_names = Item.select("DISTINCT name").where("name like ?", "%#{params[:q]}%").limit(20).map(&:name)
     @cost_names += Detail.select("DISTINCT name").where("name like ?", "%#{params[:q]}%").limit(20).map(&:name)
     @cost_names = @cost_names.uniq

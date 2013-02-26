@@ -52,7 +52,7 @@ function add_fields(link, association, content) {
   var new_name_selector = "input[id$=_%ID%_name]".replace(/%ID%/, new_id);
   $(new_name_selector).typeahead({
     source: function (name, process) {
-      return $.get('/cost_names/lookup', { q: name }, function (data) {
+      return $.get('/lookup/cost_names', { q: name }, function (data) {
         return process(data);
       });
     },
@@ -182,7 +182,7 @@ $(document).ready(function(){
 
   $("input[id*=_attributes_][id$=_name]").typeahead({
     source: function (name, process) {
-      return $.get('/cost_names/lookup', { q: name }, function (data) {
+      return $.get('/lookup/cost_names', { q: name }, function (data) {
         return process(data);
       });
     },
