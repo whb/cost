@@ -58,6 +58,17 @@ function add_fields(link, association, content) {
     },
     items: 10
   });
+
+  var new_unit_selector = "input[id$=_%ID%_unit]".replace(/%ID%/, new_id);
+  $(new_unit_selector).typeahead({
+    source: function (unit, process) {
+      return $.get('/lookup/units', { q: unit }, function (data) {
+        return process(data);
+      });
+    },
+    items: 10, minLength: 0
+  });
+
   // one select only should run once
   var new_category_selector = "select[id$=_%ID%_category_id]".replace(/%ID%/, new_id);
   $(new_category_selector).select2();
@@ -187,6 +198,16 @@ $(document).ready(function(){
       });
     },
     items: 10
+  });
+
+  // minLength: 0      does not work !!!
+  $("input[id*=_attributes_][id$=_unit]").typeahead({
+    source: function (unit, process) {
+      return $.get('/lookup/units', { q: unit }, function (data) {
+        return process(data);
+      });
+    },
+    items: 10, minLength: 0
   });
 
   // one select only should run once

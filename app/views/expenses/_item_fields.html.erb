@@ -1,8 +1,8 @@
 <tr class="fields">
   <td><%= f.association :category, label_method: :code_name, label: false, input_html: { class: 'input-medium' }  %></td>
-  <td><%= f.input :name, label: false, input_html: { class: 'input-xlarge', autocomplete: "off"  } %></td>
+  <td><%= f.input :name, label: false, input_html: { class: 'input-xlarge', autocomplete: "off" } %></td>
   <td><%= f.input :amount, label: false, input_html: { class: 'input-mini' } %></td>
-  <td><%= f.input :unit, label: false, input_html: { class: 'input-mini' } %></td>
+  <td><%= f.input :unit, label: false, input_html: { class: 'input-mini', autocomplete: "off" } %></td>
   <td><%= f.input :unit_price, label: false, input_html: { class: 'input-mini' } %></td>
   <td><%= f.input :price, label: false, input_html: { class: 'input-mini' } %></td>
   <td><%= link_to_remove_fields t('.destroy', :default => t("helpers.links.destroy")), f %></td>
