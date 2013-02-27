@@ -9,7 +9,7 @@ class Ability
     can :manage, [User, Category, Period, Organization] if user.is? :admin
     if user.is? :staff
       can [:read, :create, :update, :destroy, :query], Expense
-      can [:read, :create, :update, :destroy, :query], Reimbursement
+      can [:read, :query_expenses, :create, :update, :destroy, :query], Reimbursement
     end
     if user.is? :department_manager
       can :manage, Expense
@@ -22,7 +22,7 @@ class Ability
       can [:read, :query], Expense 
       can :manage, Approval
     end
-    can [:read, :commit, :verify], Reimbursement if user.is? :financial_officer
+    can [:read, :list_verify, :commit, :verify], Reimbursement if user.is? :financial_officer
 
     #
     # The first argument to `can` is the action you are giving the user

@@ -52,16 +52,19 @@
 </table>
 
 <!--Expense Modal -->
-<div id="expense_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="expense_modal_label" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="expense_modal_label"><%=t '.title', :default => Expense.model_name.human %></h3>
+<% if @reimbursement.expense %>
+  <div id="expense_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="expense_modal_label" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="expense_modal_label"><%=t '.title', :default => Expense.model_name.human %></h3>
+    </div>
+    <div class="modal-body">
+      <% @expense = @reimbursement.expense %>
+      <% @period = nil %>
+      <%= render :partial => 'shared/expense_with_approvals' %>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true"><%= t('.close', :default => t("helpers.links.close")) %></button>
+    </div>
   </div>
-  <div class="modal-body">
-    <% @expense = @reimbursement.expense %>
-    
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true"><%= t('.close', :default => t("helpers.links.close")) %></button>
-  </div>
-</div>
+<% end %>
