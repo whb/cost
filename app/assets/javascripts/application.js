@@ -213,5 +213,11 @@ $(document).ready(function(){
   // one select only should run once
   $("select[id*=_attributes_]").select2();
 
+
+  $("#reimbursement_print").click(function(e) {
+    window.frames["reimbursement_pdf"].focus();
+    window.frames["reimbursement_pdf"].print();
+  });
+
 });
 

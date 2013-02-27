@@ -15,10 +15,15 @@
   <% if @reimbursement.editable? %>            
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_reimbursement_path(@reimbursement), :class => 'btn' %>
+  <%= link_to t('.print', :default => t("helpers.links.print")),  "",:id => 'reimbursement_print', :class => 'btn btn-primary'  %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               reimbursement_path(@reimbursement),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
-  <% end %>              
+  <% end %>   
+
+             
 </div>
+
+<iframe id="reimbursement_pdf" name="reimbursement_pdf" width="0" height="0" frameborder="0" src="<%= reimbursement_path(@reimbursement) + '.pdf' %>" /> 
