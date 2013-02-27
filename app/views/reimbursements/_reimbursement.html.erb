@@ -19,7 +19,7 @@
     <dt><strong><%= model_class.human_attribute_name(:amount) %>:</strong></dt>
     <dd><%= @reimbursement.amount %></dd>
     <dt><strong><%= model_class.human_attribute_name(:expense_id) %>:</strong></dt>
-    <dd><%= expense_sn @reimbursement.expense %></dd>
+    <dd><%= expense_sn_modal @reimbursement.expense %></dd>
     <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
     <dd><%= t "reimbursements.STATUS_TYPES.#{@reimbursement.status}" %></dd>
   </div>
@@ -31,22 +31,37 @@
 </dl>
 
 <table class="table">
-<tr>
-  <th><%= Detail.human_attribute_name(:category) %></th>
-  <th><%= Detail.human_attribute_name(:name) %></th>
-  <th><%= Detail.human_attribute_name(:amount) %></th>
-  <th><%= Detail.human_attribute_name(:unit) %></th>
-  <th><%= Detail.human_attribute_name(:unit_price) %></th>
-  <th><%= Detail.human_attribute_name(:price) %></th>
-</tr>
-<% for detail in @reimbursement.details %>
-    <tr>
-      <td><%= detail.category.name %></td>
-      <td><%= detail.name %></td>
-      <td><%= detail.amount %></td>
-      <td><%= detail.unit %></td>
-      <td><%= detail.unit_price %></td>
-      <td><%= detail.price %></td>
-    </tr>
-<% end %>
+  <tr>
+    <th><%= Detail.human_attribute_name(:category) %></th>
+    <th><%= Detail.human_attribute_name(:name) %></th>
+    <th><%= Detail.human_attribute_name(:amount) %></th>
+    <th><%= Detail.human_attribute_name(:unit) %></th>
+    <th><%= Detail.human_attribute_name(:unit_price) %></th>
+    <th><%= Detail.human_attribute_name(:price) %></th>
+  </tr>
+  <% for detail in @reimbursement.details %>
+      <tr>
+        <td><%= detail.category.name %></td>
+        <td><%= detail.name %></td>
+        <td><%= detail.amount %></td>
+        <td><%= detail.unit %></td>
+        <td><%= detail.unit_price %></td>
+        <td><%= detail.price %></td>
+      </tr>
+  <% end %>
 </table>
+
+<!--Expense Modal -->
+<div id="expense_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="expense_modal_label" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="expense_modal_label"><%=t '.title', :default => Expense.model_name.human %></h3>
+  </div>
+  <div class="modal-body">
+    <% @expense = @reimbursement.expense %>
+    
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true"><%= t('.close', :default => t("helpers.links.close")) %></button>
+  </div>
+</div>
