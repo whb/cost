@@ -59,9 +59,7 @@
       <h3 id="expense_modal_label"><%=t '.title', :default => Expense.model_name.human %></h3>
     </div>
     <div class="modal-body">
-      <% @expense = @reimbursement.expense %>
-      <% @period = nil %>
-      <%= render :partial => 'shared/expense_with_approvals' %>
+      <%= render 'shared/expense_with_approvals', expense: @reimbursement.expense, show_ref_budget: false %>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true"><%= t('.close', :default => t("helpers.links.close")) %></button>

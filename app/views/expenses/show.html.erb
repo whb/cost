@@ -3,7 +3,7 @@
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
-<%= render :partial => 'shared/expense_with_approvals' %>
+<%= render 'shared/expense_with_approvals' %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")), session[:last_expense_collection_url], :class => 'btn' %> 

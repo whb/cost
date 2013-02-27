@@ -1,31 +1,35 @@
 <%- model_class = Expense -%>
 
-<% if @period != nil %>
-  <%= render  'shared/budgets_sidebar', ref_budget_list: ref_budget_for(@expense, @period.budgets) %>
+<% show_ref_budget = true if local_assigns[:show_ref_budget].nil? %>
+<% period = @period if local_assigns[:period].nil? %>
+<% expense = @expense if local_assigns[:expense].nil? %>
+
+<% if show_ref_budget && period != nil %>
+  <%= render  'shared/budgets_sidebar', ref_budget_list: ref_budget_for(expense, period.budgets) %>
 <% end %>
 
 <dl class="dl-horizontal">
   <div class="span4">
     <dt><strong><%= model_class.human_attribute_name(:sn) %>:</strong></dt>
-    <dd><%= @expense.sn %></dd>
+    <dd><%= expense.sn %></dd>
     <dt><strong><%= model_class.human_attribute_name(:request_on) %>:</strong></dt>
-    <dd><%= @expense.request_on %></dd>
+    <dd><%= expense.request_on %></dd>
   </div>
 
   <div class="span4">
     <dt><strong><%= model_class.human_attribute_name(:organization) %>:</strong></dt>
-    <dd><%= @expense.organization.name %></dd>
+    <dd><%= expense.organization.name %></dd>
     <dt><strong><%= model_class.human_attribute_name(:staff) %>:</strong></dt>
-    <dd><%= @expense.staff %></dd>
+    <dd><%= expense.staff %></dd>
   </div>
 
   <div class="span8">
     <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
-    <dd><%= t "expenses.STATUS_TYPES.#{@expense.status}"  %></dd>
+    <dd><%= t "expenses.STATUS_TYPES.#{expense.status}"  %></dd>
     <dt><strong><%= model_class.human_attribute_name(:abstract) %>:</strong></dt>
-    <dd><%= @expense.abstract %></dd>
+    <dd><%= expense.abstract %></dd>
     <dt><strong><%= model_class.human_attribute_name(:explain) %>:</strong></dt>
-    <dd><pre><%= @expense.explain %></pre></dd>
+    <dd><pre><%= expense.explain %></pre></dd>
   </div>
 </dl>
 
@@ -38,7 +42,7 @@
   <th><%= Item.human_attribute_name(:unit_price) %></th>
   <th><%= Item.human_attribute_name(:price) %></th>
 </tr>
-<% for item in @expense.items %>
+<% for item in expense.items %>
     <tr>
       <td><%= item.category.name %></td>
       <td><%= item.name %></td>
@@ -54,7 +58,7 @@
 <%- associate_model_class = Approval -%>
 
 <ul>
-<% for approval in @expense.approvals %>
+<% for approval in expense.approvals %>
   <% unless approval.new_record? %>
     <li><%= approval.approve_on %>
         <%= t "approvals.LEVEL_TYPES.#{approval.level}" %> (<%= approval.manager %>) : 

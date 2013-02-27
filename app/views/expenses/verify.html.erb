@@ -1,4 +1,4 @@
-<%= render :partial => 'shared/expense_with_approvals' %>
+<%= render 'shared/expense_with_approvals' %>
 
 <%- model_class = Expense -%>
 <%= form_for @expense, :url => url_for(:action => 'commit') do |f| %>
