@@ -20,6 +20,8 @@
   </div>
 
   <div class="span8">
+    <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+    <dd><%= t "expenses.STATUS_TYPES.#{@expense.status}"  %></dd>
     <dt><strong><%= model_class.human_attribute_name(:abstract) %>:</strong></dt>
     <dd><%= @expense.abstract %></dd>
     <dt><strong><%= model_class.human_attribute_name(:explain) %>:</strong></dt>
