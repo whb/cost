@@ -8,7 +8,11 @@
 
 <%= render 'shared/expenses' %>
 
-<a id="toggle" href="#"><i class="icon-list"></i><%= t('.toggle reimbursed expenses') %></a>
+<div class='span9'>
+  <a id="toggle" href="#" class='span2 pull-right'>
+    <i class="icon-list"></i><%= t('.toggle reimbursed expenses') %>
+    </a>
+</div>
 
 <div id="reimbursed_expenses" style="display: none">
   <%= render 'expenses/expenses_datatable', :expenses => @reimbursed_expenses, :show_action => true %>
