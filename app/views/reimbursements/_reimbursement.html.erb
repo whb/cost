@@ -17,7 +17,7 @@
     <dt><strong><%= model_class.human_attribute_name(:staff) %>:</strong></dt>
     <dd><%= @reimbursement.staff %></dd>
     <dt><strong><%= model_class.human_attribute_name(:amount) %>:</strong></dt>
-    <dd><%= @reimbursement.amount %></dd>
+    <dd><%= number_to_currency @reimbursement.amount %></dd>
     <dt><strong><%= model_class.human_attribute_name(:expense_id) %>:</strong></dt>
     <dd><%= expense_sn_modal @reimbursement.expense %></dd>
     <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>

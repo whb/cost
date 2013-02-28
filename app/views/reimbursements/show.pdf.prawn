@@ -20,7 +20,7 @@ prawn_document(:page_size => [105.mm, 190.mm], :margin => 0, :page_layout => :la
     pdf.text_box @reimbursement.abstract, :at => [38.mm, 62.mm]
 
     pdf.text_box @reimbursement.chinese_amount, :at => [38.mm, 48.mm]
-    pdf.text_box @reimbursement.amount.to_s, :at => [150.mm, 48.mm]
+    pdf.text_box (number_to_currency @reimbursement.amount), :at => [150.mm, 48.mm]
 
     pdf.text_box @reimbursement.staff, :at => [160.mm, 36.mm]
   end
