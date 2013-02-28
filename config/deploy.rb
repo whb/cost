@@ -1,4 +1,4 @@
-require "bundler/capistrano" 
+#require "bundler/capistrano" 
 require 'capistrano/ext/multistage'
 
 set :stages, ["staging", "production"]
@@ -13,7 +13,7 @@ set :deploy_via, :remote_cache
 # set :user, "whb"
 # set :deploy_to, "/var/www/cost"
 default_run_options[:pty] = true
-#set :use_sudo, false
+set :use_sudo, false
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
