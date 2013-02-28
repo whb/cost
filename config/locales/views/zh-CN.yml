@@ -47,6 +47,8 @@ zh-CN:
       edit: 编辑「%{model}」
       destroy: 删除「%{model}」
       new: 新建「%{model}」
+    values:
+      none: <无>
     select:
       prompt: 请选择
 
@@ -78,10 +80,6 @@ zh-CN:
     index:
       title: 未完成支出证明列表
       expense_id: 费用申请单
-    show:
-      none: <无>
-    reimbursement:
-      none: <无>
     query:
       title: 查询支出证明  
     navs:

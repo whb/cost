@@ -41,15 +41,15 @@ module ApplicationHelper
   end
 
   def expense_sn(expense)
-    expense ? (link_to expense.sn, expense_path(expense)) : t(".none")
+    expense ? (link_to expense.sn, expense_path(expense)) : t('.none', :default => t("helpers.values.none"))
   end
 
   def expense_sn_modal(expense)
-    expense ? (link_to expense.sn, "#expense_modal", :'data-toggle' => "modal" ) : t(".none")
+    expense ? (link_to expense.sn, "#expense_modal", :'data-toggle' => "modal" ) : t('.none', :default => t("helpers.values.none"))
   end
 
   def print_expense_sn(expense)
-    expense ? expense.sn : t(".none")
+    expense ? expense.sn : t('.none', :default => t("helpers.values.none"))
   end
 
   def controller_is(name)
