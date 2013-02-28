@@ -3,7 +3,7 @@
 <% end %>
 
 
-<%= simple_form_for @expense do |f| %>
+<%= simple_form_for @expense, :html => { :class => 'disable_auto_focus' } do |f| %>
   <%= f.error_notification %> 
   <div class='form-horizontal'>
     <fieldset class="span4">

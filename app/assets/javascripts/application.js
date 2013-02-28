@@ -213,10 +213,15 @@ $(document).ready(function(){
   // one select only should run once
   $("select[id*=_attributes_]").select2();
 
-
+  // pdf iframe print
   $("#reimbursement_print").click(function(e) {
     window.frames["reimbursement_pdf"].focus();
     window.frames["reimbursement_pdf"].print();
+  });
+
+  // auto focus first input EXCEPT expense and reimbursment form
+  $(function() {
+    $(":text:visible:enabled:not([readonly]):first").not("form.disable_auto_focus input").focus();
   });
 
 });

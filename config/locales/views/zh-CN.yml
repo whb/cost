@@ -54,7 +54,7 @@ zh-CN:
 
   shared:
     budgets_sidebar:
-      category: 预算费用类型
+      category: 费用类型
       available: 可用预算
       current: 本次金额
       balance: 剩余预算

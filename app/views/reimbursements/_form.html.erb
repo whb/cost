@@ -10,7 +10,7 @@
 </dl>
 <%= render 'expense_modal' %>
 
-<%= simple_form_for @reimbursement do |f| %>
+<%= simple_form_for @reimbursement, :html => { :class => 'disable_auto_focus' } do |f| %>
   <div class='form-horizontal'>
     <%= f.error_notification %> 
     <%= f.hidden_field :expense_id %>
