@@ -1,7 +1,10 @@
 require "prawn/measurement_extensions"
 
 prawn_document(:page_size => [105.mm, 190.mm], :margin => 0, :page_layout => :landscape) do |pdf|
-  pdf.font("#{Prawn::BASEDIR}/data/fonts/gkai00mp.ttf", :size => 10.5) do
+  kai_font = "#{Prawn::BASEDIR}/data/fonts/gkai00mp.ttf"
+  hei_font = "#{Prawn::BASEDIR}/data/fonts/simhei.ttf"
+  selected_font = FileTest.exists?(hei_font) ? hei_font : kai_font
+  pdf.font("#{selected_font}", :size => 10.5) do
     pdf.text_box Reimbursement.human_attribute_name(:sn) + " : ", :at => [12.mm, 95.mm]
     pdf.text_box @reimbursement.sn, :at => [25.mm, 95.mm]
 
