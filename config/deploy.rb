@@ -1,8 +1,5 @@
 require 'capistrano/ext/multistage'
 
-default_run_options[:pty] = true
-set :use_sudo, false
-
 set :stages, ["staging", "production"]
 set :default_stage, "staging"
 
@@ -14,6 +11,8 @@ set :deploy_via, :remote_cache
 # server "rost.xllg.com", :web, :app, :db, :primary => true
 # set :user, "whb"
 # set :deploy_to, "/var/www/cost"
+default_run_options[:pty] = true
+set :use_sudo, false
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
