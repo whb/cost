@@ -15,6 +15,7 @@ class ApprovalsController < ApplicationController
   def index
     if current_user.is?(:general_manager)
       @expenses = Expense.waiting_general_manager_approval.find_all_by_organization_id current_organization.subtree_ids
+      @expenses += Expense.waiting_manager_approval.find_all_by_organization_id current_organization.self_sons_ids
     else
       @expenses = Expense.waiting_manager_approval.find_all_by_organization_id current_organization.subtree_ids
     end
