@@ -23,7 +23,7 @@
 //= require twitter/bootstrap/bootstrap-button 
 //= require twitter/bootstrap/bootstrap-collapse 
 //= require twitter/bootstrap/bootstrap-carousel 
-//= require twitter/bootstrap/bootstrap-typeahead
+//  require twitter/bootstrap/bootstrap-typeahead
 //= require twitter/bootstrap/bootstrap-affix
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
@@ -200,7 +200,7 @@ $(document).ready(function(){
     items: 10
   });
 
-  // minLength: 0      does not work !!!
+  // minLength: 0    need to patch typeahead.js
   $("input[id*=_attributes_][id$=_unit]").typeahead({
     source: function (unit, process) {
       return $.get('/lookup/units', { q: unit }, function (data) {
