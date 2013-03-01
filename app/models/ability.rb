@@ -8,22 +8,28 @@ class Ability
     can :show, :home if user.is_valid?
     can :manage, [User, Category, Period, Organization] if user.is? :admin
     if user.is? :staff
-      can [:read, :create, :update, :destroy, :query], Expense
-      can [:read, :query_expenses, :create, :update, :destroy, :query], Reimbursement
+      can [:read, :query, :create, :update, :destroy], Expense
+      can [:read, :query, :query_expenses, :create, :update, :destroy], Reimbursement
     end
     if user.is? :department_manager
       can :manage, Expense
+      can [:read, :current], Period 
     end
     if user.is? :vice_manager
       can [:read, :query], Expense 
       can :manage, Approval
+      can [:read, :current], Period 
     end
     if user.is? :general_manager
       can [:read, :query], Expense 
       can :manage, Approval
+      can [:read, :current], Period 
     end
-    can [:read, :list_verify, :commit, :verify], Reimbursement if user.is? :financial_officer
-
+    if user.is? :financial_officer
+      can [:read, :query, :list_verify, :commit, :verify], Reimbursement
+      can [:read, :current], Period 
+    end
+     
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
