@@ -48,16 +48,16 @@ end
 
 desc "Create the default budget"
 task :default_budgets => :environment do
-  create :budget, period: @p_2013, category: @c_1, amount: 50000
-  create :budget, period: @p_2013, category: @c_2, amount: 50000
-  create :budget, period: @p_2013, category: @c_3, amount: 50000
-  create :budget, period: @p_2013, category: @c_4, amount: 50000
-  create :budget, period: @p_2013, category: @c_5, amount: 50000
-  create :budget, period: @p_2013, category: @c_6, amount: 50000
-  create :budget, period: @p_2013, category: @c_7, amount: 50000
-  create :budget, period: @p_2013, category: @c_8, amount: 25000
-  create :budget, period: @p_2013, category: @c_9, amount: 15000
-  create :budget, period: @p_2013, category: @c_10, amount: 20000
+  create :budget, period: @p_2013, category: @c_1, amount: 100000
+  create :budget, period: @p_2013, category: @c_2, amount: 100000
+  create :budget, period: @p_2013, category: @c_3, amount: 100000
+  create :budget, period: @p_2013, category: @c_4, amount: 100000
+  create :budget, period: @p_2013, category: @c_5, amount: 100000
+  create :budget, period: @p_2013, category: @c_6, amount: 100000
+  create :budget, period: @p_2013, category: @c_7, amount: 100000
+  create :budget, period: @p_2013, category: @c_8, amount: 100000
+  create :budget, period: @p_2013, category: @c_9, amount: 100000
+  create :budget, period: @p_2013, category: @c_10, amount: 50000
   create :budget, period: @p_2013, category: @c_11
 end
 

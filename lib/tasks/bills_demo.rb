@@ -11,19 +11,18 @@ task :expenses => :environment do
     expense.sn = Expense.generate_sn
     expense.organization = @whb.organization
     expense.staff = @whb.displayname
-    expense.request_on = (1.month.ago.to_date..Date.today).to_a.sample
-    expense.abstract = "demo摘要及用途......#{i}"
-    expense.explain = "demo填写支出理由、用途说明、购买要求等: 设备已经报废，需要更新; 该经费用于购买演出服装; 请注意机箱的钢板厚度;设备已经报废，需要更新; 该经费用于购买演出服装; 请注意机箱的钢板厚度;《#{i}》"
+    expense.request_on = (2.month.ago.to_date..Date.today).to_a.sample
+    expense.abstract = "演示：摘要及用途......#{i}"
+    expense.explain = "演示：填写支出理由、用途说明、购买要求等: 设备已经报废，需要更新; 该经费用于购买演出服装; 请注意机箱的钢板厚度;设备已经报废，需要更新; 该经费用于购买演出服装; 请注意机箱的钢板厚度;《#{i}》"
     expense.status = [:edit, :commit, :manager_approval, :general_manager_approval].sample
-    3.times do |n|
+    rand(1..5).times do |n|
       item = expense.items.build
       item.category_id = rand(1..11)
       item.name = "费用......#{n}"
-      item.amount = rand(1..15) 
+      item.amount = rand(1..10) 
       item.unit = ["个", "箱", "台", "套"].sample
-      item.unit_price = [1, 2, 5, 10, 50, 100, 200, 1000, 2000, 5000].sample 
+      item.unit_price = [1, 5, 10, 50, 100, 200, 1000, 2000, 5000].sample 
       item.price = item.unit_price * item.amount
-
    end
    expense.save!
   end
