@@ -15,7 +15,8 @@ Cost::Application.routes.draw do
   end
   
   resources :expenses do
-    get :lookup_item_names, :on => :collection, :defaults => { :format => 'json' }
+    get :generate_sn, :on => :collection, :defaults => { :format => 'json' }
+
     get :query, :on => :collection
     get :verify, :on => :member
     put :commit, :on => :member
@@ -26,6 +27,8 @@ Cost::Application.routes.draw do
   resources :approvals, :only => [:index]
 
   resources :reimbursements do
+    get :generate_sn, :on => :collection, :defaults => { :format => 'json' }
+    
     get :query, :on => :collection
     get :verify, :on => :member
     put :commit, :on => :member

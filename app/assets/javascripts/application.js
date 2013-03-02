@@ -224,5 +224,26 @@ $(document).ready(function(){
     $(":text:visible:enabled:not([readonly]):first").not("form.disable_auto_focus input").focus();
   });
 
+  // regenerate expense sn
+  $("#new_expense").find(".error").find("input[id=expense_sn]").click(function() {
+    $.ajax({
+      url: "/expenses/generate_sn",
+      dataType: 'text',
+      success: function(data){
+        $("#expense_sn").val(data);
+      } 
+    }); 
+  });
+
+  $("#new_reimbursement").find(".error").find("input[id=reimbursement_sn]").click(function() {
+    $.ajax({
+      url: "/reimbursements/generate_sn",
+      dataType: 'text',
+      success: function(data){
+        $("#reimbursement_sn").val(data);
+      } 
+    }); 
+  });
+
 });
 

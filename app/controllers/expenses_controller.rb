@@ -57,6 +57,13 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def generate_sn
+    sn = Expense.generate_sn
+    respond_to do |format|
+      format.json { render json: sn}
+    end
+  end
+
   # GET /expenses/1/edit
   def edit
     @expense = Expense.find(params[:id])

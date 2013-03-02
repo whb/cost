@@ -84,6 +84,13 @@ class ReimbursementsController < ApplicationController
     end
   end
 
+  def generate_sn
+    sn = Reimbursement.generate_sn
+    respond_to do |format|
+      format.json { render json: sn}
+    end
+  end
+
   # GET /reimbursements/1/edit
   def edit
     @reimbursement = Reimbursement.find(params[:id])

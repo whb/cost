@@ -88,3 +88,11 @@ zh-CN:
           attributes:
             explain: 
               blank: 不同意时，请说明原因
+        expense:
+          attributes:
+            sn: 
+              taken: 已经被使用（点击输入框，生成新编号）
+        reimbursement:
+          attributes:
+            sn: 
+              taken: 已经被使用（点击输入框，生成新编号）
