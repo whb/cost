@@ -108,9 +108,11 @@ zh-CN:
       manager_approval: 主管经理审批
       general_manager_approval: 总经理审批
   cost_report:
+    month_title: ' / 月份'
     organization_months:
       title: 各部门按月费用统计
-      month_title: ' / 月份'
+    category_months:
+      title: 各类型按月费用统计
 
   organizations:
     index:
