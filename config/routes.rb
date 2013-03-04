@@ -1,4 +1,7 @@
 Cost::Application.routes.draw do
+  get "cost_report/organization_months"
+  get "cost_report/category_months"
+
   get "lookup/cost_names", :defaults => { :format => 'json' }
   get "lookup/units", :defaults => { :format => 'json' }
 

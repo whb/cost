@@ -41,6 +41,7 @@ function remove_fields(link) {
   $(link).prev("input[type=hidden]").val(true);
   $(link).parents(".fields").hide();
   redraw_ref_budget();
+  update_summary();
 }
 
 function add_fields(link, association, content) {

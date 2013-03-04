@@ -5,7 +5,7 @@ class ExpensesController < ApplicationController
   
   def remember_last_collections_url
     last_collections_url = request.env['HTTP_REFERER'] || expenses_url
-    if [expenses_url, query_expenses_url, query_expenses_reimbursements_url].include? last_collections_url
+    if [expenses_url, query_expenses_url, query_expenses_reimbursements_url, approvals_url].include? last_collections_url
       session[:last_expense_collection_url] = last_collections_url
     end
   end
