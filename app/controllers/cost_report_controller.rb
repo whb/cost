@@ -3,18 +3,32 @@ class CostReportController < ApplicationController
 
   def organization_months
     @organization_amount_hash = {}
+    @category = Category.find(params[:category_id]) if (params[:category_id])
 
-    Organization.all.each do | o |
-      @organization_amount_hash[o] = []
-
-      1.upto(12).each do | month |
-        begin_date, end_date = month_begin_end_date month 
-        sum_amount = Reimbursement.where({:reimburse_on => begin_date...end_date, :organization_id => o.id}).sum(:amount)
-
-        @organization_amount_hash[o][month] = sum_amount
+    1.upto(12).each do | month |
+      organization_sum = sum_organization_by_group(params[:category_id], month)
+      Organization.all.each do | o |
+        get_initialized_hash(@organization_amount_hash, o)[month] =
+          organization_sum[o.id] ? organization_sum[o.id] : 0.00
       end
     end
   end
+
+  def sum_organization_by_group(category_id, month)
+    if (category_id)
+      Detail.joins(:reimbursement).
+        group('reimbursements.organization_id').
+        where({'reimbursements.reimburse_on' => begin_to_end_of(month),
+               :category_id => category_id}).
+        sum(:price)
+    else
+      Reimbursement.group(:organization_id).
+        where({:reimburse_on => begin_to_end_of(month)}).
+        sum(:amount)
+    end
+  end
+
+
 
   def category_months
     @category_amount_hash = {}
@@ -23,9 +37,10 @@ class CostReportController < ApplicationController
       @category_amount_hash[c] = []
 
       1.upto(12).each do | month |
-        begin_date, end_date = month_begin_end_date month 
-        sum_amount = Detail.joins(:reimbursement).where({'reimbursements.reimburse_on' => begin_date...end_date, :category_id => c.id})
-                           .sum(:price)
+        sum_amount = Detail.joins(:reimbursement).
+          where({'reimbursements.reimburse_on' => begin_to_end_of(month),
+                 :category_id => c.id}).
+          sum(:price)
 
         @category_amount_hash[c][month] = sum_amount
       end
@@ -33,7 +48,7 @@ class CostReportController < ApplicationController
   end
 
   private
-  def month_begin_end_date(month)
+  def begin_to_end_of(month)
     this_year = Date.today.year
     begin_date = Date.new(this_year, month, 1)
     if (month == 12)
@@ -41,6 +56,10 @@ class CostReportController < ApplicationController
     else
       end_date = Date.new(this_year, month+1, 1)
     end
-    return begin_date, end_date
+    return begin_date...end_date
+  end
+
+  def get_initialized_hash(hash, o)
+    hash[o] ||= []
   end
 end
