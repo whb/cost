@@ -31,28 +31,21 @@ class CostReportController < ApplicationController
 
   def sum_organization_by_group(category_id, month)
     if (category_id)
-      Detail.joins(:reimbursement).
-        group('reimbursements.organization_id').
-        where({'reimbursements.reimburse_on' => begin_to_end_of(month),
-               :category_id => category_id}).
-        sum(:price)
+      Detail.committed.interval(begin_to_end_of(month)).belongs_to_category(category_id).
+        joins(:reimbursement).group(:organization_id).sum(:price)
     else
-      Reimbursement.group(:organization_id).
-        where({:reimburse_on => begin_to_end_of(month)}).
-        sum(:amount)
+      Reimbursement.committed.interval(begin_to_end_of(month)).
+        group(:organization_id).sum(:amount)
     end
   end
 
   def sum_category_by_group(organization_id, month)
     if (organization_id)
-      Detail.joins(:reimbursement).group(:category_id).
-        where({ 'reimbursements.reimburse_on' => begin_to_end_of(month),
-                'reimbursements.organization_id' => organization_id }).
-        sum(:price)
+      Detail.committed.interval(begin_to_end_of(month)).belongs_to_organization(organization_id).
+        group(:category_id).sum(:price)
     else
-      Detail.joins(:reimbursement).group(:category_id).
-        where({ 'reimbursements.reimburse_on' => begin_to_end_of(month) }).
-        sum(:price)
+      Detail.committed.interval(begin_to_end_of(month)).
+        group(:category_id).sum(:price)
     end
   end
 

@@ -17,6 +17,8 @@ class Reimbursement < ActiveRecord::Base
   enum :status, STATUS_TYPES
 
   scope :activing, where(:status => :edit)
+  scope :committed, where(:status => :commit)
+  scope :interval, lambda { |interval|  where(:reimburse_on => interval) }
 
   def chinese_amount
     number_to_capital_zh(self.amount)

@@ -6,8 +6,11 @@ class Detail < ActiveRecord::Base
 
   scope :committed, :joins => :reimbursement, :conditions => "status = 'commit'"
   scope :year, lambda { |year| { :joins => :reimbursement, :conditions => ["YEAR(reimburse_on) = #{year}"] } }
+  scope :interval, lambda { |interval| joins(:reimbursement).where('reimbursements.reimburse_on' => interval) }
+  scope :belongs_to_category, lambda { |category_id| where(:category_id => category_id) }
+  scope :belongs_to_organization, lambda { |organization_id| joins(:reimbursement).where({'reimbursements.organization_id' => organization_id})}
 
-  def copy(item) 
+  def copy(item)
     self.category_id = item.category_id
     self.name = item.name
     self.amount = item.amount
