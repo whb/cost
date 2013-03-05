@@ -9,10 +9,25 @@ class CostReportController < ApplicationController
       organization_sum = sum_organization_by_group(params[:category_id], month)
       Organization.all.each do | o |
         get_initialized_hash(@organization_amount_hash, o)[month] =
-          organization_sum[o.id] ? organization_sum[o.id] : 0.00
+          organization_sum[o.id] ? organization_sum[o.id] : ""
       end
     end
   end
+
+  def category_months
+    @category_amount_hash = {}
+    @organization = Organization.find(params[:organization_id]) if (params[:organization_id])
+
+    1.upto(12).each do | month |
+      category_sum = sum_category_by_group(params[:organization_id], month)
+      Category.all.each do | c |
+        get_initialized_hash(@category_amount_hash, c)[month] =
+          category_sum[c.id] ? category_sum[c.id] : ""
+      end
+    end
+  end
+
+  private
 
   def sum_organization_by_group(category_id, month)
     if (category_id)
@@ -28,26 +43,19 @@ class CostReportController < ApplicationController
     end
   end
 
-
-
-  def category_months
-    @category_amount_hash = {}
-
-    Category.all.each do | c |
-      @category_amount_hash[c] = []
-
-      1.upto(12).each do | month |
-        sum_amount = Detail.joins(:reimbursement).
-          where({'reimbursements.reimburse_on' => begin_to_end_of(month),
-                 :category_id => c.id}).
-          sum(:price)
-
-        @category_amount_hash[c][month] = sum_amount
-      end
+  def sum_category_by_group(organization_id, month)
+    if (organization_id)
+      Detail.joins(:reimbursement).group(:category_id).
+        where({ 'reimbursements.reimburse_on' => begin_to_end_of(month),
+                'reimbursements.organization_id' => organization_id }).
+        sum(:price)
+    else
+      Detail.joins(:reimbursement).group(:category_id).
+        where({ 'reimbursements.reimburse_on' => begin_to_end_of(month) }).
+        sum(:price)
     end
   end
 
-  private
   def begin_to_end_of(month)
     this_year = Date.today.year
     begin_date = Date.new(this_year, month, 1)
