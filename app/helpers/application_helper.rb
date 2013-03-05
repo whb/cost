@@ -55,4 +55,10 @@ module ApplicationHelper
   def controller_is(name)
     @current_controller == name
   end
+
+  def details_query_path(category, organization, month)
+    category_id = category ? category.id : 0
+    organization_id = organization ? organization.id : 0
+    "/details/#{category_id}/#{organization_id}/#{month}"
+  end
 end

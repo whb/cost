@@ -38,6 +38,9 @@ Cost::Application.routes.draw do
     get :query_expenses, :on => :collection
     get :list_verify, :on => :collection
   end
+  resources :details, :only => [:query]
+  get 'details/:category_id/:organization_id/:month', :to => 'details#query'
+  # match '/:year/:month/:day/:slug', :to => 'articles#show', :constraints => {:year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/ }
 
   root :to => 'home#index'
 

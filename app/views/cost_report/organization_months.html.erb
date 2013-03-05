@@ -19,7 +19,7 @@
     <tr>
       <td><%= org.name %></td>
       <% 1.upto(12).each do | month | %>
-        <td><%= month_amount[month] %></td>
+        <td><%= link_to month_amount[month], details_query_path(@category, org, month) %></td>
       <% end %>
     </tr>
     <% end %>
