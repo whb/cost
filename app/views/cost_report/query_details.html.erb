@@ -1,0 +1,7 @@
+<h1><%= @category.name %></h1>
+<h1><%= @organization.name %></h1>
+<h1><%= @month %></h1>
+
+<% @reimbursements.each do |reimbursement| %>
+  <%= render 'reimbursement_details', :reimbursement => reimbursement, :selected_category => @category %>      
+<% end %>

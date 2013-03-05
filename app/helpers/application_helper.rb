@@ -61,4 +61,8 @@ module ApplicationHelper
     organization_id = organization ? organization.id : '*'
     "/details/#{category_id}-#{organization_id}-#{month}"
   end
+
+  def css_of_detail(detail, selected_category) 
+    detail.category == selected_category ? 'info' : ''
+  end
 end

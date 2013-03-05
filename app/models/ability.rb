@@ -9,7 +9,7 @@ class Ability
     can :manage, [User, Category, Period, Organization] if user.is? :admin
     if user.is? :staff
       can [:read, :query, :create, :generate_sn, :update, :destroy], Expense
-      can [:read, :query, :query_expenses, :create, :generate_sn, :update, :destroy], Reimbursement
+      can [:read, :query, :query_expenses, :query_details, :create, :generate_sn, :update, :destroy], Reimbursement
     end
     if user.is? :department_manager
       can :manage, Expense

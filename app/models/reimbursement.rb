@@ -19,6 +19,7 @@ class Reimbursement < ActiveRecord::Base
   scope :activing, where(:status => :edit)
   scope :committed, where(:status => :commit)
   scope :interval, lambda { |interval|  where(:reimburse_on => interval) }
+  scope :has_category, lambda { |category_id| joins(:details).where('details.category_id' => category_id) }
 
   def chinese_amount
     number_to_capital_zh(self.amount)

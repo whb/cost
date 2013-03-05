@@ -27,6 +27,16 @@ class CostReportController < ApplicationController
     end
   end
 
+  
+  def query_details
+    @category = Category.find(params[:category_id]) if (params[:category_id])
+    @organization = Organization.find(params[:organization_id]) if (params[:organization_id])
+    @month = params[:month].to_i if (params[:month])
+
+    @reimbursements = Reimbursement.committed.interval(begin_to_end_of(@month)).
+      has_category(@category.id).find_all_by_organization_id(@organization.id)
+  end
+
   private
 
   def sum_organization_by_group(category_id, month)
@@ -47,17 +57,6 @@ class CostReportController < ApplicationController
       Detail.committed.interval(begin_to_end_of(month)).
         group(:category_id).sum(:price)
     end
-  end
-
-  def begin_to_end_of(month)
-    this_year = Date.today.year
-    begin_date = Date.new(this_year, month, 1)
-    if (month == 12)
-      end_date = Date.new(this_year + 1, 1, 1)
-    else
-      end_date = Date.new(this_year, month+1, 1)
-    end
-    return begin_date...end_date
   end
 
   def get_initialized_hash(hash, o)

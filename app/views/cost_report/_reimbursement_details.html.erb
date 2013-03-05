@@ -1,0 +1,56 @@
+<%- model_class = Reimbursement -%>
+<div class="bill">
+  <dl class="dl-horizontal">
+    <div class="span4">
+      <dt><strong><%= model_class.human_attribute_name(:sn) %>:</strong></dt>
+      <dd><%= reimbursement.sn %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:reimburse_on) %>:</strong></dt>
+      <dd><%= reimbursement.reimburse_on %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:chinese_amount) %>:</strong></dt>
+      <dd><%= reimbursement.chinese_amount %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:invoice_no) %>:</strong></dt>
+      <dd><%= reimbursement.invoice_no %></dd> 
+    </div>
+
+    <div class="span4">
+      <dt><strong><%= model_class.human_attribute_name(:organization) %>:</strong></dt>
+      <dd><%= reimbursement.organization.name %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:staff) %>:</strong></dt>
+      <dd><%= reimbursement.staff %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:amount) %>:</strong></dt>
+      <dd><%= number_to_currency reimbursement.amount %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:expense_id) %>:</strong></dt>
+      <dd><%= expense_sn_modal reimbursement.expense %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+      <dd><%= t "reimbursements.STATUS_TYPES.#{reimbursement.status}" %></dd>
+    </div>
+
+    <div class="span8">
+      <dt><strong><%= model_class.human_attribute_name(:abstract) %>:</strong></dt>
+      <dd><%= reimbursement.abstract %></dd>
+    </div>
+  </dl>
+
+  <table class="table">
+    <tr>
+      <th><%= Detail.human_attribute_name(:category) %></th>
+      <th><%= Detail.human_attribute_name(:name) %></th>
+      <th><%= Detail.human_attribute_name(:amount) %></th>
+      <th><%= Detail.human_attribute_name(:unit) %></th>
+      <th><%= Detail.human_attribute_name(:unit_price) %></th>
+      <th><%= Detail.human_attribute_name(:price) %></th>
+    </tr>
+    <% for detail in reimbursement.details %>
+        <tr class="<%= css_of_detail(detail, selected_category) %>">
+          <td><%= detail.category.name %></td>
+          <td><%= detail.name %></td>
+          <td><%= detail.amount %></td>
+          <td><%= detail.unit %></td>
+          <td><%= detail.unit_price %></td>
+          <td><%= detail.price %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+
+

@@ -1,6 +1,8 @@
 Cost::Application.routes.draw do
   get "cost_report/organization_months"
   get "cost_report/category_months"
+  get "cost_report/query_details"
+  get 'query_reimbursement_details/:category_id-:organization_id-:month', :to => 'cost_report#query_details'
 
   get "lookup/cost_names", :defaults => { :format => 'json' }
   get "lookup/units", :defaults => { :format => 'json' }
@@ -37,6 +39,7 @@ Cost::Application.routes.draw do
     put :commit, :on => :member
     get :query_expenses, :on => :collection
     get :list_verify, :on => :collection
+    get :query_details, :on => :collection
   end
   resources :details, :only => [:query]
   get 'details/:category_id-:organization_id-:month', :to => 'details#query'
