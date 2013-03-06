@@ -56,10 +56,15 @@ module ApplicationHelper
     @current_controller == name
   end
 
-  def details_query_path(category, organization, month)
+  def smart_detail_list_path(category, organization, month)
     category_id = category ? category.id : '*'
     organization_id = organization ? organization.id : '*'
-    "/details/#{category_id}-#{organization_id}-#{month}"
+    detail_list_path(category_id, organization_id, month)
+  end
+
+  def link_details_query(amount, category, organization, month)
+    return '' unless amount
+    link_to amount, smart_detail_list_path(category, organization, '*')
   end
 
   def css_of_detail(detail, selected_category) 

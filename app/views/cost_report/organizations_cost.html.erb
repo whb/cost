@@ -18,7 +18,7 @@
     <tr>
       <td><%= c.name %></td>
       <% @organizations.each do | o | %>
-        <td><%= @organizations_cost_hash[[c.id, o.id]] %></td>
+        <td><%= link_details_query(@organizations_cost_hash[[c.id, o.id]], c, o, '*')  %></td>
       <% end %>
     </tr>
     <% end %>
