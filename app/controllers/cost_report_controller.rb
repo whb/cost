@@ -28,7 +28,7 @@ class CostReportController < ApplicationController
   end
 
   
-  def query_details
+  def reimbursement_list
     @category = Category.find(params[:category_id]) if (params[:category_id])
     @organization = Organization.find(params[:organization_id]) if (params[:organization_id])
     @month = params[:month].to_i if (params[:month])
