@@ -8,18 +8,25 @@ class CostReportController < ApplicationController
   end
 
   def detail_list
-    @category = Category.find(params[:category_id]) if (params[:category_id])
-    @organization = Organization.find(params[:organization_id]) if (params[:organization_id])
-    @month = params[:month] if (params[:month])
-
-    if @month == '*'
-      @details = Detail.committed.this_year.
-        belongs_to_category(@category.id).belongs_to_organization(@organization.id)
+    if (params[:month] == '*')
+      @month = params[:month]
+      @details = Detail.committed.this_year
     else
-      @month = @month.to_i
-      @details = Detail.committed.interval(begin_to_end_of(@month)).
-        belongs_to_category(@category.id).belongs_to_organization(@organization.id)
+      @month = params[:month].to_i
+      @details = Detail.committed.interval(begin_to_end_of(@month))
     end
+
+    if (params[:category_id] != '*')
+      @category = Category.find(params[:category_id]) 
+      @details = @details.belongs_to_category(@category.id)
+    end
+
+    if (params[:organization_id] != '*')
+      @organization = Organization.find(params[:organization_id])
+      @details = @details.belongs_to_organization(@organization.id)
+    end
+
+    @details
   end
 
   def organization_months

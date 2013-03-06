@@ -70,4 +70,11 @@ module ApplicationHelper
   def css_of_detail(detail, selected_category) 
     detail.category == selected_category ? 'info' : ''
   end
+
+  def detail_list_title(category, organization, month)
+    category_name = category ? category.name : t('All Categories')
+    organization_name = organization ? organization.name : t('All Organizations')
+    month_name = (month == '*') ? t('Whole Year') : month.to_s + t('month')
+    organization_name + '(' + category_name + ')' + ' : ' + month_name + t('Cost Details')
+  end
 end
