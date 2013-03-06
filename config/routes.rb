@@ -3,6 +3,7 @@ Cost::Application.routes.draw do
   get "cost_report/category_months"
   get "organizations_cost" => 'cost_report#organizations_cost'
   get 'organization_cost/:organization_id' => 'cost_report#organization_cost'
+  get 'category_cost/:category_id' => 'cost_report#category_cost'
   match 'reimbursement_list/:category_id-:organization_id-:month' => 'cost_report#reimbursement_list', :as => :reimbursement_list,
     :constraints => {:category_id => /(\d+)|(\*)/, :organization_id => /(\d+)|(\*)/, :month => /\d{1,2}|(\*)/}
   match 'detail_list/:category_id-:organization_id-:month' => 'details#query', :as => :detail_list,

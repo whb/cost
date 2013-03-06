@@ -1,6 +1,12 @@
 class CostReportController < ApplicationController
   skip_authorization_check
 
+  def organizations_cost
+    @organizations = Organization.all
+    @categories = Category.all
+    @organizations_cost_hash = Detail.committed.this_year.joins(:reimbursement).group([:category_id, :organization_id]).sum(:price)
+  end
+
   def organization_months
     @organization_amount_hash = {}
     @category = Category.find(params[:category_id]) if (params[:category_id])
