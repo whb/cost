@@ -39,8 +39,11 @@
         <% end %> 
         <%= menu_item t(".Reimbursement query"), query_reimbursements_path %> 
       <% end %>
+    <% end %>
 
-      <%= menu_item t(".Budget Supervise"), current_periods_path %>
+    <%= drop_down t(".Budget Supervise") do %>
+      <%= menu_item t(".Current budget"), current_periods_path %>
+      <%= menu_item t(".Organizations cost"), organizations_cost_path %>
     <% end %>
 
     <% if can? :manage, User %>

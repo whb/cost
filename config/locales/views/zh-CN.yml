@@ -113,6 +113,9 @@ zh-CN:
       title: 各部门按月费用统计
     category_months:
       title: 各类型按月费用统计
+    organizations_cost:
+      title: 各部门费用统计
+      table_annotate: 分类 / 部门
 
   organizations:
     index:
@@ -155,4 +158,3 @@ zh-CN:
   Logged in!: 登录成功!
   Invalid username or password: 无效的用户名和密码
   Logged out!: 退出成功
-  
