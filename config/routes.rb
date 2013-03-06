@@ -2,7 +2,8 @@ Cost::Application.routes.draw do
   get "cost_report/organization_months"
   get "cost_report/category_months"
   get "cost_report/query_details"
-  get 'query_reimbursement_details/:category_id-:organization_id-:month', :to => 'cost_report#query_details'
+  get 'query_reimbursement_details/:category_id-:organization_id-:month', :to => 'cost_report#query_details', 
+    :constraints => {:category_id => /(\d+)|(\*)/, :organization_id => /(\d+)|(\*)/, :month => /\d{1,2}|(\*)/}
 
   get "lookup/cost_names", :defaults => { :format => 'json' }
   get "lookup/units", :defaults => { :format => 'json' }
@@ -42,8 +43,8 @@ Cost::Application.routes.draw do
     get :query_details, :on => :collection
   end
   resources :details, :only => [:query]
-  get 'details/:category_id-:organization_id-:month', :to => 'details#query'
-  # match '/:year/:month/:day/:slug', :to => 'articles#show', :constraints => {:year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/ }
+  get 'details/:category_id-:organization_id-:month', :to => 'details#query',
+    :constraints => {:category_id => /(\d+)|(\*)/, :organization_id => /(\d+)|(\*)/, :month => /\d{1,2}|(\*)/}
 
   root :to => 'home#index'
 
