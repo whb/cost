@@ -100,4 +100,9 @@ module ApplicationHelper
     month_name = (month == '*') ? t('Whole Year') : month.to_s + t('month')
     organization_name + '(' + category_name + ')' + ' : ' + month_name + t('Reimbursement List')
   end
+
+  def category_cost_title(category)
+    category_name = category ? category.name : t('All Categories')
+    category_name + t('.title')
+  end
 end

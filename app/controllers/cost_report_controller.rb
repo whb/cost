@@ -46,6 +46,26 @@ class CostReportController < ApplicationController
     @selected_organization_id = @organization.id if @organization
   end
 
+  def category_cost
+    @category = Category.find(params[:category_id]) unless params[:category_id].blank?
+    @organization_amount_hash = {}
+    1.upto(12).each do | month |
+      if (@category)
+        organization_sum = Detail.committed.interval(begin_to_end_of(month)).belongs_to_category(@category.id).
+          joins(:reimbursement).group(:organization_id).sum(:price)
+      else
+        organization_sum = Reimbursement.committed.interval(begin_to_end_of(month)).
+          group(:organization_id).sum(:amount)
+      end
+
+      Organization.all.each do | o |
+        get_initialized_hash(@organization_amount_hash, o)[month] =
+          organization_sum[o.id] ? organization_sum[o.id] : ""
+      end
+    end
+    @selected_category_id = @category.id if @category
+  end
+
   def reimbursement_list
     if (params[:month] == '*')
       @month = params[:month]

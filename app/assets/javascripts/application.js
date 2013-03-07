@@ -250,5 +250,9 @@ $(document).ready(function(){
      $("#select_organization_id").submit();
   });
 
+  $("#category_id").change(function(e) {
+     $("#select_category_id").submit();
+  });
+
 });
 

@@ -15,6 +15,7 @@ zh-CN:
       Current budget: 预算使用情况
       Organizations cost: 部门累计费用支出
       Organization cost: 部门按月费用支出
+      Category cost: 费用类型按月费用支出
       Basic Data Admin: 基础数据管理
       Organizations: 组织机构
       Users: 用户
@@ -122,6 +123,9 @@ zh-CN:
     organization_cost:
       title: 按月费用支出
       table_annotate: 分类 / 月份
+    category_cost:
+      title: 费用支出
+      table_annotate: 部门 / 月份
 
   organizations:
     index:
@@ -171,3 +175,4 @@ zh-CN:
   Cost Details: 费用明细
   Reimbursement List: 支出证明单列表
   Select Organization: 选择部门...
+  Select Category: 选择分类...
