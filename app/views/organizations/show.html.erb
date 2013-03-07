@@ -8,6 +8,8 @@
   <dd><%= @organization.code %></dd>
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @organization.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:kind) %>:</strong></dt>
+  <dd><%= display_kind @organization %></dd>
   <dt><strong><%= model_class.human_attribute_name(:superior_id) %>:</strong></dt>
   <dd><%=superior_name @organization %></dd>
 </dl>

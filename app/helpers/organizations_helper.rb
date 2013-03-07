@@ -8,7 +8,7 @@ module OrganizationsHelper
   end
 
   def display_kind(organization)
-    return ' ' if organization.kind
+    return ' ' unless organization.kind
     t "organizations.KIND_TYPES.#{organization.kind}" 
   end
 end
