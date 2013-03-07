@@ -8,6 +8,8 @@ class Organization < ActiveRecord::Base
   validates_uniqueness_of :code, :name
   validates_presence_of :code, :name
 
+  scope :department, where(:kind => :department)
+
   KIND_TYPES = {
     :department => "部门",
   }

@@ -5,7 +5,7 @@
 
   <%= form_tag organization_cost_path, :id => :select_organization_id, :method => :get, :class => 'pull-right' do %>
   <div class="field">
-    <%= select_tag "organization_id", options_from_collection_for_select(Organization.all, "id", "name", @selected_organization_id), 
+    <%= select_tag "organization_id", options_from_collection_for_select(Organization.department, "id", "name", @selected_organization_id), 
       :prompt => t('Select Organization...') %>
   </div>
 <% end %>
