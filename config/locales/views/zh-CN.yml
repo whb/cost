@@ -11,7 +11,10 @@ zh-CN:
       Reimbursement create: 填写支出证明
       Reimbursement commit: 审核支出证明
       Reimbursement query: 查询支出证明
-      Budget Supervise: 预算监督
+      Statistics report: 统计报表
+      Current budget: 预算使用情况
+      Organizations cost: 部门累计费用支出
+      Organization cost: 部门按月费用支出
       Basic Data Admin: 基础数据管理
       Organizations: 组织机构
       Users: 用户
@@ -114,8 +117,11 @@ zh-CN:
     category_months:
       title: 各类型按月费用统计
     organizations_cost:
-      title: 各部门费用统计
+      title: 各部门累计费用支出
       table_annotate: 分类 / 部门
+    organization_cost:
+      title: 按月费用支出
+      table_annotate: 分类 / 月份
 
   organizations:
     index:

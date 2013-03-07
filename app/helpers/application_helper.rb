@@ -77,4 +77,9 @@ module ApplicationHelper
     month_name = (month == '*') ? t('Whole Year') : month.to_s + t('month')
     organization_name + '(' + category_name + ')' + ' : ' + month_name + t('Cost Details')
   end
+
+  def organization_cost_title(organization)
+    organization_name = organization ? organization.name : t('All Organizations')
+    organization_name + t('.title')
+  end
 end
