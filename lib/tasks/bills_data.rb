@@ -13,7 +13,8 @@ end
 
 desc "Add reimbursement bills"
 task :reimbursements => :environment do
-  create_list :reimbursement, 20, :bill_part
+  create_list :reimbursement, 20, :bill_part, status: 'edit'
+  create_list :reimbursement, 200, :bill_part, status: 'commit'
 end
 
 desc "Add expense bills"
