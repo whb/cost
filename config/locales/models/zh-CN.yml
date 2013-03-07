@@ -60,7 +60,9 @@ zh-CN:
       organization:
         code: 编号
         name: 名称
+        kind: 类型
         superior_id: 上级机构
+        superior: 上级机构
       user:
         username: 用户名
         displayname: 姓名

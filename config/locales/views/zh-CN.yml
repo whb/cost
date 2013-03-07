@@ -129,7 +129,9 @@ zh-CN:
 
   organizations:
     index:
-        title: 组织机构列表
+      title: 组织机构列表
+    KIND_TYPES: 
+      department: 部门
   periods:
     index:
         title: 年度预算列表

@@ -1,22 +1,10 @@
-<%= form_for @organization, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :code, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :code, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :superior_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.collection_select(:superior_id, Organization.all, :id, :name, { :prompt => true }) %>
-    </div>
-  </div>
+<%= simple_form_for @organization, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.error_notification %> 
+  <%= f.input :code %>
+  <%= f.input :name %>
+  <%= f.input :kind, collection: kind_types %>
+  <%= f.association :superior, collection: Organization.all %>
+
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

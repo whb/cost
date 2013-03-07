@@ -7,6 +7,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:code) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:kind) %></th>
       <th><%= model_class.human_attribute_name(:superior_id) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -14,8 +15,9 @@
   <tbody>
     <% @organizations.each do |organization| %>
       <tr>
-         <td><%= link_to organization.code, organization_path(organization) %></td>
+        <td><%= link_to organization.code, organization_path(organization) %></td>
         <td><%= organization.name %></td>
+        <td><%= t "organizations.KIND_TYPES.#{organization.kind}"  %></td>
         <td><%=superior_name organization %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
