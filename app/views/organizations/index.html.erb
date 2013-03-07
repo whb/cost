@@ -17,8 +17,8 @@
       <tr>
         <td><%= link_to organization.code, organization_path(organization) %></td>
         <td><%= organization.name %></td>
-        <td><%= t "organizations.KIND_TYPES.#{organization.kind}"  %></td>
-        <td><%=superior_name organization %></td>
+        <td><%= display_kind organization %></td>
+        <td><%= superior_name organization %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_organization_path(organization), :class => 'btn btn-mini' %>
