@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <%= render "shared/flash_messages", flash: flash %> 
+    <div class="span9"><%= yield %></div>
+    <div class="span3">
+      <%=yield :sidebar %>   
+    </div>
+  </div>
+</div>

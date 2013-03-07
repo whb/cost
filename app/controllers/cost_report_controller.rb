@@ -1,4 +1,5 @@
 class CostReportController < ApplicationController
+  layout 'report'
   skip_authorization_check
 
   def organizations_cost

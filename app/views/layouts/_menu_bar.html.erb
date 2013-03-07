@@ -1,0 +1,52 @@
+<%= nav_bar :fixed => :top, :brand => t(".Cost System"), :responsive => true do %>
+  <%= menu_group do %>
+
+    <%= menu_item t(".Home"), root_path %>
+
+    <% if can? :read, Expense %>
+      <%= drop_down t(".Expenses") do %>
+        <% if can? :create, Expense %>
+          <%= menu_item t(".Expense request/commit"), expenses_path %>
+        <% end %>
+        <% if can? :read, Approval %>
+          <%= menu_item t(".Expense approval"), approvals_path %>
+        <% end %> 
+        <%= menu_item t(".Expense query"), query_expenses_path %> 
+      <% end %>
+    <% end %>
+
+    <% if can? :read, Reimbursement %>
+      <%= drop_down t(".Reimbursement") do %>
+        <% if can? :create, Reimbursement %>
+          <%= menu_item t(".Reimbursement create"), reimbursements_path %>
+        <% end %>
+        <% if can? :commit, Reimbursement %>
+          <%= menu_item t(".Reimbursement commit"), list_verify_reimbursements_path %>
+        <% end %> 
+        <%= menu_item t(".Reimbursement query"), query_reimbursements_path %> 
+      <% end %>
+    <% end %>
+
+    <%= drop_down t(".Budget Supervise") do %>
+      <%= menu_item t(".Current budget"), current_periods_path %>
+      <%= menu_item t(".Organizations cost"), organizations_cost_path %>
+    <% end %>
+
+    <% if can? :manage, User %>
+      <%= drop_down t(".Basic Data Admin") do %>
+        <%= menu_item t(".Organizations"), organizations_path %>
+        <%= menu_item t(".Users"), users_path %>
+        <%= menu_item t(".Categories"), categories_path %>
+        <%= menu_item t(".Periods"), periods_path %>
+      <% end %>
+    <% end %>
+    
+  <% end %>
+
+  <%= menu_group :pull => :right do %>
+    <% if current_user %>
+      <%= menu_item current_user.displayname %><%= menu_item t(".Log Out"), logout_path %>
+    <% end %>
+  <% end %>
+
+<% end %>
