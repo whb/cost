@@ -1,6 +1,8 @@
-<h1><%= @category.name %></h1>
-<h1><%= @organization.name %></h1>
-<h1><%= @month %></h1>
+<div class="page-header">
+  <h1>
+    <%= reimbursement_list_title @category, @organization, @month %> 
+  </h1>
+</div>
 
 <% @reimbursements.each do |reimbursement| %>
   <%= render 'reimbursement_details', :reimbursement => reimbursement, :selected_category => @category %>      

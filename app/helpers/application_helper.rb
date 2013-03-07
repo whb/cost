@@ -82,4 +82,22 @@ module ApplicationHelper
     organization_name = organization ? organization.name : t('All Organizations')
     organization_name + t('.title')
   end
+
+  def smart_reimbursement_list(category, organization, month)
+    category_id = category ? category.id : '*'
+    organization_id = organization ? organization.id : '*'
+    reimbursement_list_path(category_id, organization_id, month)
+  end
+
+  def link_reimbursement_list(amount, category, organization, month)
+    return '' unless amount
+    link_to amount, smart_reimbursement_list(category, organization, month)
+  end
+
+  def reimbursement_list_title(category, organization, month)
+    category_name = category ? category.name : t('All Categories')
+    organization_name = organization ? organization.name : t('All Organizations')
+    month_name = (month == '*') ? t('Whole Year') : month.to_s + t('month')
+    organization_name + '(' + category_name + ')' + ' : ' + month_name + t('Reimbursement List')
+  end
 end

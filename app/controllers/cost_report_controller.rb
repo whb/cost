@@ -46,6 +46,26 @@ class CostReportController < ApplicationController
     @selected_organization_id = @organization.id if @organization
   end
 
+  def reimbursement_list
+    if (params[:month] == '*')
+      @month = params[:month]
+      @reimbursements = Reimbursement.committed.this_year
+    else
+      @month = params[:month].to_i
+      @reimbursements = Reimbursement.committed.interval(begin_to_end_of(@month))
+    end
+
+    if (params[:category_id] != '*')
+      @category = Category.find(params[:category_id])
+      @reimbursements = @reimbursements.has_category(@category.id)
+    end
+
+    if (params[:organization_id] != '*')
+      @organization = Organization.find(params[:organization_id])
+      @reimbursements = @reimbursements.find_all_by_organization_id(@organization.id)
+    end
+  end
+
 
 
 
@@ -78,14 +98,7 @@ class CostReportController < ApplicationController
   end
 
 
-  def reimbursement_list
-    @category = Category.find(params[:category_id]) if (params[:category_id])
-    @organization = Organization.find(params[:organization_id]) if (params[:organization_id])
-    @month = params[:month].to_i if (params[:month])
 
-    @reimbursements = Reimbursement.committed.interval(begin_to_end_of(@month)).
-      has_category(@category.id).find_all_by_organization_id(@organization.id)
-  end
 
   private
 
