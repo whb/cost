@@ -246,5 +246,9 @@ $(document).ready(function(){
     }); 
   });
 
+  $("#organization_id").change(function(e) {
+     $("#select_organization_id").submit();
+  });
+
 });
 

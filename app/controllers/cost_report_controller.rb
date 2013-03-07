@@ -18,7 +18,7 @@ class CostReportController < ApplicationController
     end
 
     if (params[:category_id] != '*')
-      @category = Category.find(params[:category_id]) 
+      @category = Category.find(params[:category_id])
       @details = @details.belongs_to_category(@category.id)
     end
 
@@ -29,6 +29,27 @@ class CostReportController < ApplicationController
 
     @details
   end
+
+  def organization_cost
+    @organization = Organization.find(params[:organization_id]) unless params[:organization_id].blank?
+    @category_amount_hash = {}
+    1.upto(12).each do | month |
+      category_sum = Detail.committed.interval(begin_to_end_of(month))
+      category_sum = category_sum.belongs_to_organization(@organization.id) if @organization
+      category_sum = category_sum.group(:category_id).sum(:price)
+
+      Category.all.each do | c |
+        get_initialized_hash(@category_amount_hash, c)[month] =
+          category_sum[c.id] ? category_sum[c.id] : ""
+      end
+    end
+    @selected_organization_id = @organization.id if @organization
+  end
+
+
+
+
+
 
   def organization_months
     @organization_amount_hash = {}

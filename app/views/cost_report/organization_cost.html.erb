@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1>
+    <%=t '.title', :default => 'CostReport#category_months' %> 
+    <%= @organization.name if @organization %>
+  </h1>
+</div>
+
+<%= form_tag organization_cost_path, :id => :select_organization_id, :method => :get do %>
+  <div class="field">
+    <%= select_tag "organization_id", options_from_collection_for_select(Organization.all, "id", "name", @selected_organization_id), 
+      :include_blank => true %>
+  </div>
+<% end %>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th><%= Category.human_attribute_name(:name) + t('cost_report.month_title', :default => ' / month') %></th>
+      <% 1.upto(12).each do | month | %>
+        <th><%= month %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @category_amount_hash.each do |category, month_amount| %>
+    <tr>
+      <td><%= category.name %></td>
+      <% 1.upto(12).each do | month | %>
+        <td><%= month_amount[month] %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
