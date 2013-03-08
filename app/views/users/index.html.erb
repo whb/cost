@@ -9,6 +9,7 @@
       <th><%= model_class.human_attribute_name(:displayname) %></th>
       <th><%= model_class.human_attribute_name(:enabled) %></th>
       <th><%= model_class.human_attribute_name(:organization_id) %></th>
+      <th><%= model_class.human_attribute_name(:roles) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -19,6 +20,7 @@
         <td><%= user.displayname %></td>
         <td><%= user.enabled %></td>
         <td><%= user.organization_name %></td>
+        <td><%= display user.roles %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_user_path(user), :class => 'btn btn-mini' %>
