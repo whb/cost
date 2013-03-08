@@ -1,8 +1,9 @@
 class CostReportController < ApplicationController
   layout 'report'
-  skip_authorization_check
+  
 
   def organizations_cost
+    authorize! :report, :cost
     @organizations = Organization.department
     @categories = Category.all
     @organizations_cost_hash = Detail.committed.this_year.joins(:reimbursement).
@@ -20,6 +21,7 @@ class CostReportController < ApplicationController
   end
 
   def detail_list
+    authorize! :report, :cost
     if (params[:month] == '*')
       @month = params[:month]
       @details = Detail.committed.this_year
@@ -42,6 +44,7 @@ class CostReportController < ApplicationController
   end
 
   def organization_cost
+    authorize! :report, :cost
     @organization = Organization.find(params[:organization_id]) unless params[:organization_id].blank?
     @category_amount_hash = {}
     1.upto(12).each do | month |
@@ -60,6 +63,7 @@ class CostReportController < ApplicationController
   end
 
   def category_cost
+    authorize! :report, :cost
     @category = Category.find(params[:category_id]) unless params[:category_id].blank?
     @organization_amount_hash = {}
     1.upto(12).each do | month |
@@ -82,6 +86,7 @@ class CostReportController < ApplicationController
   end
 
   def reimbursement_list
+    authorize! :report, :cost
     if (params[:month] == '*')
       @month = params[:month]
       @reimbursements = Reimbursement.committed.this_year

@@ -45,7 +45,6 @@ Cost::Application.routes.draw do
     put :commit, :on => :member
     get :query_expenses, :on => :collection
     get :list_verify, :on => :collection
-    get :query_details, :on => :collection
   end
 
   root :to => 'home#index'
