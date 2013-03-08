@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th><%=t '.table_annotate', :default => 'Categories / Organizations' %></th>
+      <th><%=t 'cost_report.summary', :default => 'Summary' %></th>
       <% @organizations.each do | o | %>
         <th><%= o.name %></th>
       <% end %>
@@ -17,6 +18,7 @@
     <% @categories.each do |c| %>
     <tr>
       <td><%= c.name %></td>
+      <td><%= @summary[c.id] %></td>
       <% @organizations.each do | o | %>
         <td><%= link_details_query(@organizations_cost_hash[[c.id, o.id]], c, o, '*') %></td>
       <% end %>

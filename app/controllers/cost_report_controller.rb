@@ -5,7 +5,18 @@ class CostReportController < ApplicationController
   def organizations_cost
     @organizations = Organization.department
     @categories = Category.all
-    @organizations_cost_hash = Detail.committed.this_year.joins(:reimbursement).group([:category_id, :organization_id]).sum(:price)
+    @organizations_cost_hash = Detail.committed.this_year.joins(:reimbursement).
+      group([:category_id, :organization_id]).sum(:price)
+
+    @summary = []
+    @categories.each do |c|
+      @organizations.each do |o|
+        if @organizations_cost_hash[[c.id, o.id]]
+          @summary[c.id] ||= 0
+          @summary[c.id] += @organizations_cost_hash[[c.id, o.id]]
+        end
+      end
+    end
   end
 
   def detail_list
@@ -40,10 +51,12 @@ class CostReportController < ApplicationController
 
       Category.all.each do | c |
         get_initialized_hash(@category_amount_hash, c)[month] =
-          category_sum[c.id] ? category_sum[c.id] : ""
+          category_sum[c.id] ? category_sum[c.id] : nil
       end
     end
     @selected_organization_id = @organization.id if @organization
+
+    @summary = sum_amount(Category.all, @category_amount_hash)
   end
 
   def category_cost
@@ -60,10 +73,12 @@ class CostReportController < ApplicationController
 
       Organization.department.each do | o |
         get_initialized_hash(@organization_amount_hash, o)[month] =
-          organization_sum[o.id] ? organization_sum[o.id] : ""
+          organization_sum[o.id] ? organization_sum[o.id] : nil
       end
     end
     @selected_category_id = @category.id if @category
+
+    @summary = sum_amount(Organization.department, @organization_amount_hash)
   end
 
   def reimbursement_list
@@ -86,8 +101,23 @@ class CostReportController < ApplicationController
     end
   end
 
+  private
+
   def get_initialized_hash(hash, o)
     hash[o] ||= []
+  end
+
+  def sum_amount(collection, hash)
+    summary = []
+    collection.each do | o |
+      hash[o].each do |amount|
+        if amount
+          summary[o.id] ||= 0
+          summary[o.id] += amount
+        end
+      end
+    end
+    summary
   end
 
 

@@ -17,17 +17,19 @@
   <thead>
     <tr>
       <th><%=t '.table_annotate', :default => 'Organizations / Month' %></th>
+      <th><%=t 'cost_report.summary', :default => 'Summary' %></th>
       <% 1.upto(12).each do | month | %>
         <th><%= month %></th>
       <% end %>
     </tr>
   </thead>
   <tbody>
-    <% @organization_amount_hash.each do |organization, month_amount| %>
+    <% @organization_amount_hash.each do |o, month_amount| %>
     <tr>
-      <td><%= organization.name %></td>
+      <td><%= o.name %></td>
+      <td><%= @summary[o.id] %></td>
       <% 1.upto(12).each do | month | %>
-        <td><%= link_reimbursement_list(month_amount[month], @category, organization, month) %></td>
+        <td><%= link_reimbursement_list(month_amount[month], @category, o, month) %></td>
       <% end %>
     </tr>
     <% end %>
