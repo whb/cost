@@ -47,7 +47,7 @@
 
   <%= menu_group :pull => :right do %>
     <% if current_user %>
-      <%= menu_item current_user.displayname %><%= menu_item t(".Log Out"), logout_path %>
+      <%= menu_item current_user.displayname, profile_users_path %><%= menu_item t(".Log Out"), logout_path %>
     <% end %>
   <% end %>
 

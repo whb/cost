@@ -1,0 +1,30 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:username) %>:</strong></dt>
+  <dd><%= @user.username %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:displayname) %>:</strong></dt>
+  <dd><%= @user.displayname %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:enabled) %>:</strong></dt>
+  <dd><%= @user.enabled %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:organization_id) %>:</strong></dt>
+  <dd><%= @user.organization_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:roles) %>:</strong></dt>
+  <dd><%= display @user.roles %></dd>
+</dl>
+
+<%= simple_form_for @user, :url => update_self_password_user_path(@user) do |f| %>
+  <div class="form-horizontal">
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit t('.update_self_password'), :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                root_path, :class => 'btn' %>
+  </div>
+<% end %>

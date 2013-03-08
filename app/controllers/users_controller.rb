@@ -82,4 +82,28 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def profile
+    @user = current_user
+
+    respond_to do |format|
+      format.html # profile.html.erb
+      format.json { render json: @user }
+    end
+  end
+
+  def update_self_password
+    @user = current_user
+    @user.enable_strict_validation = true
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to root_url, notice: t('User was successfully updated.') }
+        format.json { head :no_content }
+      else
+        format.html { render action: "profile" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 end

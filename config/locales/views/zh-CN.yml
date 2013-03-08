@@ -18,7 +18,7 @@ zh-CN:
       Category cost: 费用类型按月费用支出
       Basic Data Admin: 基础数据管理
       Organizations: 组织机构
-      Users: 用户
+      Users: 用户列表
       Categories: 费用类型
       Periods: 年度预算
       Log Out: 退出
@@ -141,15 +141,18 @@ zh-CN:
         title: 费用类型列表
   users:
     index:
-        title: 用户列表
+      title: 用户列表
+    profile:
+      title: 用户信息
+      update_self_password: 更改密码
   sessions:
     new:
-        username: 用户名
-        password: 密码
+      username: 用户名
+      password: 密码
   home:
     index:
-        title: 祥龙物流费用支出系统
-        welcome: 欢迎使用祥龙物流费用支出系统
+      title: 祥龙物流费用支出系统
+      welcome: 欢迎使用祥龙物流费用支出系统
 
   Expense was successfully created: 费用申请单保存成功
   Expense was successfully updated: 费用申请单更新成功
