@@ -21,7 +21,7 @@
     <tr>
       <td><%= budget.category.name %></td>
       <td><%= budget.amount %></td>
-      <td><%= link_to(budget.cost, cost_report_organization_months_path + "?category_id=#{budget.category.id}") %></td>
+      <td><%= link_to(budget.cost, category_cost_path + "?category_id=#{budget.category.id}") %></td>
       <td><%= budget.available %></td>
     </tr>
 <% end %>

@@ -13,7 +13,7 @@ zh-CN:
       Reimbursement query: 查询支出证明
       Statistics report: 统计报表
       Current budget: 预算使用情况
-      Organizations cost: 部门累计费用支出
+      Organizations cost: 部门全年费用支出
       Organization cost: 部门按月费用支出
       Category cost: 费用类型按月费用支出
       Basic Data Admin: 基础数据管理
@@ -119,7 +119,7 @@ zh-CN:
     category_months:
       title: 各类型按月费用统计
     organizations_cost:
-      title: 各部门累计费用支出
+      title: 各部门全年费用支出
       table_annotate: 分类 / 部门
     organization_cost:
       title: 按月费用支出
