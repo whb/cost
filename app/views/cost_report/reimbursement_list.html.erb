@@ -6,6 +6,6 @@
 
 <% @reimbursements.each do |reimbursement| %>
 <div class="bill">
-  <%= render 'reimbursement_details', :reimbursement => reimbursement, :selected_category => @category %>
+  <%= render 'reimbursements/reimbursement', :reimbursement => reimbursement, :selected_category => @category, :show_expense_modal => false %>
 </div>      
 <% end %>
