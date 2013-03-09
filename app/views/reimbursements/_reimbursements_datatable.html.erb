@@ -16,7 +16,7 @@
         <td><%= link_to reimbursement.sn, reimbursement_path(reimbursement) %></td>
         <td><%= reimbursement.reimburse_on %></td>
         <td><%= reimbursement.abstract %></td>
-        <td><%= reimbursement.amount %></td>
+        <td class='numeric'><%= reimbursement.amount %></td>
         <td><%= reimbursement.organization.name %></td>
         <td><%= t "reimbursements.STATUS_TYPES.#{reimbursement.status}" %></td>
       </tr>

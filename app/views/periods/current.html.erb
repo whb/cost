@@ -13,16 +13,16 @@
 <table class="table">
 <tr>
   <th><%= Budget.human_attribute_name(:category) %></th>
-  <th><%= Budget.human_attribute_name(:amount) %></th>
-  <th><%= Budget.human_attribute_name(:cost) %></th>
-  <th><%= Budget.human_attribute_name(:available) %></th>
+  <th class='numeric'><%= Budget.human_attribute_name(:amount) %></th>
+  <th class='numeric'><%= Budget.human_attribute_name(:cost) %></th>
+  <th class='numeric'><%= Budget.human_attribute_name(:available) %></th>
 </tr>
 <% for budget in @period.budgets %>
     <tr>
       <td><%= budget.category.name %></td>
-      <td><%= budget.amount %></td>
-      <td><%= link_to(budget.cost, category_cost_path + "?category_id=#{budget.category.id}") %></td>
-      <td><%= budget.available %></td>
+      <td class='numeric'><%= budget.amount %></td>
+      <td class='numeric'><%= link_to(budget.cost, category_cost_path + "?category_id=#{budget.category.id}") %></td>
+      <td class='numeric'><%= budget.available %></td>
     </tr>
 <% end %>
 </table>

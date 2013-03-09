@@ -13,12 +13,12 @@
 <table class="table">
 <tr>
   <th><%= Budget.human_attribute_name(:category) %></th>
-  <th><%= Budget.human_attribute_name(:amount) %></th>
+  <th class='numeric'><%= Budget.human_attribute_name(:amount) %></th>
 </tr>
 <% for budget in @period.budgets %>
     <tr>
       <td><%= budget.category.name %></td>
-      <td><%= budget.amount %></td>
+      <td class='numeric'><%= budget.amount %></td>
     </tr>
 <% end %>
 </table>
