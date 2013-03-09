@@ -1,7 +1,4 @@
 class CostReportController < ApplicationController
-  layout 'report'
-  
-
   def organizations_cost
     authorize! :report, :cost
     @organizations = Organization.department

@@ -1,4 +1,6 @@
 class ApprovalsController < ApplicationController
+  layout 'main_with_sidebar', :only => [:show, :new, :edit]  
+
   load_and_authorize_resource
   before_filter :load_expense, :except => [:index]
   def load_expense

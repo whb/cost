@@ -1,4 +1,6 @@
 class ReimbursementsController < ApplicationController
+  layout 'main_with_sidebar', :only => [:show, :new, :edit, :verify]  
+
   load_and_authorize_resource
   before_filter :remember_last_collections_url
   before_filter :load_period, :expect => [:index, :query, :destroy]
