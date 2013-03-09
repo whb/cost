@@ -1,18 +1,18 @@
-<%content_for :sidebar do%>
-  <table class="table">
-  <tr>
-    <th><%= t ".category" %></th>
-    <th><%= t ".available" %></th>
-    <th><%= t ".current" %></th>
-    <th><%= t ".balance" %></th>
-  </tr>
+<% content_for :sidebar do %>
   <% ref_budget_list.each do |budget| %>
-      <tr id="<%= budget.id %>" style="<%= budget.style %>" >
-        <td><%= budget.name %></td>
-        <td class='available'><%= budget.available %></td>
-        <td class='current'><%= budget.current  %></td>
-        <td class='balance'><%= budget.balance %></td>
+    <table  id="<%= budget.id %>" style="<%= budget.style %>" class="table table-condensed table-bordered">
+      <caption class="title"><%= budget.name %></caption>
+      <tr>
+        <td class='numeric'><%= t ".available" %></td>
+        <td class='numeric'><%= t ".current" %></td>
+        <td class='numeric'><%= t ".balance" %></td>
       </tr>
+      
+      <tr>
+        <td class='numeric available'><%= humanized_money budget.available %></td>
+        <td class='numeric current'><%= humanized_money budget.current %></td>
+        <td class='numeric balance'><%= humanized_money budget.balance %></td>
+      </tr>
+    </table>
   <% end %>
-  </table>
-<%end%>
+<% end %>

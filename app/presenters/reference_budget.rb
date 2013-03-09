@@ -26,6 +26,6 @@ class ReferenceBudget
   end
 
   def balance
-    available == nil ? '' : available - current
+    available == nil ? nil : available - current
   end
 end
