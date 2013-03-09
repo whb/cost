@@ -27,9 +27,9 @@
     <% @category_amount_hash.each do |c, month_amount| %>
     <tr>
       <td><%= c.name %></td>
-      <td><%= @summary[c.id] %></td>
+      <td class='numeric'><%= @summary[c.id] %></td>
       <% 1.upto(12).each do | month | %>
-        <td><%= link_reimbursement_list(month_amount[month], c, @organization, month) %></td>
+        <td class='numeric'><%= link_reimbursement_list(month_amount[month], c, @organization, month) %></td>
       <% end %>
     </tr>
     <% end %>

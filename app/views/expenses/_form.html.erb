@@ -30,10 +30,10 @@
     <tr>
       <th><%= Item.human_attribute_name(:category) %></th>
       <th><%= Item.human_attribute_name(:name) %></th>
-      <th><%= Item.human_attribute_name(:amount) %></th>
+      <th class='numeric'><%= Item.human_attribute_name(:amount) %></th>
       <th><%= Item.human_attribute_name(:unit) %></th>
-      <th><%= Item.human_attribute_name(:unit_price) %></th>
-      <th><%= Item.human_attribute_name(:price) %></th>
+      <th class='numeric'><%= Item.human_attribute_name(:unit_price) %></th>
+      <th class='numeric'><%= Item.human_attribute_name(:price) %></th>
       <th></th>
     </tr>
     <%= f.fields_for :items do |ff| %>

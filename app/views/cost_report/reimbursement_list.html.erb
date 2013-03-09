@@ -5,5 +5,7 @@
 </div>
 
 <% @reimbursements.each do |reimbursement| %>
-  <%= render 'reimbursement_details', :reimbursement => reimbursement, :selected_category => @category %>      
+<div class="bill">
+  <%= render 'reimbursement_details', :reimbursement => reimbursement, :selected_category => @category %>
+</div>      
 <% end %>

@@ -18,9 +18,9 @@
     <% @categories.each do |c| %>
     <tr>
       <td><%= c.name %></td>
-      <td><%= @summary[c.id] %></td>
+      <td class='numeric'><%= @summary[c.id] %></td>
       <% @organizations.each do | o | %>
-        <td><%= link_details_query(@organizations_cost_hash[[c.id, o.id]], c, o, '*') %></td>
+        <td class='numeric'><%= link_details_query(@organizations_cost_hash[[c.id, o.id]], c, o, '*') %></td>
       <% end %>
     </tr>
     <% end %>

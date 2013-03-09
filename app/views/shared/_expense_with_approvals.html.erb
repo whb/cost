@@ -37,19 +37,19 @@
 <tr>
   <th><%= Item.human_attribute_name(:category) %></th>
   <th><%= Item.human_attribute_name(:name) %></th>
-  <th><%= Item.human_attribute_name(:amount) %></th>
+  <th class='numeric'><%= Item.human_attribute_name(:amount) %></th>
   <th><%= Item.human_attribute_name(:unit) %></th>
-  <th><%= Item.human_attribute_name(:unit_price) %></th>
-  <th><%= Item.human_attribute_name(:price) %></th>
+  <th class='numeric'><%= Item.human_attribute_name(:unit_price) %></th>
+  <th class='numeric'><%= Item.human_attribute_name(:price) %></th>
 </tr>
 <% for item in expense.items %>
     <tr>
       <td><%= item.category.name %></td>
       <td><%= item.name %></td>
-      <td><%= item.amount %></td>
+      <td class='numeric'><%= item.amount %></td>
       <td><%= item.unit %></td>
-      <td><%= item.unit_price %></td>
-      <td><%= item.price %></td>
+      <td class='numeric'><%= item.unit_price %></td>
+      <td class='numeric'><%= item.price %></td>
     </tr>
 <% end %>
 </table>
