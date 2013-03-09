@@ -11,10 +11,10 @@
     <th><%= Reimbursement.human_attribute_name(:organization) %></th>
     <th><%= Detail.human_attribute_name(:category) %></th>
     <th><%= Detail.human_attribute_name(:name) %></th>
-    <th><%= Detail.human_attribute_name(:amount) %></th>
+    <th class='numeric'><%= Detail.human_attribute_name(:amount) %></th>
     <th><%= Detail.human_attribute_name(:unit) %></th>
-    <th><%= Detail.human_attribute_name(:unit_price) %></th>
-    <th><%= Detail.human_attribute_name(:price) %></th>
+    <th class='numeric'><%= Detail.human_attribute_name(:unit_price) %></th>
+    <th class='numeric'><%= Detail.human_attribute_name(:price) %></th>
   </tr>
   <% for detail in @details %>
     <tr>
@@ -23,7 +23,7 @@
       <td><%= detail.reimbursement.organization.name %></td>
       <td><%= detail.category.name %></td>
       <td><%= detail.name %></td>
-      <td><%= detail.amount %></td>
+      <td class='numeric'><%= detail.amount %></td>
       <td><%= detail.unit %></td>
       <td class='numeric'><%= humanized_money detail.unit_price %></td>
       <td class='numeric'><%= humanized_money detail.price %></td>
