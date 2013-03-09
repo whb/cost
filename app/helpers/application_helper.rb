@@ -64,7 +64,18 @@ module ApplicationHelper
 
   def link_details_query(amount, category, organization, month)
     return '' unless amount
-    link_to amount, smart_detail_list_path(category, organization, '*')
+    link_to humanized_money(amount), smart_detail_list_path(category, organization, '*')
+  end
+
+  def smart_reimbursement_list(category, organization, month)
+    category_id = category ? category.id : '*'
+    organization_id = organization ? organization.id : '*'
+    reimbursement_list_path(category_id, organization_id, month)
+  end
+
+  def link_reimbursement_list(amount, category, organization, month)
+    return '' unless amount
+    link_to humanized_money(amount), smart_reimbursement_list(category, organization, month)
   end
 
   def css_of_detail(detail, selected_category) 
@@ -83,16 +94,6 @@ module ApplicationHelper
     organization_name + t('.title')
   end
 
-  def smart_reimbursement_list(category, organization, month)
-    category_id = category ? category.id : '*'
-    organization_id = organization ? organization.id : '*'
-    reimbursement_list_path(category_id, organization_id, month)
-  end
-
-  def link_reimbursement_list(amount, category, organization, month)
-    return '' unless amount
-    link_to amount, smart_reimbursement_list(category, organization, month)
-  end
 
   def reimbursement_list_title(category, organization, month)
     category_name = category ? category.name : t('All Categories')
@@ -104,5 +105,9 @@ module ApplicationHelper
   def category_cost_title(category)
     category_name = category ? category.name : t('All Categories')
     category_name + t('.title')
+  end
+
+  def humanized_money(money)
+    number_with_precision(money, :precision => (money.round == money) ? 0 : 2) if money
   end
 end

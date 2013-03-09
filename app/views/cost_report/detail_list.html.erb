@@ -25,8 +25,8 @@
       <td><%= detail.name %></td>
       <td><%= detail.amount %></td>
       <td><%= detail.unit %></td>
-      <td><%= detail.unit_price %></td>
-      <td><%= detail.price %></td>
+      <td class='numeric'><%= humanized_money detail.unit_price %></td>
+      <td class='numeric'><%= humanized_money detail.price %></td>
     </tr>
   <% end %>
 </table>

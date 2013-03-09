@@ -48,8 +48,8 @@
       <td><%= item.name %></td>
       <td class='numeric'><%= item.amount %></td>
       <td><%= item.unit %></td>
-      <td class='numeric'><%= item.unit_price %></td>
-      <td class='numeric'><%= item.price %></td>
+      <td class='numeric'><%= humanized_money item.unit_price %></td>
+      <td class='numeric'><%= humanized_money item.price %></td>
     </tr>
 <% end %>
 </table>
