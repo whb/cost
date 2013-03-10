@@ -2,13 +2,18 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   check_authorization
 
-  private
-
   before_filter :instantiate_controller_and_action_names
+  before_filter :login_required
+
+  private
 
   def instantiate_controller_and_action_names
     @current_action = action_name
     @current_controller = controller_name
+  end
+
+  def login_required
+    redirect_to login_url unless current_user
   end
 
   def current_user
@@ -23,7 +28,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :current_organization
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to login_url, :alert => exception.message
+    redirect_to root_url, :alert => exception.message
   end
 
   def begin_to_end_of(month)
