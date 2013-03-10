@@ -34,7 +34,7 @@ FactoryGirl.define do
   end
 
   trait :bill_part do
-    organization_id { rand(5..16) }
+    organization_id { rand(3..14) }
     sequence(:abstract) { |n| "摘要及用途......#{n}" }
     staff { ["张三", "李四", "王五", "赵六"].sample }
   end
