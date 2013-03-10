@@ -1,17 +1,17 @@
 class ExpensesController < ApplicationController
-  layout 'main_with_sidebar', :only => [:show, :new, :edit, :verify, :discard]  
+  layout 'main_with_sidebar', :only => [:show, :new, :edit, :verify, :discard]
 
   load_and_authorize_resource
   before_filter :remember_last_collections_url
   before_filter :load_period, :expect => [:index, :query, :destroy]
-  
+
   def remember_last_collections_url
     last_collections_url = request.env['HTTP_REFERER'] || expenses_url
     if [expenses_url, query_expenses_url, query_expenses_reimbursements_url, approvals_url].include? last_collections_url
       session[:last_expense_collection_url] = last_collections_url
     end
   end
-  
+
   def load_period
     @period = Period.find_by_year(Date.today.year)
   end
@@ -28,7 +28,13 @@ class ExpensesController < ApplicationController
   end
 
   def query
-    @expenses = Expense.find_all_by_organization_id current_organization.subtree_ids
+    if current_user.is?(:general_manager)
+      @expenses = Expense.all
+    elsif current_user.is?(:vice_manager)
+      @expenses = Expense.find_all_by_organization_id current_user.under_organizations
+    else
+      @expenses = Expense.find_all_by_organization_id current_organization.subtree_ids
+    end
 
     respond_to do |format|
       format.html
@@ -41,7 +47,7 @@ class ExpensesController < ApplicationController
   def show
     @expense = Expense.find(params[:id])
 
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @expense }

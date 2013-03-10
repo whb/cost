@@ -1,5 +1,5 @@
 class ReimbursementsController < ApplicationController
-  layout 'main_with_sidebar', :only => [:show, :new, :edit, :verify]  
+  layout 'main_with_sidebar', :only => [:show, :new, :edit, :verify]
 
   load_and_authorize_resource
   before_filter :remember_last_collections_url
@@ -28,7 +28,13 @@ class ReimbursementsController < ApplicationController
   end
 
   def query
-    @reimbursements = Reimbursement.find_all_by_organization_id current_organization.subtree_ids
+    if current_user.is?(:general_manager)
+      @reimbursements = Reimbursement.all
+    elsif current_user.is?(:vice_manager)
+      @reimbursements = Reimbursement.find_all_by_organization_id current_user.under_organizations
+    else
+      @reimbursements = Reimbursement.find_all_by_organization_id current_organization.subtree_ids
+    end
 
     respond_to do |format|
       format.html # query.html.erb
