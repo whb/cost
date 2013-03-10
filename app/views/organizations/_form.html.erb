@@ -4,6 +4,7 @@
   <%= f.input :name %>
   <%= f.input :kind, collection: kind_types %>
   <%= f.association :superior, collection: Organization.all %>
+  <%= f.association :upper_manager, collection: User.upper_managers, label_method: :displayname %>
 
 
   <div class="form-actions">

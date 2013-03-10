@@ -16,10 +16,10 @@ class ApprovalsController < ApplicationController
   # GET /approvals.json
   def index
     if current_user.is?(:general_manager)
-      @expenses = Expense.waiting_general_manager_approval.find_all_by_organization_id current_organization.subtree_ids
-      @expenses += Expense.waiting_manager_approval.find_all_by_organization_id current_organization.self_sons_ids
+      @expenses = Expense.waiting_general_manager_approval
+      @expenses += Expense.waiting_manager_approval.find_all_by_organization_id current_user.under_organizations
     else
-      @expenses = Expense.waiting_manager_approval.find_all_by_organization_id current_organization.subtree_ids
+      @expenses = Expense.waiting_manager_approval.find_all_by_organization_id current_user.under_organizations
     end
 
     respond_to do |format|

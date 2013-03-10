@@ -9,6 +9,7 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:kind) %></th>
       <th><%= model_class.human_attribute_name(:superior_id) %></th>
+      <th><%= model_class.human_attribute_name(:upper_manager) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -19,6 +20,7 @@
         <td><%= organization.name %></td>
         <td><%= display_kind organization %></td>
         <td><%= superior_name organization %></td>
+        <td><%= upper_manager_name organization %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_organization_path(organization), :class => 'btn btn-mini' %>

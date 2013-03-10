@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :organization
+  has_many :under_organizations, :class_name => "Organization", :foreign_key => "upper_manager_id"
   attr_accessible :displayname, :enabled, :organization_id, :organization, :username, 
     :password, :password_confirmation, :roles, :enable_strict_validation
 
@@ -39,5 +40,13 @@ class User < ActiveRecord::Base
 
   def enable_strict_validation=(value)
     @enable_strict_validation = value
+  end
+
+  def self.upper_managers
+    upper_managers = []
+    User.all.each do |u|
+      upper_managers << u if u.is?(:vice_manager) or u.is?(:general_manager)
+    end
+    upper_managers
   end
 end

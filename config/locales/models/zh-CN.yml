@@ -63,6 +63,7 @@ zh-CN:
         kind: 类型
         superior_id: 上级机构
         superior: 上级机构
+        upper_manager: 主管经理
       user:
         username: 用户名
         displayname: 姓名

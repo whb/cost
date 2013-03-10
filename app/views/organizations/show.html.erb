@@ -12,6 +12,8 @@
   <dd><%= display_kind @organization %></dd>
   <dt><strong><%= model_class.human_attribute_name(:superior_id) %>:</strong></dt>
   <dd><%=superior_name @organization %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:upper_manager) %>:</strong></dt>
+  <dd><%= upper_manager_name @organization %></dd>
 </dl>
 
 <div class="form-actions">

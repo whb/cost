@@ -3,8 +3,9 @@
 class Organization < ActiveRecord::Base
   has_many :subordinates, :class_name => "Organization", :foreign_key => "superior_id"
   belongs_to :superior, :class_name => "Organization"
+  belongs_to :upper_manager, :class_name => "User"
   has_many :users
-  attr_accessible :code, :name, :superior_id, :kind
+  attr_accessible :code, :name, :superior_id, :kind, :upper_manager_id
   validates_uniqueness_of :code, :name
   validates_presence_of :code, :name
 
