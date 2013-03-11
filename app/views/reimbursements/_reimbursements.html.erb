@@ -5,7 +5,7 @@
       <th><%= model_class.human_attribute_name(:sn) %></th>
       <th><%= model_class.human_attribute_name(:reimburse_on) %></th>
       <th><%= model_class.human_attribute_name(:abstract) %></th>
-      <th><%= model_class.human_attribute_name(:amount) %></th>
+      <th class='numeric'><%= model_class.human_attribute_name(:amount) %></th>
       <th><%= model_class.human_attribute_name(:organization) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -17,7 +17,7 @@
         <td><%= link_to reimbursement.sn, reimbursement_path(reimbursement) %></td>
         <td><%= reimbursement.reimburse_on %></td>
         <td><%= reimbursement.abstract %></td>
-        <td><%= reimbursement.amount %></td>
+        <td class='numeric'><%= number_to_currency reimbursement.amount %></td>
         <td><%= reimbursement.organization.name %></td>
         <td><%= t "reimbursements.STATUS_TYPES.#{reimbursement.status}" %></td>
         <td>
