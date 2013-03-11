@@ -31,7 +31,7 @@ class ReimbursementsController < ApplicationController
     if current_user.is?(:general_manager)
       @reimbursements = Reimbursement.all
     elsif current_user.is?(:vice_manager)
-      @reimbursements = Reimbursement.find_all_by_organization_id current_user.under_organizations
+      @reimbursements = Reimbursement.find_all_by_organization_id current_user.related_organizations_id
     else
       @reimbursements = Reimbursement.find_all_by_organization_id current_organization.subtree_ids
     end

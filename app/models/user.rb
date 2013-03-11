@@ -49,4 +49,8 @@ class User < ActiveRecord::Base
     end
     upper_managers
   end
+
+  def related_organizations_id
+    (self.under_organizations.map { |o| o.id } + self.organization.subtree_ids).uniq
+  end
 end

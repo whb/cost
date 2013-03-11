@@ -31,7 +31,7 @@ class ExpensesController < ApplicationController
     if current_user.is?(:general_manager)
       @expenses = Expense.all
     elsif current_user.is?(:vice_manager)
-      @expenses = Expense.find_all_by_organization_id current_user.under_organizations
+      @expenses = Expense.find_all_by_organization_id current_user.related_organizations_id
     else
       @expenses = Expense.find_all_by_organization_id current_organization.subtree_ids
     end
