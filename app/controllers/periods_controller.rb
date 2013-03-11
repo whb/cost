@@ -46,6 +46,7 @@ class PeriodsController < ApplicationController
   # GET /periods/1/edit
   def edit
     @period = Period.find(params[:id])
+    @period.append_new_categories
   end
 
   # POST /periods

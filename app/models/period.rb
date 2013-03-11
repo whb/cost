@@ -12,4 +12,14 @@ class Period < ActiveRecord::Base
     end
     period
   end
+
+  def append_new_categories
+    exist_categories = self.budgets.map { |b| b.category }
+    Category.all.each do |c|
+      unless exist_categories.include?(c) 
+        b = self.budgets.build
+        b.category = c
+      end
+    end
+  end
 end
