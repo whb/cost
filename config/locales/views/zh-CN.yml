@@ -19,6 +19,7 @@ zh-CN:
       Basic Data Admin: 基础数据管理
       Organizations: 组织机构
       Users: 用户列表
+      MajorCategories: 一级费用类型
       Categories: 费用类型
       Periods: 年度预算
       Log Out: 退出
@@ -136,6 +137,9 @@ zh-CN:
   periods:
     index:
         title: 年度预算列表
+  major_categories:
+    index:
+        title: 一级费用类型列表
   categories:
     index:
         title: 费用类型列表

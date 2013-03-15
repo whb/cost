@@ -47,19 +47,25 @@ task :default_users => :environment do
   @guo  = create :user, username: 'guo', displayname: '郭文静', roles: %w[admin staff], organization: @xinxi
 end
 
+desc "Create the major categories"
+task :default_major_categories => :environment do
+  @m_1  = create :major_category, code: '01', name: '办公费用'
+  @m_2  = create :major_category, code: '02', name: '其它费用'
+end
+
 desc "Create the default categories"
 task :default_categories => :environment do
-  @c_1  = create :category, code: '0101', name: '办公家具'
-  @c_2  = create :category, code: '0102', name: '办公设备'
-  @c_3  = create :category, code: '0103', name: '办公耗材'
-  @c_4  = create :category, code: '0201', name: '差旅费'
-  @c_5  = create :category, code: '0202', name: '会务费'
-  @c_6  = create :category, code: '0301', name: '慰问费(行政)'
-  @c_7  = create :category, code: '0302', name: '慰问费(政工)'
-  @c_8  = create :category, code: '0401', name: '计算机设备'
-  @c_9  = create :category, code: '0402', name: '网络设备'
-  @c_10 = create :category, code: '0403', name: '计算机维修费'
-  @c_11 = create :category, code: '0501', name: '软件开发费'
+  @c_1  = create :category, code: '0101', name: '办公家具', major_category: @m_1
+  @c_2  = create :category, code: '0102', name: '办公设备', major_category: @m_1
+  @c_3  = create :category, code: '0103', name: '办公耗材', major_category: @m_1
+  @c_4  = create :category, code: '0201', name: '差旅费', major_category: @m_2
+  @c_5  = create :category, code: '0202', name: '会务费', major_category: @m_2
+  @c_6  = create :category, code: '0301', name: '慰问费(行政)', major_category: @m_2
+  @c_7  = create :category, code: '0302', name: '慰问费(政工)', major_category: @m_2
+  @c_8  = create :category, code: '0401', name: '计算机设备', major_category: @m_2
+  @c_9  = create :category, code: '0402', name: '网络设备', major_category: @m_2
+  @c_10 = create :category, code: '0403', name: '计算机维修费', major_category: @m_2
+  @c_11 = create :category, code: '0501', name: '软件开发费', major_category: @m_2
 end
 
 desc "Create the default periods"
@@ -92,5 +98,5 @@ end
 desc "Run base tasks"
 task :base => [ :admin_user, 
                 :scaffold_organizations, :manager_users, :default_organizations, :default_users, 
-                :default_categories, :default_periods, :default_budgets, 
+                :default_major_categories, :default_categories, :default_periods, :default_budgets, 
                 :test_users]

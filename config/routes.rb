@@ -15,6 +15,7 @@ Cost::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
 
   resources :sessions
+  resources :major_categories
   resources :categories
   resources :users do
     get :profile, :on => :collection

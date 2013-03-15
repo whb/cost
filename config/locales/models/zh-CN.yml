@@ -9,6 +9,7 @@ zh-CN:
       approval: 审批签字
       organization: 组织机构
       user: 用户
+      major_category: 一级费用类型
       category: 费用类型
       period: 年度预算
       budget: 预算
@@ -74,9 +75,13 @@ zh-CN:
         organization_id: 所属机构
         organization: 所属机构
         roles: 角色
+      major_category:
+        code: 编号
+        name: 名称
       category:
         code: 编号
         name: 名称
+        major_category: 一级费用类型
       period: 
         year: 年份
         explain: 说明
