@@ -1,5 +1,7 @@
 zh-CN: 
   layouts:
+    head:
+      Cost: 祥龙物流费用支出系统
     menu_bar:
       Cost System: 祥龙物流费用支出系统
       Home: 首页
