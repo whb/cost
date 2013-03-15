@@ -1,6 +1,6 @@
 set :rails_env, "staging"
 
-server "rost.xllg.com", :web, :app, :db, :primary => true
+server "cost.xllg.com", :web, :app, :db, :primary => true
 set :user, "whb"
 set :deploy_to, "/var/www/cost_staging"
 
