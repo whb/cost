@@ -8,5 +8,6 @@
   <td><%= f.input :unit, label: false, input_html: { class: 'input-xxmini', autocomplete: "off" } %></td>
   <td><%= f.input :unit_price, label: false, input_html: { class: 'input-mini' } %></td>
   <td><%= f.input :price, label: false, input_html: { class: 'input-mini' } %></td>
-  <td><%= link_to_remove_fields t('.destroy', :default => t("helpers.links.destroy")), f %></td>
+  <td><%= link_to_remove_fields "<i class='icon-remove'></i>".html_safe, f, 
+                                t('.destroy', :default => t("helpers.links.destroy")) %></td>
 </tr>
