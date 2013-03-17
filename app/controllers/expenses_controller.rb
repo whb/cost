@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  layout 'main_with_sidebar', :only => [:show, :new, :edit, :verify, :discard]
+  layout 'main_with_sidebar', :except => [:index, :query]
 
   load_and_authorize_resource
   before_filter :remember_last_collections_url

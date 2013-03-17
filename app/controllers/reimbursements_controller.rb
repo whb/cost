@@ -1,5 +1,5 @@
 class ReimbursementsController < ApplicationController
-  layout 'main_with_sidebar', :only => [:show, :new, :edit, :verify]
+  layout 'main_with_sidebar', :except => [:index, :query, :query_expenses, :list_verify]
 
   load_and_authorize_resource
   before_filter :remember_last_collections_url
