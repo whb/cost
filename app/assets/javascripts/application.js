@@ -140,7 +140,8 @@ function redraw_ref_budget() {
 function update_summary() {
   var sum = 0;
   $("input[id*=_attributes_][name$='[price]']:visible").each(function(e) {
-    sum += parseFloat($(this).val());
+    price = parseFloat($(this).val())
+    if (!isNaN(price)) sum += price;
   }); 
   $("input[id=reimbursement_amount]").val(sum.toFixed(2));
 }
