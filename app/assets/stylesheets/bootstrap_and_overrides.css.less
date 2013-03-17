@@ -2,6 +2,13 @@
 
 @import "twitter/bootstrap/bootstrap";
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
 body { 
   padding-top: 60px; 
   font-family: Verdana, "微软雅黑", "文泉驿微米黑";
