@@ -7,7 +7,7 @@ FactoryGirl.define do
   factory :user do
     sequence(:username) { |n| "test#{n}" }
     sequence(:displayname) { |n| "测试用户#{n}" }
-    password "a"
+    password "1234"
     password_confirmation { |u| u.password }
     enabled true
     roles  %w[admin staff]
@@ -37,7 +37,7 @@ FactoryGirl.define do
   end
 
   trait :bill_part do
-    organization_id { rand(3..14) }
+    organization_id { rand(3..15) }
     sequence(:abstract) { |n| "摘要及用途......#{n}" }
     staff { ["张三", "李四", "王五", "赵六"].sample }
   end
