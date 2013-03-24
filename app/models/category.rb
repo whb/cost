@@ -11,6 +11,12 @@ class Category < ActiveRecord::Base
     code + name
   end
 
+  def level
+    return 1 if code.length == 1 
+    return 2 if code.length == 3 
+    return 3 if code.length == 5 
+  end
+
   def self.father
     f = []
     Category.order(:code).each do |c|

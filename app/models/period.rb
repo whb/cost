@@ -6,7 +6,7 @@ class Period < ActiveRecord::Base
 
   def self.new_blank
     period = Period.new
-    Category.all.each do |c|
+    Category.order(:code).each do |c|
       b = period.budgets.build
       b.category = c
     end
@@ -15,11 +15,15 @@ class Period < ActiveRecord::Base
 
   def append_new_categories
     exist_categories = self.budgets.map { |b| b.category }
-    Category.all.each do |c|
+    Category.order(:code).each do |c|
       unless exist_categories.include?(c) 
         b = self.budgets.build
         b.category = c
       end
     end
+  end
+
+  def order_budgets
+    self.budgets.joins(:category).order('categories.code')
   end
 end

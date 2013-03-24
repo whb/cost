@@ -63,4 +63,17 @@ module ApplicationHelper
   def humanized_money(money)
     number_with_precision(money, :precision => (money.round == money) ? 0 : 2) if money
   end
+
+  def indent_code_name(category)
+    case category.level
+    when 1
+      category.code_name
+    when 2
+      ("&nbsp;"*8).html_safe + category.code_name
+    when 3
+      ("&nbsp;"*16).html_safe + category.code_name
+    else
+      category.code_name
+    end
+  end
 end

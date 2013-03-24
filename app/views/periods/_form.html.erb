@@ -6,7 +6,7 @@
 
   <%= f.simple_fields_for :budgets do |ff| %>
     <%= ff.hidden_field :category_id %>
-    <%= ff.input :amount, label: ff.object.category.name %>
+    <%= ff.input :amount, label: ff.object.category.code_name %>
   <% end %>
 
 
