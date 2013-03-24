@@ -7,7 +7,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:code) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:major_category) %></th>
+      <th><%= model_class.human_attribute_name(:superior_id) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -16,7 +16,7 @@
       <tr>
         <td><%= link_to category.code, category_path(category) %></td>
         <td><%= category.name %></td>
-        <td><%= major_category_name category %></td>
+        <td><%= superior_name category %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_category_path(category), :class => 'btn btn-mini' %>

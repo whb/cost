@@ -91,102 +91,27 @@ end
 
 desc "Create the default categories"
 task :default_categories => :environment do
-  @c_001  = create :category, code: '0101', name: '书报资料费', major_category: @m_1
-  @c_002  = create :category, code: '0102', name: '办公用品费', major_category: @m_1
-  @c_003  = create :category, code: '0103', name: '邮电费', major_category: @m_1
-  @c_004  = create :category, code: '0104', name: '印刷费', major_category: @m_1
-  @c_005  = create :category, code: '0105', name: '软件服务费', major_category: @m_1
-  @c_006  = create :category, code: '0106', name: '电话费', major_category: @m_1
-  @c_007  = create :category, code: '0107', name: '其他', major_category: @m_1
+  @c_1     = create :category, code: '1', name: '日常费用'
+  @c_2     = create :category, code: '2', name: '福利费用'
+  @c_3     = create :category, code: '3', name: '离退休人员统筹外费用'
+  
+  @c_101   = create :category, code: '101', name: '职工教育经费', superior: @c_1
+  
+  @c_102   = create :category, code: '102', name: '劳动保护费', superior: @c_1
+  @c_10201 = create :category, code: '10201', name: '劳保用品', superior: @c_102
+  @c_10202 = create :category, code: '10202', name: '工作服', superior: @c_102
+  @c_10203 = create :category, code: '10203', name: '防暑降温费用', superior: @c_102
+  @c_10204 = create :category, code: '10204', name: '劳保费其他', superior: @c_102
+  
+  @c_105   = create :category, code: '105', name: '公务车费用', superior: @c_1
+  @c_10501 = create :category, code: '10501', name: '燃料费', superior: @c_105
+  @c_10502 = create :category, code: '10502', name: '修理费', superior: @c_105
+  @c_10503 = create :category, code: '10503', name: '停车过桥费', superior: @c_105
+  
+  @c_117   = create :category, code: '117', name: '残疾人保证金', superior: @c_1
 
-  @c_008  = create :category, code: '0201', name: '业务餐费', major_category: @m_2
-  @c_009  = create :category, code: '0202', name: '礼品及其他', major_category: @m_2
-
-  @c_010  = create :category, code: '0301', name: '会议费', major_category: @m_3
-  @c_011  = create :category, code: '0302', name: '差旅费', major_category: @m_3
-  @c_012  = create :category, code: '0303', name: '排污费', major_category: @m_3
-  @c_013  = create :category, code: '0304', name: '供暖费（办公场所）', major_category: @m_3
-  @c_014  = create :category, code: '0305', name: '燃料费', major_category: @m_3
-  @c_015  = create :category, code: '0306', name: '宣传经费', major_category: @m_3
-  @c_016  = create :category, code: '0307', name: '党委宣传费', major_category: @m_3
-  @c_017  = create :category, code: '0308', name: '董事会会费', major_category: @m_3
-  @c_018  = create :category, code: '0309', name: '协会会费', major_category: @m_3
-  @c_019  = create :category, code: '0310', name: '出国人员费用', major_category: @m_3
-  @c_020  = create :category, code: '0311', name: '直接材料费', major_category: @m_3
-  @c_021  = create :category, code: '0312', name: '制造费用', major_category: @m_3
-  @c_022  = create :category, code: '0313', name: '其他日常性费用', major_category: @m_3
-
-  @c_023  = create :category, code: '0401', name: '财产保险费', major_category: @m_4
-  @c_024  = create :category, code: '0402', name: '车辆保险费', major_category: @m_4
-  @c_025  = create :category, code: '0403', name: '其他保险费', major_category: @m_4
-
-  @c_026  = create :category, code: '0501', name: '燃油费-汽油', major_category: @m_5
-  @c_027  = create :category, code: '0502', name: '燃油费-柴油', major_category: @m_5
-  @c_028  = create :category, code: '0503', name: '燃油费-尿素', major_category: @m_5
-  @c_029  = create :category, code: '0504', name: '燃油费-其他（外购）', major_category: @m_5
-  @c_030  = create :category, code: '0505', name: '轮胎', major_category: @m_5
-  @c_031  = create :category, code: '0506', name: '车辆修理费', major_category: @m_5
-  @c_032  = create :category, code: '0507', name: '停车过桥费', major_category: @m_5
-  @c_033  = create :category, code: '0508', name: '车辆年检', major_category: @m_5
-  @c_034  = create :category, code: '0509', name: '事故费', major_category: @m_5
-  @c_035  = create :category, code: '0510', name: '车上设备', major_category: @m_5
-  @c_036  = create :category, code: '0511', name: '其他费用', major_category: @m_5
-
-  @c_037  = create :category, code: '0601', name: '房屋维修费', major_category: @m_6
-  @c_038  = create :category, code: '0602', name: '项目维修费（中修费）', major_category: @m_6
-  @c_039  = create :category, code: '0603', name: '维保费用', major_category: @m_6
-  @c_040  = create :category, code: '0604', name: '年检费用', major_category: @m_6
-  @c_041  = create :category, code: '0605', name: '维修材料费', major_category: @m_6
-  @c_042  = create :category, code: '0606', name: '专业设备维修费', major_category: @m_6
-  @c_043  = create :category, code: '0607', name: '消防设施费', major_category: @m_6
-  @c_044  = create :category, code: '0608', name: '监控设施费', major_category: @m_6
-  @c_045  = create :category, code: '0609', name: '防汛器材费', major_category: @m_6
-  @c_046  = create :category, code: '0610', name: '其他修理费', major_category: @m_6
-
-  @c_047  = create :category, code: '0701', name: '车船使用税', major_category: @m_7
-  @c_048  = create :category, code: '0702', name: '印花税', major_category: @m_7
-  @c_049  = create :category, code: '0703', name: '房产税', major_category: @m_7
-  @c_050  = create :category, code: '0704', name: '土地使用税', major_category: @m_7
-  @c_051  = create :category, code: '0705', name: '价格调整基金', major_category: @m_7
-  @c_052  = create :category, code: '0706', name: '防洪基金', major_category: @m_7
-  @c_053  = create :category, code: '0707', name: '水利建设基金', major_category: @m_7
-  @c_054  = create :category, code: '0708', name: '残疾人保障金', major_category: @m_7
-  @c_055  = create :category, code: '0709', name: '土地使用费', major_category: @m_7
-  @c_056  = create :category, code: '0710', name: '其他费用性税金', major_category: @m_7
-
-  @c_057  = create :category, code: '0801', name: '房屋建筑物', major_category: @m_8
-  @c_058  = create :category, code: '0802', name: '机器设备', major_category: @m_8
-  @c_059  = create :category, code: '0803', name: '运输设备', major_category: @m_8
-  @c_060  = create :category, code: '0804', name: '电子设备', major_category: @m_8
-  @c_061  = create :category, code: '0805', name: '办公设备', major_category: @m_8
-  @c_062  = create :category, code: '0806', name: '其他折旧费', major_category: @m_8
-
-  @c_063  = create :category, code: '0901', name: '审计费', major_category: @m_9
-  @c_064  = create :category, code: '0902', name: '诉讼费', major_category: @m_9
-  @c_065  = create :category, code: '0903', name: '评估费', major_category: @m_9
-  @c_066  = create :category, code: '0904', name: '咨询费', major_category: @m_9
-  @c_067  = create :category, code: '0905', name: '网络服务费', major_category: @m_9
-  @c_068  = create :category, code: '0906', name: '其他中介费', major_category: @m_9
-
-  @c_069  = create :category, code: '1001', name: '绿化费', major_category: @m_10
-  @c_070  = create :category, code: '1002', name: '清洁卫生费', major_category: @m_10
-  @c_071  = create :category, code: '1003', name: '垃圾清运费', major_category: @m_10
-  @c_072  = create :category, code: '1004', name: '污井清掏费', major_category: @m_10
-  @c_073  = create :category, code: '1005', name: '管道疏通费', major_category: @m_10
-  @c_074  = create :category, code: '1006', name: '保洁材料费', major_category: @m_10
-  @c_075  = create :category, code: '1007', name: '其他环境保护费', major_category: @m_10
-
-  @c_076  = create :category, code: '1101', name: '消防费', major_category: @m_11
-  @c_077  = create :category, code: '1102', name: '安保费', major_category: @m_11
-  @c_078  = create :category, code: '1103', name: '其他安保费', major_category: @m_11
-
-  @c_079  = create :category, code: '1201', name: '水费', major_category: @m_12
-  @c_080  = create :category, code: '1202', name: '电费', major_category: @m_12
-
-  @c_081  = create :category, code: '1301', name: '燃气费用', major_category: @m_13
-  @c_082  = create :category, code: '1302', name: '燃油费用', major_category: @m_13
-  @c_083  = create :category, code: '1303', name: '制冷及热水费', major_category: @m_13
-  @c_084  = create :category, code: '1304', name: '其他燃料费', major_category: @m_13
+  @c_201   = create :category, code: '201', name: '独生子女费用', superior: @c_2
+  @c_301   = create :category, code: '301', name: '离退休人员医保', superior: @c_3
 end
 
 desc "Create the default periods"
@@ -196,90 +121,12 @@ end
 
 desc "Create the default budget"
 task :default_budgets => :environment do
-  create :budget, period: @p_2013, category: @c_001, amount: 100000
-  create :budget, period: @p_2013, category: @c_002, amount: 100000
-  create :budget, period: @p_2013, category: @c_003, amount: 100000
-  create :budget, period: @p_2013, category: @c_004, amount: 100000
-  create :budget, period: @p_2013, category: @c_005, amount: 100000
-  create :budget, period: @p_2013, category: @c_006, amount: 100000
-  create :budget, period: @p_2013, category: @c_007, amount: 100000
-  create :budget, period: @p_2013, category: @c_008, amount: 100000
-  create :budget, period: @p_2013, category: @c_009, amount: 100000
-  create :budget, period: @p_2013, category: @c_010, amount: 100000
-  create :budget, period: @p_2013, category: @c_011, amount: 100000
-  create :budget, period: @p_2013, category: @c_012, amount: 100000
-  create :budget, period: @p_2013, category: @c_013, amount: 100000
-  create :budget, period: @p_2013, category: @c_014, amount: 100000
-  create :budget, period: @p_2013, category: @c_015, amount: 100000
-  create :budget, period: @p_2013, category: @c_016, amount: 100000
-  create :budget, period: @p_2013, category: @c_017, amount: 100000
-  create :budget, period: @p_2013, category: @c_018, amount: 100000
-  create :budget, period: @p_2013, category: @c_019, amount: 100000
-  create :budget, period: @p_2013, category: @c_020, amount: 100000
-  create :budget, period: @p_2013, category: @c_021, amount: 100000
-  create :budget, period: @p_2013, category: @c_022, amount: 100000
-  create :budget, period: @p_2013, category: @c_023, amount: 100000
-  create :budget, period: @p_2013, category: @c_024, amount: 100000
-  create :budget, period: @p_2013, category: @c_025, amount: 100000
-  create :budget, period: @p_2013, category: @c_026, amount: 100000
-  create :budget, period: @p_2013, category: @c_027, amount: 100000
-  create :budget, period: @p_2013, category: @c_028, amount: 100000
-  create :budget, period: @p_2013, category: @c_029, amount: 100000
-  create :budget, period: @p_2013, category: @c_030, amount: 100000
-  create :budget, period: @p_2013, category: @c_031, amount: 100000
-  create :budget, period: @p_2013, category: @c_032, amount: 100000
-  create :budget, period: @p_2013, category: @c_033, amount: 100000
-  create :budget, period: @p_2013, category: @c_034, amount: 100000
-  create :budget, period: @p_2013, category: @c_035, amount: 100000
-  create :budget, period: @p_2013, category: @c_036, amount: 100000
-  create :budget, period: @p_2013, category: @c_037, amount: 100000
-  create :budget, period: @p_2013, category: @c_038, amount: 100000
-  create :budget, period: @p_2013, category: @c_039, amount: 100000
-  create :budget, period: @p_2013, category: @c_040, amount: 100000
-  create :budget, period: @p_2013, category: @c_041, amount: 100000
-  create :budget, period: @p_2013, category: @c_042, amount: 100000
-  create :budget, period: @p_2013, category: @c_043, amount: 100000
-  create :budget, period: @p_2013, category: @c_044, amount: 100000
-  create :budget, period: @p_2013, category: @c_045, amount: 100000
-  create :budget, period: @p_2013, category: @c_046, amount: 100000
-  create :budget, period: @p_2013, category: @c_047, amount: 100000
-  create :budget, period: @p_2013, category: @c_048, amount: 100000
-  create :budget, period: @p_2013, category: @c_049, amount: 100000
-  create :budget, period: @p_2013, category: @c_050, amount: 100000
-  create :budget, period: @p_2013, category: @c_051, amount: 100000
-  create :budget, period: @p_2013, category: @c_052, amount: 100000
-  create :budget, period: @p_2013, category: @c_053, amount: 100000
-  create :budget, period: @p_2013, category: @c_054, amount: 100000
-  create :budget, period: @p_2013, category: @c_055, amount: 100000
-  create :budget, period: @p_2013, category: @c_056, amount: 100000
-  create :budget, period: @p_2013, category: @c_057, amount: 100000
-  create :budget, period: @p_2013, category: @c_058, amount: 100000
-  create :budget, period: @p_2013, category: @c_059, amount: 100000
-  create :budget, period: @p_2013, category: @c_060, amount: 100000
-  create :budget, period: @p_2013, category: @c_061, amount: 100000
-  create :budget, period: @p_2013, category: @c_062, amount: 100000
-  create :budget, period: @p_2013, category: @c_063, amount: 100000
-  create :budget, period: @p_2013, category: @c_064, amount: 100000
-  create :budget, period: @p_2013, category: @c_065, amount: 100000
-  create :budget, period: @p_2013, category: @c_066, amount: 100000
-  create :budget, period: @p_2013, category: @c_067, amount: 100000
-  create :budget, period: @p_2013, category: @c_068, amount: 100000
-  create :budget, period: @p_2013, category: @c_069, amount: 100000
-  create :budget, period: @p_2013, category: @c_070, amount: 100000
-  create :budget, period: @p_2013, category: @c_071, amount: 100000
-  create :budget, period: @p_2013, category: @c_072, amount: 100000
-  create :budget, period: @p_2013, category: @c_073, amount: 100000
-  create :budget, period: @p_2013, category: @c_074, amount: 100000
-  create :budget, period: @p_2013, category: @c_075, amount: 100000
-  create :budget, period: @p_2013, category: @c_076, amount: 100000
-  create :budget, period: @p_2013, category: @c_077, amount: 100000
-  create :budget, period: @p_2013, category: @c_078, amount: 100000
-  create :budget, period: @p_2013, category: @c_079, amount: 100000
-  create :budget, period: @p_2013, category: @c_080, amount: 100000
-  create :budget, period: @p_2013, category: @c_081, amount: 50000
-  create :budget, period: @p_2013, category: @c_082, amount: 50000
-  create :budget, period: @p_2013, category: @c_083, amount: 50000
-  create :budget, period: @p_2013, category: @c_084
+  create :budget, period: @p_2013, category: @c_101, amount: 200000
+  create :budget, period: @p_2013, category: @c_102, amount: 140000
+  create :budget, period: @p_2013, category: @c_10501, amount: 100000
+  create :budget, period: @p_2013, category: @c_10502, amount: 100000
+  create :budget, period: @p_2013, category: @c_10503, amount: 100000
+  create :budget, period: @p_2013, category: @c_117
 end
 
 desc "Create the test users"
