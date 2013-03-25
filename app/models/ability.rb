@@ -11,7 +11,7 @@ class Ability
       can [:read, :query], Expense 
       can [:read, :query, :query_expenses], Reimbursement
     end
-    can :manage, [User, MajorCategory, Category, Period, Organization] if user.is? :admin
+    can :manage, [User, Category, Period, Organization] if user.is? :admin
     if user.is? :staff
       can [:create, :generate_sn, :update, :destroy], Expense
       can [:create, :generate_sn, :update, :destroy], Reimbursement
