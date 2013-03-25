@@ -2,8 +2,8 @@
   <td><%= f.input :category_id, label_method: :code_name, label: false, 
                   collection: Category.father, as: :grouped_select,  
                   group_method: :leaves, group_label_method: :code_name, 
-                  input_html: { class: 'input-bigger' } %></td>
-  <td><%= f.input :name, label: false, input_html: { class: 'span4', autocomplete: "off" } %></td>
+                  input_html: { class: 'input-large' } %></td>
+  <td><%= f.input :name, label: false, input_html: { class: 'span3', autocomplete: "off" } %></td>
   <td><%= f.input :amount, label: false, input_html: { class: 'input-xxmini' } %></td>
   <td><%= f.input :unit, label: false, input_html: { class: 'input-xxmini', autocomplete: "off" } %></td>
   <td><%= f.input :unit_price, label: false, input_html: { class: 'input-mini' } %></td>
