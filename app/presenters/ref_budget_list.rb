@@ -5,7 +5,7 @@ class RefBudgetList
     @bill = bill
     @ref_budgets = []
     budgets.each do |bu|
-      @ref_budgets << ReferenceBudget.new(bu, @bill)
+      @ref_budgets << ReferenceBudget.new(bu, @bill) if bu.amount
     end
   end
 

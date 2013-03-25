@@ -63,20 +63,7 @@ class Reimbursement < ActiveRecord::Base
     "VCH-%.6d" % (max_id + 1)
   end
 
-  def category_price(category_id)
-    sum_category_price = 0
-    details.each do |detail|
-      sum_category_price += detail.price if (category_id == detail.category_id and detail.price != nil)
-    end
-    sum_category_price
-  end
-
-  def has_category?(category_id)
-    details.each do |detail|
-      return true if category_id == detail.category_id
-    end
-    return false
-  end
+  
 
   def cal_amount
     amount = 0
@@ -100,5 +87,38 @@ class Reimbursement < ActiveRecord::Base
       self.status = :commit
       save!
     end
+  end
+
+  def category_price(category)
+    sum_category_price = 0
+    details.each do |detail|
+      if (detail.price != nil and category.id == detail.category_id)
+        sum_category_price += detail.price 
+      else 
+        next unless detail.category
+        b = detail.category.match_budget
+        sum_category_price += detail.price if (detail.price != nil and b and b.category.id == category.id)
+      end
+    end
+    sum_category_price
+  end
+
+  def has_category?(category)
+    details.each do |detail|
+      return true if category.id == detail.category_id
+    end
+    return false
+  end
+
+  def match_category?(category)
+    return true if has_category?(category)
+
+    details.each do |detail|
+      next unless detail.category
+      b = detail.category.match_budget
+      return true if b && b.category.id == category.id
+    end
+
+    return false
   end
 end

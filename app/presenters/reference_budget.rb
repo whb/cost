@@ -13,7 +13,7 @@ class ReferenceBudget
   end
 
   def style()
-    return @bill.has_category?(@budget.category.id) ? "" : "display: none"
+    return @bill.match_category?(@budget.category) ? "" : "display: none"
   end
 
 
@@ -22,7 +22,7 @@ class ReferenceBudget
   end
 
   def current
-    @bill.category_price(@budget.category.id)
+    @bill.category_price(@budget.category)
   end
 
   def balance

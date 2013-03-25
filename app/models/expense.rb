@@ -73,18 +73,36 @@ class Expense < ActiveRecord::Base
     self.status = :reimbursed
   end
 
-  def category_price(category_id)
+  def category_price(category)
     sum_category_price = 0
     items.each do |item|
-      sum_category_price += item.price if (category_id == item.category_id and item.price != nil)
+      if (item.price != nil and category.id == item.category_id)
+        sum_category_price += item.price 
+      else 
+        next unless item.category
+        b = item.category.match_budget
+        sum_category_price += item.price if (item.price != nil and b and b.category.id == category.id)
+      end
     end
     sum_category_price
   end
 
-  def has_category?(category_id)
+  def has_category?(category)
     items.each do |item|
-      return true if category_id == item.category_id
+      return true if category.id == item.category_id
     end
+    return false
+  end
+
+  def match_category?(category)
+    return true if has_category?(category)
+
+    items.each do |item|
+      next unless item.category
+      b = item.category.match_budget
+      return true if b && b.category.id == category.id
+    end
+
     return false
   end
 end

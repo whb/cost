@@ -32,4 +32,9 @@ class Category < ActiveRecord::Base
     end
     l
   end
+
+  def match_budget
+    Budget.match_this_year(self)
+  end
+
 end
