@@ -13,9 +13,6 @@ FactoryGirl.define do
     roles  %w[admin staff]
   end
 
-  factory :major_category do
-  end
-
   factory :category do
   end
 

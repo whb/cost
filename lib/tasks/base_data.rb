@@ -72,23 +72,6 @@ task :default_users => :environment do
   @zhaop = create :user, username: 'zhaopuyun', displayname: '赵谱云', roles: %w[staff department_manager], organization: @xingzheng
 end
 
-desc "Create the major categories"
-task :default_major_categories => :environment do
-  @m_1  = create :major_category, code: '01', name: '办公费'
-  @m_2  = create :major_category, code: '02', name: '业务招待费'
-  @m_3  = create :major_category, code: '03', name: '日常性费用'
-  @m_4  = create :major_category, code: '04', name: '保险费'
-  @m_5  = create :major_category, code: '05', name: '车辆费用'
-  @m_6  = create :major_category, code: '06', name: '修理费'
-  @m_7  = create :major_category, code: '07', name: '费用性税金'
-  @m_8  = create :major_category, code: '08', name: '折旧费'
-  @m_9  = create :major_category, code: '09', name: '聘请中介费'
-  @m_10 = create :major_category, code: '10', name: '环境保护费'
-  @m_11 = create :major_category, code: '11', name: '安全防范费'
-  @m_12 = create :major_category, code: '12', name: '水电费'
-  @m_13 = create :major_category, code: '13', name: '供暖燃料费（办公场所）'
-end
-
 desc "Create the default categories"
 task :default_categories => :environment do
   @c_1     = create :category, code: '1', name: '日常费用'
@@ -139,5 +122,5 @@ end
 desc "Run base tasks"
 task :base => [ :admin_user, 
                 :scaffold_organizations, :manager_users, :default_organizations, :default_users, 
-                :default_major_categories, :default_categories, :default_periods, :default_budgets, 
+                :default_categories, :default_periods, :default_budgets, 
                 :test_users]
