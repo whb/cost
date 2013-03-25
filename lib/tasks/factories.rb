@@ -26,7 +26,7 @@ FactoryGirl.define do
 
   trait :item_detail_part do
 
-    category_id  { ($three_level_categories.map {|c| c.id}).sample } 
+    category_id  { ($leaf_categories.map {|c| c.id}).sample } 
     sequence(:name) { |n| "费用名称......#{n}" }
     amount { rand(1..5) }
     unit { ["个", "箱", "台", "套"].sample }
