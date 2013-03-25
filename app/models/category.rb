@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
 
   attr_accessible :code, :name, :superior_id
   validates_presence_of :code, :name
-  validates_uniqueness_of :code, :name
+  validates_uniqueness_of :code
 
   def code_name
     code + name

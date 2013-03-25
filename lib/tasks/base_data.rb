@@ -186,104 +186,104 @@ end
 desc "Create the default budget"
 task :default_budgets => :environment do
   create :budget, period: @p_2013, category: @c_1
-  create :budget, period: @p_2014, category: @c_101, amount: 200,000.00 
-  create :budget, period: @p_2015, category: @c_102, amount: 140,000.00 
-  create :budget, period: @p_2016, category: @c_10201
-  create :budget, period: @p_2017, category: @c_10202
-  create :budget, period: @p_2018, category: @c_10203
-  create :budget, period: @p_2019, category: @c_10204
-  create :budget, period: @p_2020, category: @c_103, amount: 100,000.00 
-  create :budget, period: @p_2021, category: @c_10301
-  create :budget, period: @p_2022, category: @c_10302
-  create :budget, period: @p_2023, category: @c_10303
-  create :budget, period: @p_2024, category: @c_10304
-  create :budget, period: @p_2025, category: @c_10305
-  create :budget, period: @p_2026, category: @c_104, amount: 272,300.00 
-  create :budget, period: @p_2027, category: @c_10401
-  create :budget, period: @p_2028, category: @c_10402
-  create :budget, period: @p_2029, category: @c_10403
-  create :budget, period: @p_2030, category: @c_10404
-  create :budget, period: @p_2031, category: @c_10405
-  create :budget, period: @p_2032, category: @c_10406
-  create :budget, period: @p_2033, category: @c_10407
-  create :budget, period: @p_2034, category: @c_105, amount: 870,000.00 
-  create :budget, period: @p_2035, category: @c_10501, amount: 500,000.00 
-  create :budget, period: @p_2036, category: @c_10502, amount: 300,000.00 
-  create :budget, period: @p_2037, category: @c_10503, amount: 60,000.00 
-  create :budget, period: @p_2038, category: @c_10504
-  create :budget, period: @p_2039, category: @c_10505
-  create :budget, period: @p_2040, category: @c_10506, amount: 10,000.00 
-  create :budget, period: @p_2041, category: @c_10507
-  create :budget, period: @p_2042, category: @c_106, amount: 300,000.00 
-  create :budget, period: @p_2043, category: @c_107, amount: 50,000.00 
-  create :budget, period: @p_2044, category: @c_10701
-  create :budget, period: @p_2045, category: @c_10702
-  create :budget, period: @p_2046, category: @c_108, amount: 200,000.00 
-  create :budget, period: @p_2047, category: @c_10801
-  create :budget, period: @p_2048, category: @c_10802
-  create :budget, period: @p_2049, category: @c_109, amount: 166,000.00 
-  create :budget, period: @p_2050, category: @c_10901, amount: 16,000.00 
-  create :budget, period: @p_2051, category: @c_10902, amount: 150,000.00 
-  create :budget, period: @p_2052, category: @c_110, amount: 50,000.00 
-  create :budget, period: @p_2053, category: @c_111, amount: 100,000.00 
-  create :budget, period: @p_2054, category: @c_11101
-  create :budget, period: @p_2055, category: @c_11102
-  create :budget, period: @p_2056, category: @c_112, amount: 296,000.00 
-  create :budget, period: @p_2057, category: @c_11201, amount: 200,000.00 
-  create :budget, period: @p_2058, category: @c_11202
-  create :budget, period: @p_2059, category: @c_11203, amount: 96,000.00 
-  create :budget, period: @p_2060, category: @c_11204
-  create :budget, period: @p_2061, category: @c_11205
-  create :budget, period: @p_2062, category: @c_113
-  create :budget, period: @p_2063, category: @c_114
-  create :budget, period: @p_2064, category: @c_11401
-  create :budget, period: @p_2065, category: @c_11402
-  create :budget, period: @p_2066, category: @c_115, amount: 100,000.00 
-  create :budget, period: @p_2067, category: @c_11501
-  create :budget, period: @p_2068, category: @c_11502
-  create :budget, period: @p_2069, category: @c_11503
-  create :budget, period: @p_2070, category: @c_11504
-  create :budget, period: @p_2071, category: @c_11505
-  create :budget, period: @p_2072, category: @c_11506
-  create :budget, period: @p_2073, category: @c_116, amount: 60,000.00 
-  create :budget, period: @p_2074, category: @c_11601
-  create :budget, period: @p_2075, category: @c_11602, amount: 60,000.00 
-  create :budget, period: @p_2076, category: @c_117, amount: 150,000.00 
-  create :budget, period: @p_2077, category: @c_118, amount: 100,000.00 
-  create :budget, period: @p_2078, category: @c_11801
-  create :budget, period: @p_2079, category: @c_11802
-  create :budget, period: @p_2080, category: @c_11803
-  create :budget, period: @p_2081, category: @c_11804
-  create :budget, period: @p_2082, category: @c_2, amount: 2,000,000.00 
-  create :budget, period: @p_2083, category: @c_201
-  create :budget, period: @p_2084, category: @c_202
-  create :budget, period: @p_2085, category: @c_203
-  create :budget, period: @p_2086, category: @c_204
-  create :budget, period: @p_2087, category: @c_205
-  create :budget, period: @p_2088, category: @c_206
-  create :budget, period: @p_2089, category: @c_207
-  create :budget, period: @p_2090, category: @c_208
-  create :budget, period: @p_2091, category: @c_209
-  create :budget, period: @p_2092, category: @c_3, amount: 302,000.00 
-  create :budget, period: @p_2093, category: @c_301
-  create :budget, period: @p_2094, category: @c_302
-  create :budget, period: @p_2095, category: @c_303
-  create :budget, period: @p_2096, category: @c_304
-  create :budget, period: @p_2097, category: @c_4
-  create :budget, period: @p_2098, category: @c_401
-  create :budget, period: @p_2099, category: @c_402
-  create :budget, period: @p_2100, category: @c_403
-  create :budget, period: @p_2101, category: @c_5
-  create :budget, period: @p_2102, category: @c_501
-  create :budget, period: @p_2103, category: @c_502
-  create :budget, period: @p_2104, category: @c_503
-  create :budget, period: @p_2105, category: @c_504
-  create :budget, period: @p_2106, category: @c_505
-  create :budget, period: @p_2107, category: @c_506
-  create :budget, period: @p_2108, category: @c_507
-  create :budget, period: @p_2109, category: @c_508
-  create :budget, period: @p_2110, category: @c_509
-  create :budget, period: @p_2111, category: @c_510
+  create :budget, period: @p_2013, category: @c_101, amount: 200000 
+  create :budget, period: @p_2013, category: @c_102, amount: 140000 
+  create :budget, period: @p_2013, category: @c_10201
+  create :budget, period: @p_2013, category: @c_10202
+  create :budget, period: @p_2013, category: @c_10203
+  create :budget, period: @p_2013, category: @c_10204
+  create :budget, period: @p_2013, category: @c_103, amount: 100000 
+  create :budget, period: @p_2013, category: @c_10301
+  create :budget, period: @p_2013, category: @c_10302
+  create :budget, period: @p_2013, category: @c_10303
+  create :budget, period: @p_2013, category: @c_10304
+  create :budget, period: @p_2013, category: @c_10305
+  create :budget, period: @p_2013, category: @c_104, amount: 272300 
+  create :budget, period: @p_2013, category: @c_10401
+  create :budget, period: @p_2013, category: @c_10402
+  create :budget, period: @p_2013, category: @c_10403
+  create :budget, period: @p_2013, category: @c_10404
+  create :budget, period: @p_2013, category: @c_10405
+  create :budget, period: @p_2013, category: @c_10406
+  create :budget, period: @p_2013, category: @c_10407
+  create :budget, period: @p_2013, category: @c_105, amount: 870000 
+  create :budget, period: @p_2013, category: @c_10501, amount: 500000 
+  create :budget, period: @p_2013, category: @c_10502, amount: 300000 
+  create :budget, period: @p_2013, category: @c_10503, amount: 60000 
+  create :budget, period: @p_2013, category: @c_10504
+  create :budget, period: @p_2013, category: @c_10505
+  create :budget, period: @p_2013, category: @c_10506, amount: 10000 
+  create :budget, period: @p_2013, category: @c_10507
+  create :budget, period: @p_2013, category: @c_106, amount: 300000 
+  create :budget, period: @p_2013, category: @c_107, amount: 50000 
+  create :budget, period: @p_2013, category: @c_10701
+  create :budget, period: @p_2013, category: @c_10702
+  create :budget, period: @p_2013, category: @c_108, amount: 200000 
+  create :budget, period: @p_2013, category: @c_10801
+  create :budget, period: @p_2013, category: @c_10802
+  create :budget, period: @p_2013, category: @c_109, amount: 166000 
+  create :budget, period: @p_2013, category: @c_10901, amount: 16000 
+  create :budget, period: @p_2013, category: @c_10902, amount: 150000 
+  create :budget, period: @p_2013, category: @c_110, amount: 50000 
+  create :budget, period: @p_2013, category: @c_111, amount: 100000 
+  create :budget, period: @p_2013, category: @c_11101
+  create :budget, period: @p_2013, category: @c_11102
+  create :budget, period: @p_2013, category: @c_112, amount: 296000 
+  create :budget, period: @p_2013, category: @c_11201, amount: 200000 
+  create :budget, period: @p_2013, category: @c_11202
+  create :budget, period: @p_2013, category: @c_11203, amount: 96000 
+  create :budget, period: @p_2013, category: @c_11204
+  create :budget, period: @p_2013, category: @c_11205
+  create :budget, period: @p_2013, category: @c_113
+  create :budget, period: @p_2013, category: @c_114
+  create :budget, period: @p_2013, category: @c_11401
+  create :budget, period: @p_2013, category: @c_11402
+  create :budget, period: @p_2013, category: @c_115, amount: 100000 
+  create :budget, period: @p_2013, category: @c_11501
+  create :budget, period: @p_2013, category: @c_11502
+  create :budget, period: @p_2013, category: @c_11503
+  create :budget, period: @p_2013, category: @c_11504
+  create :budget, period: @p_2013, category: @c_11505
+  create :budget, period: @p_2013, category: @c_11506
+  create :budget, period: @p_2013, category: @c_116, amount: 60000 
+  create :budget, period: @p_2013, category: @c_11601
+  create :budget, period: @p_2013, category: @c_11602, amount: 60000 
+  create :budget, period: @p_2013, category: @c_117, amount: 150000 
+  create :budget, period: @p_2013, category: @c_118, amount: 100000 
+  create :budget, period: @p_2013, category: @c_11801
+  create :budget, period: @p_2013, category: @c_11802
+  create :budget, period: @p_2013, category: @c_11803
+  create :budget, period: @p_2013, category: @c_11804
+  create :budget, period: @p_2013, category: @c_2, amount: 2000000 
+  create :budget, period: @p_2013, category: @c_201
+  create :budget, period: @p_2013, category: @c_202
+  create :budget, period: @p_2013, category: @c_203
+  create :budget, period: @p_2013, category: @c_204
+  create :budget, period: @p_2013, category: @c_205
+  create :budget, period: @p_2013, category: @c_206
+  create :budget, period: @p_2013, category: @c_207
+  create :budget, period: @p_2013, category: @c_208
+  create :budget, period: @p_2013, category: @c_209
+  create :budget, period: @p_2013, category: @c_3, amount: 302000 
+  create :budget, period: @p_2013, category: @c_301
+  create :budget, period: @p_2013, category: @c_302
+  create :budget, period: @p_2013, category: @c_303
+  create :budget, period: @p_2013, category: @c_304
+  create :budget, period: @p_2013, category: @c_4
+  create :budget, period: @p_2013, category: @c_401
+  create :budget, period: @p_2013, category: @c_402
+  create :budget, period: @p_2013, category: @c_403
+  create :budget, period: @p_2013, category: @c_5
+  create :budget, period: @p_2013, category: @c_501
+  create :budget, period: @p_2013, category: @c_502
+  create :budget, period: @p_2013, category: @c_503
+  create :budget, period: @p_2013, category: @c_504
+  create :budget, period: @p_2013, category: @c_505
+  create :budget, period: @p_2013, category: @c_506
+  create :budget, period: @p_2013, category: @c_507
+  create :budget, period: @p_2013, category: @c_508
+  create :budget, period: @p_2013, category: @c_509
+  create :budget, period: @p_2013, category: @c_510
 end
 
 desc "Create the test users"
