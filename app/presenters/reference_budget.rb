@@ -9,7 +9,7 @@ class ReferenceBudget
   end
 
   def name
-    @budget.category.name
+    @budget.category.code_name
   end
 
   def style()
