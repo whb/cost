@@ -1,4 +1,8 @@
 <% content_for :sidebar do %>
+  <%= javascript_tag do %>
+    window.match_budget_category_hash = <%= raw Category.match_budget_category_hash.to_json %>
+  <% end %>
+
   <% ref_budget_list.each do |budget| %>
     <table  id="<%= budget.id %>" style="<%= budget.style %>" class="table table-condensed table-bordered">
       <caption class="title"><%= budget.name %></caption>

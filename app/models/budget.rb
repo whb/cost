@@ -19,4 +19,5 @@ class Budget < ActiveRecord::Base
     return b if (b && b.amount)
     self.match_this_year(category.superior) if category.superior
   end
+
 end
