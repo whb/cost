@@ -8,8 +8,8 @@
   <dd><%= @category.code %></dd>
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @category.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:superior_id) %>:</strong></dt>
-  <dd><%= superior_name @category %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:superior) %>:</strong></dt>
+  <dd><%= superior_category_name @category %></dd>
 </dl>
 
 <div class="form-actions">

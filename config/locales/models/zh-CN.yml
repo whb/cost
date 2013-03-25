@@ -81,7 +81,7 @@ zh-CN:
       category:
         code: 编号
         name: 名称
-        major_category: 一级费用类型
+        superior: 上级费用类型
       period: 
         year: 年份
         explain: 说明
