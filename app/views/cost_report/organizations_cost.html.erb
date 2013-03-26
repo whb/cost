@@ -17,7 +17,7 @@
   <tbody>
     <% @categories.each do |c| %>
     <tr>
-      <td><%= c.name %></td>
+      <td><%= indent_code_name c %></td>
       <td class='numeric'><%= humanized_money @summary[c.id] %></td>
       <% @organizations.each do | o | %>
         <td class='numeric'><%= link_details_query(@organizations_cost_hash[[c.id, o.id]], c, o, '*') %></td>

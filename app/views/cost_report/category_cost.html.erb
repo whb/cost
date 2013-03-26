@@ -5,7 +5,7 @@
 
   <%= form_tag category_cost_path, :id => :select_category_id, :method => :get, :class => 'pull-right' do %>
   <div class="field">
-    <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name", @selected_category_id), 
+    <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "code_name", @selected_category_id), 
       :prompt => t('Select Category...') %>
   </div>
 <% end %>

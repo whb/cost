@@ -19,7 +19,7 @@
 </tr>
 <% for budget in @period.budgets %>
     <tr>
-      <td><%= budget.category.name %></td>
+      <td><%= indent_code_name budget.category %></td>
       <td class='numeric'><%= humanized_money budget.amount %></td>
       <td class='numeric'><%= link_to(humanized_money(budget.cost), category_cost_path + "?category_id=#{budget.category.id}") %></td>
       <td class='numeric'><%= humanized_money budget.available %></td>
