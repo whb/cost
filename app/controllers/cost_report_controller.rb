@@ -6,6 +6,14 @@ class CostReportController < ApplicationController
     @organizations_cost_hash = Detail.committed.this_year.joins(:reimbursement).
       group([:category_id, :organization_id]).sum(:price)
 
+    @organizations.each do |o|
+      @categories.each do |c|
+        if c.branch_node?
+          @organizations_cost_hash[[c.id, o.id]] = summary_leaves(c, o)
+        end
+      end
+    end
+
     @summary = []
     @categories.each do |c|
       @organizations.each do |o|
@@ -15,6 +23,18 @@ class CostReportController < ApplicationController
         end
       end
     end
+  end
+
+  def summary_leaves(category, organization)
+    has_value = false
+    sum = 0
+    category.child_leaf_ids.each do |cid|
+      if @organizations_cost_hash[[cid, organization.id]]
+        sum += @organizations_cost_hash[[cid, organization.id]] 
+        has_value = true
+      end
+    end
+    has_value ? sum : nil
   end
 
   def detail_list

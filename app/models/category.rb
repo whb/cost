@@ -48,6 +48,10 @@ class Category < ActiveRecord::Base
     child_categories.flatten
   end
 
+  def branch_node?
+    !self.subordinates.empty?
+  end
+
   def match_budget
     Budget.match_this_year(self)
   end
