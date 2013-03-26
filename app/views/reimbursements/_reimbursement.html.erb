@@ -46,7 +46,7 @@
   </tr>
   <% for detail in reimbursement.details %>
       <tr class="<%= css_of_detail(detail, selected_category) %>">
-        <td><%= detail.category.name %></td>
+        <td><%= detail.category.code_name %></td>
         <td><%= detail.name %></td>
         <td class='numeric'><%= detail.amount %></td>
         <td><%= detail.unit %></td>
