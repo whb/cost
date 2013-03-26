@@ -9,7 +9,7 @@ class CostReportController < ApplicationController
     @organizations.each do |o|
       @categories.each do |c|
         if c.branch_node?
-          @organizations_cost_hash[[c.id, o.id]] = summary_leaves(c, o)
+          @organizations_cost_hash[[c.id, o.id]] = sum_child_leaf(c, o)
         end
       end
     end
@@ -25,12 +25,12 @@ class CostReportController < ApplicationController
     end
   end
 
-  def summary_leaves(category, organization)
+  def sum_child_leaf(category, organization)
     has_value = false
     sum = 0
     category.child_leaf_ids.each do |cid|
       if @organizations_cost_hash[[cid, organization.id]]
-        sum += @organizations_cost_hash[[cid, organization.id]] 
+        sum += @organizations_cost_hash[[cid, organization.id]]
         has_value = true
       end
     end
@@ -73,10 +73,28 @@ class CostReportController < ApplicationController
         get_initialized_hash(@category_amount_hash, c)[month] =
           category_sum[c.id] ? category_sum[c.id] : nil
       end
+
+      Category.branch_nodes.each do | c |
+        get_initialized_hash(@category_amount_hash, c)[month] =
+          sum_child_leaf2(@category_amount_hash, c, month)
+      end
+
     end
     @selected_organization_id = @organization.id if @organization
 
     @summary = sum_amount(Category.all, @category_amount_hash)
+  end
+
+  def sum_child_leaf2(amount_hash, category, month)
+    has_value = false
+    sum = 0
+    category.child_leaves.each do |leaf|
+      if amount_hash[leaf] && amount_hash[leaf][month]
+        sum += amount_hash[leaf][month]
+        has_value = true
+      end
+    end
+    has_value ? sum : nil
   end
 
   def category_cost
@@ -85,7 +103,8 @@ class CostReportController < ApplicationController
     @organization_amount_hash = {}
     1.upto(12).each do | month |
       if (@category)
-        organization_sum = Detail.committed.interval(begin_to_end_of(month)).belongs_to_category(@category.id).
+        query_id_or_ids = @category.branch_node? ? @category.child_leaf_ids : @category.id
+        organization_sum = Detail.committed.interval(begin_to_end_of(month)).belongs_to_category(query_id_or_ids).
           joins(:reimbursement).group(:organization_id).sum(:price)
       else
         organization_sum = Reimbursement.committed.interval(begin_to_end_of(month)).

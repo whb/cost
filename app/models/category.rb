@@ -7,7 +7,7 @@ class Category < ActiveRecord::Base
   validates_presence_of :code, :name
   validates_uniqueness_of :code
 
-  default_scope  :order => :code
+  default_scope :order => :code
 
   def code_name
     code + name
@@ -36,13 +36,17 @@ class Category < ActiveRecord::Base
   end
 
   def child_leaf_ids
+    child_leaves.map {|c| c.id}
+  end
+
+  def child_leaves
     child_categories = []
     subs = self.subordinates
     if subs.empty?
-      child_categories << self.id
+      child_categories << self
     else
       subs.each do |c|
-        child_categories << c.child_leaf_ids
+        child_categories << c.child_leaves
       end
     end
     child_categories.flatten
@@ -63,6 +67,26 @@ class Category < ActiveRecord::Base
       hash[c.id] = b.category.id if b
     end
     hash
+  end
+
+  def self.branch_nodes
+    nodes = []
+    Category.all.each do | c |
+      if c.branch_node?
+        nodes << c
+      end
+    end
+    nodes
+  end
+
+  def self.leaf_nodes
+    nodes = []
+    Category.all.each do | c |
+      unless c.branch_node?
+        nodes << c
+      end
+    end
+    nodes
   end
 
 end
