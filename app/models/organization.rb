@@ -24,6 +24,7 @@ class Organization < ActiveRecord::Base
     Organization.new
   end
 
+  # include self
   def subtree_ids
     org_ids = []
     org_ids << self.id

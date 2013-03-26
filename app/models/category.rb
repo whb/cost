@@ -14,9 +14,9 @@ class Category < ActiveRecord::Base
   end
 
   def level
-    return 1 if code.length == 1 
-    return 2 if code.length == 3 
-    return 3 if code.length == 5 
+    return 1 if code.length == 1
+    return 2 if code.length == 3
+    return 3 if code.length == 5
   end
 
   def self.father
@@ -33,6 +33,19 @@ class Category < ActiveRecord::Base
       l << c if c.subordinates.empty?
     end
     l
+  end
+
+  def child_leaf_ids
+    child_categories = []
+    subs = self.subordinates
+    if subs.empty?
+      child_categories << self.id
+    else
+      subs.each do |c|
+        child_categories << c.child_leaf_ids
+      end
+    end
+    child_categories.flatten
   end
 
   def match_budget

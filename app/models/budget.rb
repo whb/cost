@@ -12,7 +12,7 @@ class Budget < ActiveRecord::Base
   end
 
   def cost
-    @cost ||= Detail.committed.year(period.year).sum(:price, :conditions => "category_id = #{self.category_id}")
+    @cost ||= Detail.committed.year(period.year).belongs_to_category(self.category.child_leaf_ids).sum(:price)
   end
 
   def self.match_this_year(category)
