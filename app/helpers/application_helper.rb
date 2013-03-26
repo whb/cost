@@ -57,7 +57,8 @@ module ApplicationHelper
   end
 
   def css_of_detail(detail, selected_category)
-    detail.category == selected_category ? 'info' : ''
+    return '' unless selected_category
+    selected_category.equals_or_has_child(detail.category) ? 'info' : ''
   end
 
   def humanized_money(money)

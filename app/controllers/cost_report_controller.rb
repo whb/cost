@@ -49,7 +49,7 @@ class CostReportController < ApplicationController
 
     if (params[:category_id] != '*')
       @category = Category.find(params[:category_id])
-      @details = @details.belongs_to_category(@category.id)
+      @details = @details.belongs_to_category(@category.id_for_cost)
     end
 
     if (params[:organization_id] != '*')
@@ -133,7 +133,7 @@ class CostReportController < ApplicationController
 
     if (params[:category_id] != '*')
       @category = Category.find(params[:category_id])
-      @reimbursements = @reimbursements.has_category(@category.id)
+      @reimbursements = @reimbursements.has_category(@category.id_for_cost)
     end
 
     if (params[:organization_id] != '*')

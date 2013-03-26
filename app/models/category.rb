@@ -56,6 +56,15 @@ class Category < ActiveRecord::Base
     !self.subordinates.empty?
   end
 
+  def id_for_cost
+    self.branch_node? ? self.child_leaf_ids : self.id
+  end
+
+  def equals_or_has_child(category)
+    return true if self == category
+    self.child_leaves.include? category
+  end
+
   def match_budget
     Budget.match_this_year(self)
   end
