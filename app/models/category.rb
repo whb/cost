@@ -9,6 +9,20 @@ class Category < ActiveRecord::Base
 
   default_scope :order => :code
 
+  after_save :clear_class_cache
+  after_destroy :clear_class_cache
+
+  def clear_class_cache
+    @@father = nil
+    @@match_budget_category_hash = nil
+    # can be more efficiency
+    @@branch_leaves = nil
+  end
+
+  def self.clear_cache_of_match_budget_category_hash
+    @@match_budget_category_hash = nil
+  end
+
   def code_name
     code + name
   end
@@ -20,6 +34,10 @@ class Category < ActiveRecord::Base
   end
 
   def self.father
+    @@father ||= find_father
+  end
+
+  def self.find_father
     f = []
     Category.order(:code).each do |c|
       f << c unless c.leaves.empty?
@@ -28,6 +46,10 @@ class Category < ActiveRecord::Base
   end
 
   def leaves
+    @leaves ||= find_leaves
+  end
+
+  def find_leaves
     l = []
     self.subordinates.each do |c|
       l << c if c.subordinates.empty?
@@ -40,20 +62,26 @@ class Category < ActiveRecord::Base
   end
 
   def child_leaves
+    @@branch_leaves ||= {}
+    return @@branch_leaves[self.id] if @@branch_leaves[self.id]
+    @@branch_leaves[self.id] = find_child_leaves
+  end
+
+  def find_child_leaves
     child_categories = []
     subs = self.subordinates
     if subs.empty?
       child_categories << self
     else
       subs.each do |c|
-        child_categories << c.child_leaves
+        child_categories << c.find_child_leaves
       end
     end
     child_categories.flatten
   end
 
   def branch_node?
-    !self.subordinates.empty?
+    @branch_node ||= !self.subordinates.empty?
   end
 
   def id_for_cost
@@ -70,6 +98,10 @@ class Category < ActiveRecord::Base
   end
 
   def self.match_budget_category_hash
+    @@match_budget_category_hash ||= find_match_budget_category_hash
+  end
+
+  def self.find_match_budget_category_hash
     hash = {}
     Category.all.each do |c|
       b = Budget.match_this_year(c)
