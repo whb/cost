@@ -79,6 +79,7 @@ task :default_categories => :environment do
   @c_3  = create :category, code:'3', name:'离退休人员统筹外费用'
   @c_4  = create :category, code:'4', name:'资产投资支出'
   @c_5  = create :category, code:'5', name:'运输项目支出'
+  @c_6  = create :category, code:'6', name:'专项储备'
 
   @c_101 = create :category, code:'101', name:'职工教育经费', superior: @c_1
   @c_102 = create :category, code:'102', name:'劳动保护费', superior: @c_1
@@ -124,16 +125,16 @@ task :default_categories => :environment do
   @c_508 = create :category, code:'508', name:'外付运费', superior: @c_5
   @c_509 = create :category, code:'509', name:'运输项目差旅费', superior: @c_5
   @c_510 = create :category, code:'510', name:'运输项目费用其他', superior: @c_5
+  @c_601 = create :category, code:'601', name:'费用性支出', superior: @c_6
+  @c_602 = create :category, code:'602', name:'资本性支出', superior: @c_6
 
   @c_10201 = create :category, code:'10201', name:'劳保用品', superior: @c_102
   @c_10202 = create :category, code:'10202', name:'工作服', superior: @c_102
-  @c_10203 = create :category, code:'10203', name:'防暑降温费用', superior: @c_102
-  @c_10204 = create :category, code:'10204', name:'劳保费其他', superior: @c_102
+  @c_10203 = create :category, code:'10203', name:'劳保费其他', superior: @c_102
   @c_10301 = create :category, code:'10301', name:'工会宣传费', superior: @c_103
   @c_10302 = create :category, code:'10302', name:'党委宣传费', superior: @c_103
   @c_10303 = create :category, code:'10303', name:'广告制作费', superior: @c_103
-  @c_10304 = create :category, code:'10304', name:'购标书费用', superior: @c_103
-  @c_10305 = create :category, code:'10305', name:'广告宣传费其他', superior: @c_103
+  @c_10304 = create :category, code:'10304', name:'广告宣传费其他', superior: @c_103
   @c_10401 = create :category, code:'10401', name:'购办公用品', superior: @c_104
   @c_10402 = create :category, code:'10402', name:'书报资料费', superior: @c_104
   @c_10403 = create :category, code:'10403', name:'印刷费', superior: @c_104
@@ -166,27 +167,34 @@ task :default_categories => :environment do
   @c_11501 = create :category, code:'11501', name:'审计费', superior: @c_115
   @c_11502 = create :category, code:'11502', name:'诉讼费', superior: @c_115
   @c_11503 = create :category, code:'11503', name:'咨询费', superior: @c_115
-  @c_11504 = create :category, code:'11504', name:'网络服务费', superior: @c_115
-  @c_11505 = create :category, code:'11505', name:'评估费', superior: @c_115
-  @c_11506 = create :category, code:'11506', name:'其他中介费', superior: @c_115
+  @c_11504 = create :category, code:'11504', name:'评估费', superior: @c_115
+  @c_11505 = create :category, code:'11505', name:'其他中介费', superior: @c_115
   @c_11601 = create :category, code:'11601', name:'财产保险费', superior: @c_116
   @c_11602 = create :category, code:'11602', name:'车辆保险费', superior: @c_116
   @c_11801 = create :category, code:'11801', name:'绿化费', superior: @c_118
   @c_11802 = create :category, code:'11802', name:'清洁卫生费', superior: @c_118
   @c_11803 = create :category, code:'11803', name:'垃圾清运费', superior: @c_118
   @c_11804 = create :category, code:'11804', name:'其他', superior: @c_118
-
+  @c_60101 = create :category, code:'60101', name:'安全设施检测费', superior: @c_601
+  @c_60102 = create :category, code:'60102', name:'应急器材保养维护费', superior: @c_601
+  @c_60103 = create :category, code:'60103', name:'作业人员安全防护用品费', superior: @c_601
+  @c_60104 = create :category, code:'60104', name:'安全生产宣传费', superior: @c_601
+  @c_60105 = create :category, code:'60105', name:'特种设备检测检验费', superior: @c_601
+  @c_60106 = create :category, code:'60106', name:'其他安全费用支出', superior: @c_601
+  @c_60201 = create :category, code:'60201', name:'购置车辆导航设备', superior: @c_602
+  @c_60202 = create :category, code:'60202', name:'配备应急救援器材', superior: @c_602
+  @c_60203 = create :category, code:'60203', name:'其他资本性支出', superior: @c_602
 
   $leaf_categories = [@c_101, @c_106, 
     @c_201, @c_202, @c_203, @c_204, @c_205, @c_206, @c_207, @c_208, @c_209, 
     @c_301, @c_302, @c_303, @c_304, @c_401, @c_402, @c_403, @c_501, @c_502, 
     @c_503, @c_504, @c_505, @c_506, @c_507, @c_508, @c_509, @c_510, 
-    @c_10201, @c_10202, @c_10203, @c_10204, @c_10301, @c_10302, @c_10303, 
-    @c_10304, @c_10305, @c_10401, @c_10402, @c_10403, @c_10404, @c_10405, @c_10406, @c_10407, 
+    @c_10201, @c_10202, @c_10203, @c_10301, @c_10302, @c_10303, 
+    @c_10304, @c_10401, @c_10402, @c_10403, @c_10404, @c_10405, @c_10406, @c_10407, 
     @c_10501, @c_10502, @c_10503, @c_10504, @c_10505, @c_10506, @c_10507, @c_10701, @c_10702, 
     @c_10801, @c_10802, @c_10901, @c_10902, @c_11101, @c_11102, @c_11201, @c_11202, @c_11203, 
     @c_11204, @c_11205, @c_11401, @c_11402, @c_11501, @c_11502, @c_11503, @c_11504, @c_11505, 
-    @c_11506, @c_11601, @c_11602, @c_11801, @c_11802, @c_11803, @c_11804] 
+    @c_11601, @c_11602, @c_11801, @c_11802, @c_11803, @c_11804] 
 end
 
 desc "Create the default periods"
@@ -202,13 +210,11 @@ task :default_budgets => :environment do
   create :budget, period: @p_2013, category: @c_10201
   create :budget, period: @p_2013, category: @c_10202
   create :budget, period: @p_2013, category: @c_10203
-  create :budget, period: @p_2013, category: @c_10204
   create :budget, period: @p_2013, category: @c_103, amount: 100000 
   create :budget, period: @p_2013, category: @c_10301
   create :budget, period: @p_2013, category: @c_10302
   create :budget, period: @p_2013, category: @c_10303
   create :budget, period: @p_2013, category: @c_10304
-  create :budget, period: @p_2013, category: @c_10305
   create :budget, period: @p_2013, category: @c_104, amount: 272300 
   create :budget, period: @p_2013, category: @c_10401
   create :budget, period: @p_2013, category: @c_10402
@@ -255,7 +261,6 @@ task :default_budgets => :environment do
   create :budget, period: @p_2013, category: @c_11503
   create :budget, period: @p_2013, category: @c_11504
   create :budget, period: @p_2013, category: @c_11505
-  create :budget, period: @p_2013, category: @c_11506
   create :budget, period: @p_2013, category: @c_116, amount: 60000 
   create :budget, period: @p_2013, category: @c_11601
   create :budget, period: @p_2013, category: @c_11602, amount: 60000 
@@ -295,6 +300,18 @@ task :default_budgets => :environment do
   create :budget, period: @p_2013, category: @c_508
   create :budget, period: @p_2013, category: @c_509
   create :budget, period: @p_2013, category: @c_510
+  create :budget, period: @p_2013, category: @c_6
+  create :budget, period: @p_2013, category: @c_601
+  create :budget, period: @p_2013, category: @c_60101
+  create :budget, period: @p_2013, category: @c_60102
+  create :budget, period: @p_2013, category: @c_60103
+  create :budget, period: @p_2013, category: @c_60104
+  create :budget, period: @p_2013, category: @c_60105
+  create :budget, period: @p_2013, category: @c_60106
+  create :budget, period: @p_2013, category: @c_602
+  create :budget, period: @p_2013, category: @c_60201
+  create :budget, period: @p_2013, category: @c_60202
+  create :budget, period: @p_2013, category: @c_60203
 end
 
 desc "Create the test users"
