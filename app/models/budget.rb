@@ -12,6 +12,7 @@ class Budget < ActiveRecord::Base
 
   def clear_cache
     Category.clear_cache_of_match_budget_category_hash
+    # may be need category to clear
     @@match_this_year = nil
     @@is_cached = nil
   end
