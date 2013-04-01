@@ -60,7 +60,7 @@ class Reimbursement < ActiveRecord::Base
 
   def self.generate_sn
     max_id = Reimbursement.maximum('id') ? Reimbursement.maximum('id') : 0
-    "VCH-%.6d" % (max_id + 1)
+    "ZC-%.6d" % (max_id + 1)
   end
 
   

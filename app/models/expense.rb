@@ -42,7 +42,7 @@ class Expense < ActiveRecord::Base
 
   def self.generate_sn
     max_id = Expense.maximum('id') ? Expense.maximum('id') : 0
-    "CST-%.6d" % (max_id + 1)
+    "SQ-%.6d" % (max_id + 1)
   end
 
   def editable?

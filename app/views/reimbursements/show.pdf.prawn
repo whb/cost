@@ -13,7 +13,7 @@ prawn_document(:page_size => [105.mm, 190.mm], :margin => 0, :page_layout => :la
 
     pdf.text_box @reimbursement.organization.name, :at => [25.mm, 74.mm]
 
-    pdf.text_box @reimbursement.reimburse_on.year.to_s, :at => [72.mm, 74.mm]
+    pdf.text_box @reimbursement.reimburse_on.year.to_s, :at => [70.mm, 74.mm]
     pdf.text_box @reimbursement.reimburse_on.month.to_s, :at => [88.mm, 74.mm]
     pdf.text_box @reimbursement.reimburse_on.day.to_s, :at => [100.mm, 74.mm]
 
