@@ -48,7 +48,10 @@
   <% end %>
 
   <%= menu_group :pull => :right do %>
-    <%= menu_item t(".Manual"), '/manual.pdf' %>
+    <%= drop_down t(".Document") do %>
+       <%= menu_item t(".Manual"), '/manual.pdf' %>
+       <%= menu_item t(".Work flow"), '/work_flow.pdf' %>
+    <% end %>
     <% if current_user %>
       <%= menu_item current_user.displayname, profile_users_path %>
       <%= menu_item t(".Log Out"), logout_path %>
