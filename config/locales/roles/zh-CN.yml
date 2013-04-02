@@ -1,7 +1,7 @@
 zh-CN:   
   roles:
     admin: 管理员
-    staff: 员工
+    staff: 录入员
     department_manager: 部长
     vice_manager: 主管经理
     general_manager: 总经理
