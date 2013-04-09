@@ -51,6 +51,7 @@ zh-CN:
       build: 生成
       discard: 作废
       print: 打印
+      print_left: 居左打印
       close: 关闭
     titles:
       edit: 编辑「%{model}」

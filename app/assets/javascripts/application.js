@@ -223,6 +223,11 @@ $(document).ready(function(){
     window.frames["reimbursement_pdf"].print();
   });
 
+  $("#reimbursement_print_left").click(function(e) {
+    window.frames["reimbursement_pdf_left"].focus();
+    window.frames["reimbursement_pdf_left"].print();
+  });
+
   // auto focus first input EXCEPT expense and reimbursment form
   $(function() {
     $(":text:visible:enabled:not([readonly]):first").not("form.disable_auto_focus input").focus();

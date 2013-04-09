@@ -7,7 +7,7 @@ prawn_document(:page_size => [210.mm, 297.mm], :margin => 0, :page_layout => :la
   hei_font = "#{Prawn::BASEDIR}/data/fonts/simhei.ttf"
   selected_font = FileTest.exists?(hei_font) ? hei_font : kai_font
 
-  fixed_a4_margin = 52.mm
+  fixed_a4_margin = 1.mm * @fixed_a4_margin
   pdf.font("#{selected_font}", :size => 10.5) do
     pdf.text_box Reimbursement.human_attribute_name(:sn) + " : ", :at => [12.mm, 95.mm + fixed_a4_margin]
     pdf.text_box @reimbursement.sn, :at => [25.mm, 95.mm + fixed_a4_margin]
