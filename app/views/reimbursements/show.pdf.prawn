@@ -8,7 +8,7 @@ prawn_document(:page_size => [210.mm, 297.mm], :margin => 0, :page_layout => :la
   selected_font = FileTest.exists?(hei_font) ? hei_font : kai_font
 
   fixed_a4_margin = 1.mm * @fixed_a4_margin
-  pdf.font("#{selected_font}", :size => 10.5) do
+  pdf.font("#{selected_font}", :size => 12) do
     pdf.text_box Reimbursement.human_attribute_name(:sn) + " : ", :at => [12.mm, 95.mm + fixed_a4_margin]
     pdf.text_box @reimbursement.sn, :at => [25.mm, 95.mm + fixed_a4_margin]
 
@@ -26,6 +26,6 @@ prawn_document(:page_size => [210.mm, 297.mm], :margin => 0, :page_layout => :la
     pdf.text_box @reimbursement.chinese_amount, :at => [38.mm, 48.mm + fixed_a4_margin]
     pdf.text_box (number_to_currency @reimbursement.amount), :at => [150.mm, 48.mm + fixed_a4_margin]
 
-    pdf.text_box @reimbursement.staff, :at => [160.mm, 36.mm + fixed_a4_margin]
+    # pdf.text_box @reimbursement.staff, :at => [160.mm, 36.mm + fixed_a4_margin]
   end
 end

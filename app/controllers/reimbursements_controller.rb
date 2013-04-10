@@ -66,7 +66,7 @@ class ReimbursementsController < ApplicationController
   # GET /reimbursements/1.pdf
   def show
     @reimbursement = Reimbursement.find(params[:id])
-    @fixed_a4_margin = 52
+    @fixed_a4_margin = 53
     @fixed_a4_margin = 0 unless params[:left].blank?
 
     respond_to do |format|
