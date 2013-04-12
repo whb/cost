@@ -28,7 +28,7 @@ class ReimbursementsController < ApplicationController
   end
 
   def query
-    if current_user.is?(:general_manager)
+    if current_user.is?(:general_manager) || current_user.is?(:financial_officer)
       @reimbursements = Reimbursement.all
     elsif current_user.is?(:vice_manager)
       @reimbursements = Reimbursement.find_all_by_organization_id current_user.related_organizations_id
