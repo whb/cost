@@ -68,6 +68,7 @@ class ReimbursementsController < ApplicationController
     @reimbursement = Reimbursement.find(params[:id])
     @fixed_a4_margin = 53
     @fixed_a4_margin = 0 unless params[:left].blank?
+    @fixed_a4_margin = 104 unless params[:right].blank?
 
     respond_to do |format|
       format.html # show.html.erb

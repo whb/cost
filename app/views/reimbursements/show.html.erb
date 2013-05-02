@@ -17,6 +17,7 @@
               edit_reimbursement_path(@reimbursement), :class => 'btn' %>
   <%= link_to t('.print', :default => t("helpers.links.print")),  "",:id => 'reimbursement_print', :class => 'btn btn-primary'  %>
   <%= link_to t('.print_left', :default => t("helpers.links.print_left")),  "",:id => 'reimbursement_print_left', :class => 'btn btn-primary'  %>
+   <%= link_to t('.print_right', :default => t("helpers.links.print_right")),  "",:id => 'reimbursement_print_right', :class => 'btn btn-primary'  %>
 
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               reimbursement_path(@reimbursement),
@@ -28,7 +29,6 @@
              
 </div>
 
-<iframe id="reimbursement_pdf" name="reimbursement_pdf" width="0" height="0" frameborder="0" src="<%= reimbursement_path(@reimbursement) + '.pdf' %>"> 
-</iframe>
-<iframe id="reimbursement_pdf_left" name="reimbursement_pdf_left" width="0" height="0" frameborder="0" src="<%= reimbursement_path(@reimbursement) + '.pdf?left=true' %>"> 
-</iframe>
+<iframe id="reimbursement_pdf" name="reimbursement_pdf" width="0" height="0" frameborder="0" src="<%= reimbursement_path(@reimbursement) + '.pdf' %>"></iframe>
+<iframe id="reimbursement_pdf_left" name="reimbursement_pdf_left" width="0" height="0" frameborder="0" src="<%= reimbursement_path(@reimbursement) + '.pdf?left=true' %>"></iframe>
+<iframe id="reimbursement_pdf_right" name="reimbursement_pdf_right" width="0" height="0" frameborder="0" src="<%= reimbursement_path(@reimbursement) + '.pdf?right=true' %>"></iframe>

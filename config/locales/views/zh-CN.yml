@@ -52,6 +52,7 @@ zh-CN:
       discard: 作废
       print: 打印
       print_left: 居左打印
+      print_right: 居右打印
       close: 关闭
     titles:
       edit: 编辑「%{model}」
