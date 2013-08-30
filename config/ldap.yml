@@ -1,0 +1,22 @@
+development:
+  host: 192.168.0.15
+  port: 389
+  base_dn: ou=people,dc=xllg,dc=com
+  ldap_user: uid=zimbra,cn=admins,cn=zimbra
+  ldap_password: SVmuIwGc
+
+test:
+  host: 192.168.0.15
+  port: 389
+  base: ou=people,dc=xllg,dc=com
+  ldap_user: uid=zimbra,cn=admins,cn=zimbra
+  ldap_password: SVmuIwGc
+  tls: simple_tls
+
+production:
+  host: 192.168.0.15
+  port: 389
+  base: ou=people,dc=xllg,dc=com
+  ldap_user: uid=zimbra,cn=admins,cn=zimbra
+  ldap_password: SVmuIwGc
+  tls: simple_tls

@@ -34,6 +34,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'simple_form'
 gem 'rails_bootstrap_navbar'
+gem 'net-ldap'
 gem 'cancan'
 gem 'jquery-datatables-rails'
 gem 'prawn_rails'
