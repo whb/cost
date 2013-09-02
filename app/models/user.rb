@@ -1,6 +1,4 @@
-  require 'net/ldap'
-
-  class User < ActiveRecord::Base
+class User < ActiveRecord::Base
   belongs_to :organization
   has_many :under_organizations, :class_name => "Organization", :foreign_key => "upper_manager_id"
   attr_accessible :displayname, :enabled, :organization_id, :organization, :username, 
@@ -57,55 +55,65 @@
   end
 
 
-  def after_initialize
-    @config = YAML.load(ERB.new(File.read("#{Rails.root}/config/ldap.yml")).result)[Rails.env]
-  end
 
-  def ldap_auth(user, pass)
-    @config = YAML.load(ERB.new(File.read("#{Rails.root}/config/ldap.yml")).result)[Rails.env]
-
-    ldap = initialize_ldap_con
-    result = ldap.bind_as(
-      :base => @config['base_dn'],
-      :filter => "(#{@config['attributes']['uid']}=#{user})",
-      :password => pass
-    )
-    if result
-      # fetch user DN
-      get_user_dn user
-      # sync_ldap_with_db user
+  def self.ldap_authenticate(username, password)
+    if Devise::LDAP::Adapter.valid_credentials?(username, password)
+      return true
+    else
+      return false
     end
-    nil
   end
 
-  private
-  def initialize_ldap_con
-    options = { :host => @config['host'],
-                :port => @config['port'],
-                :encryption => (@config['tls'] ? :simple_tls : nil),
-                :auth => { 
-                  :method => :simple,
-                  :username => @config['ldap_user'],
-                  :password => @config['ldap_password']
-                }
-              }
-    Net::LDAP.new options
+
+
+  def login_with
+    @login_with ||= Devise.mappings[self.class.to_s.underscore.to_sym].to.authentication_keys.first
+    self[@login_with]
   end
 
-  def get_user_dn(user)
-    ldap = initialize_ldap_con
-    login_filter = Net::LDAP::Filter.eq @config['attributes']['uid'], "#{user}"
-    object_filter = Net::LDAP::Filter.eq "objectClass", "*" 
+  def change_password!(current_password)
+    raise "Need to set new password first" if @password.blank?
 
-    ldap.search :base => @config['base_dn'],
-                :filter => object_filter & login_filter,
-                :attributes => ['dn', @config['attributes']['first_name'], @config['attributes']['last_name'], @config['attributes']['mail']] do |entry|
-      logger.debug "DN: #{entry.dn}"
-      entry.each do |attr, values|
-        values.each do |value|
-          logger.debug "#{attr} = #{value}"
-        end
-      end
+    Devise::LDAP::Adapter.update_own_password(login_with, @password, current_password)
+  end
+  
+  def reset_password!(new_password, new_password_confirmation)
+    if new_password == new_password_confirmation && ::Devise.ldap_update_password
+      Devise::LDAP::Adapter.update_password(login_with, new_password)
     end
+    clear_reset_password_token if valid?
+    save
+  end
+
+  def password=(new_password)
+    @password = new_password
+    if defined?(password_digest) && @password.present? && respond_to?(:encrypted_password=)
+      self.encrypted_password = password_digest(@password) 
+    end
+  end
+
+  # Checks if a resource is valid upon authentication.
+  def valid_ldap_authentication?(password)
+    if Devise::LDAP::Adapter.valid_credentials?(login_with, password)
+      return true
+    else
+      return false
+    end
+  end
+
+  def ldap_groups
+    Devise::LDAP::Adapter.get_groups(login_with)
+  end
+
+  def in_ldap_group?(group_name, group_attribute = LDAP::DEFAULT_GROUP_UNIQUE_MEMBER_LIST_KEY)
+    Devise::LDAP::Adapter.in_ldap_group?(login_with, group_name, group_attribute)
+  end
+
+  def ldap_dn
+    Devise::LDAP::Adapter.get_dn(login_with)
+  end
+
+  def ldap_get_param(login_with, param)
+    Devise::LDAP::Adapter.get_ldap_param(login_with,param)
   end
 end
