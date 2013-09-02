@@ -25,16 +25,8 @@ module Devise
   mattr_accessor :ldap_use_admin_to_bind
   @@ldap_use_admin_to_bind = true
 
-  def self.ldap_use_admin_to_bind
-    @@ldap_use_admin_to_bind
-  end
-  
   mattr_accessor :ldap_auth_username_builder
   @@ldap_auth_username_builder = Proc.new() {|attribute, login, ldap| "#{attribute}=#{login},#{ldap.base}" }
-
-  def ldap_auth_username_builder
-    @@ldap_auth_username_builder
-  end
 
   mattr_accessor :ldap_ad_group_check
   @@ldap_ad_group_check = false

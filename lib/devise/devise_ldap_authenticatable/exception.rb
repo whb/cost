@@ -1,6 +1,8 @@
-module DeviseLdapAuthenticatable
+module Devise
+  module DeviseLdapAuthenticatable
 
-  class LdapException < Exception
+    class LdapException < Exception
+    end
+
   end
-
 end

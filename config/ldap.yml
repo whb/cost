@@ -22,7 +22,7 @@ authorizations: &AUTHORIZATIONS
 ## Environment
 
 development:
-  host: 192.168.0.15
+  host: mail.xllg.com
   port: 389
   attribute: uid
   base: ou=people,dc=xllg,dc=com
