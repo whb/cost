@@ -56,18 +56,24 @@ class User < ActiveRecord::Base
 
 
 
-  def self.ldap_authenticate(username, password)
-    if Devise::LDAP::Adapter.valid_credentials?(username, password)
-      return true
+  # User.authenticate('username123', 'password123')  # returns authenticated user or nil
+
+  def self.authenticate(username, password)
+    user = User.find_by_username(username)
+    if user && user.authenticate(password)
+      return user
     else
-      return false
+      return nil
     end
   end
 
+  def self.obtain(id)
+    return User.find(id)
+  end
 
 
   def login_with
-    @login_with ||= Devise.mappings[self.class.to_s.underscore.to_sym].to.authentication_keys.first
+    @login_with ||= :username
     self[@login_with]
   end
 

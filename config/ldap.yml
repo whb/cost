@@ -29,7 +29,7 @@ development:
   admin_user: uid=zimbra,cn=admins,cn=zimbra
   admin_password: SVmuIwGc
   ssl: false
-  # <<: *AUTHORIZATIONS
+  <<: *AUTHORIZATIONS
 
 test:
   host: localhost
@@ -39,7 +39,7 @@ test:
   admin_user: cn=admin,dc=test,dc=com
   admin_password: admin_password
   ssl: simple_tls
-  # <<: *AUTHORIZATIONS
+  <<: *AUTHORIZATIONS
 
 production:
   host: localhost
@@ -49,4 +49,4 @@ production:
   admin_user: cn=admin,dc=test,dc=com
   admin_password: admin_password
   ssl: start_tls
-  # <<: *AUTHORIZATIONS
+  <<: *AUTHORIZATIONS

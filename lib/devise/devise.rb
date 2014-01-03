@@ -17,7 +17,7 @@ module Devise
   @@ldap_update_password = true
   
   mattr_accessor :ldap_check_group_membership
-  @@ldap_check_group_membership = false
+  @@ldap_check_group_membership = true
   
   mattr_accessor :ldap_check_attributes
   @@ldap_check_role_attribute = false

@@ -3,7 +3,7 @@ class ReimbursementsController < ApplicationController
 
   load_and_authorize_resource
   before_filter :remember_last_collections_url
-  before_filter :load_period, :expect => [:index, :query, :destroy]
+  #before_filter :load_period, :expect => [:index, :query, :destroy]
 
   def remember_last_collections_url
     last_collections_url = request.env['HTTP_REFERER'] || reimbursements_url
@@ -15,6 +15,13 @@ class ReimbursementsController < ApplicationController
   def load_period
     @period = Period.find_by_year(Date.today.year)
   end
+
+  def load_matching_period
+    year = @reimbursement.reimburse_on ? @reimbursement.reimburse_on.year : Date.today.year
+    @period = Period.find_by_year(year)
+  end
+
+
 
   # GET /reimbursements
   # GET /reimbursements.json
@@ -89,6 +96,8 @@ class ReimbursementsController < ApplicationController
       @reimbursement = Reimbursement.new_from_expense(@expense, current_user)
     end
 
+    load_matching_period
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @reimbursement }
@@ -105,10 +114,12 @@ class ReimbursementsController < ApplicationController
   # GET /reimbursements/1/edit
   def edit
     @reimbursement = Reimbursement.find(params[:id])
+    load_matching_period
   end
 
   def verify
     @reimbursement = Reimbursement.find(params[:id])
+    load_matching_period
   end
 
   # POST /reimbursements
