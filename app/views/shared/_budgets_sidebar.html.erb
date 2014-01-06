@@ -1,6 +1,8 @@
+<% period = @period if local_assigns[:period].nil? %>
+
 <% content_for :sidebar do %>
   <%= javascript_tag do %>
-    window.match_budget_category_hash = <%= raw Category.match_budget_category_hash.to_json %>
+    window.match_budget_category_hash = <%= raw period.category_matched_budget_category.to_json %>
   <% end %>
 
   <% ref_budget_list.each do |budget| %>

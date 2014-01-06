@@ -89,36 +89,30 @@ class Reimbursement < ActiveRecord::Base
     end
   end
 
-  def category_price(category)
+  def category_price(budget_c)
     sum_category_price = 0
     details.each do |detail|
-      if (detail.price != nil and category.id == detail.category_id)
+      if (detail.price != nil and budget_c.id == detail.category_id)
         sum_category_price += detail.price 
       else 
         next unless detail.category
-        b = detail.category.match_budget
-        sum_category_price += detail.price if (detail.price != nil and b and b.category.id == category.id)
+        sum_category_price += detail.price if (detail.price != nil and peroid.matched?(detail.category, budget_c))
       end
     end
     sum_category_price
   end
 
-  def has_category?(category)
+  def match_category?(budget_c)
     details.each do |detail|
-      return true if category.id == detail.category_id
+      next unless detail.category
+      return true if peroid.matched?(detail.category, budget_c)
     end
+
     return false
   end
 
-  def match_category?(category)
-    return true if has_category?(category)
-
-    details.each do |detail|
-      next unless detail.category
-      b = detail.category.match_budget
-      return true if b && b.category.id == category.id
-    end
-
-    return false
+  def peroid
+    year = reimburse_on ? reimburse_on.year : Date.today.year
+    @period ||= Period.find_by_year(year)
   end
 end

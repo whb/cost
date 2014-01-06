@@ -101,6 +101,15 @@ class Category < ActiveRecord::Base
     @@match_budget_category_hash ||= find_match_budget_category_hash
   end
 
+  def self.find_category_budget_hash(year)
+    hash = {}
+    Category.all.each do |c|
+      b = Budget.match_this_year(c)
+      hash[c.id] = b.category.id if b
+    end
+    hash
+  end
+
   def self.find_match_budget_category_hash
     hash = {}
     Category.all.each do |c|

@@ -26,4 +26,31 @@ class Period < ActiveRecord::Base
   def order_budgets
     self.budgets.joins(:category).order('categories.code')
   end
+
+  # ----------------------------
+
+  def budget_by_category(category)
+    b = budgets.find_by_category_id(category)
+    return b if (b && b.amount)
+    self.budget_by_category(category.superior) if category.superior
+  end
+
+  def build_category_matched_budget_category
+    hash = {}
+    Category.all.each do |c|
+      b = budget_by_category(c)
+      hash[c.id] = b.category.id if b
+    end
+    hash
+  end
+
+  def category_matched_budget_category
+    @@period_matched_hash ||= {}
+    @@period_matched_hash[self.id] ||= build_category_matched_budget_category
+  end
+
+  def matched?(c, budget_c)
+    budget_c.id == category_matched_budget_category[c.id]
+  end
+
 end
