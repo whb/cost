@@ -12,4 +12,8 @@ class RefBudgetList
   def each
     @ref_budgets.each { |i| yield i }
   end
+
+  def category_matched_budget_category
+    @bill.peroid.category_matched_budget_category
+  end
 end
