@@ -73,36 +73,31 @@ class Expense < ActiveRecord::Base
     self.status = :reimbursed
   end
 
-  def category_price(category)
+  def category_price(budget_c)
     sum_category_price = 0
     items.each do |item|
-      if (item.price != nil and category.id == item.category_id)
+      if (item.price != nil and budget_c.id == item.category_id)
         sum_category_price += item.price 
       else 
         next unless item.category
-        b = item.category.match_budget
-        sum_category_price += item.price if (item.price != nil and b and b.category.id == category.id)
+        sum_category_price += item.price if (item.price != nil and peroid.matched?(item.category, budget_c))
       end
     end
     sum_category_price
   end
 
-  def has_category?(category)
+  # ref_budget_list 
+  def match_category?(budget_c)
     items.each do |item|
-      return true if category.id == item.category_id
+      next unless item.category
+      return true if peroid.matched?(item.category, budget_c)
     end
+
     return false
   end
 
-  def match_category?(category)
-    return true if has_category?(category)
-
-    items.each do |item|
-      next unless item.category
-      b = item.category.match_budget
-      return true if b && b.category.id == category.id
-    end
-
-    return false
+  def peroid
+    year = request_on ? request_on.year : Date.today.year
+    @period ||= Period.find_by_year(year)
   end
 end

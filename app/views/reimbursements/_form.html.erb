@@ -1,6 +1,4 @@
-<% if @period != nil %>
-  <%= render  'shared/budgets_sidebar', ref_budget_list: ref_budget_for(@reimbursement, @period.budgets) %>
-<% end %>
+<%= render 'shared/budgets_sidebar', ref_budget_list: ref_budget_for(@reimbursement) %>
 
 <dl class="dl-horizontal two-column">
   <div class="span4">

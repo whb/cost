@@ -14,13 +14,8 @@ class Category < ActiveRecord::Base
 
   def clear_class_cache
     @@father = nil
-    @@match_budget_category_hash = nil
     # can be more efficiency
     @@branch_leaves = nil
-  end
-
-  def self.clear_cache_of_match_budget_category_hash
-    @@match_budget_category_hash = nil
   end
 
   def code_name
@@ -91,32 +86,6 @@ class Category < ActiveRecord::Base
   def equals_or_has_child(category)
     return true if self == category
     self.child_leaves.include? category
-  end
-
-  def match_budget
-    Budget.match_this_year(self)
-  end
-
-  def self.match_budget_category_hash
-    @@match_budget_category_hash ||= find_match_budget_category_hash
-  end
-
-  def self.find_category_budget_hash(year)
-    hash = {}
-    Category.all.each do |c|
-      b = Budget.match_this_year(c)
-      hash[c.id] = b.category.id if b
-    end
-    hash
-  end
-
-  def self.find_match_budget_category_hash
-    hash = {}
-    Category.all.each do |c|
-      b = Budget.match_this_year(c)
-      hash[c.id] = b.category.id if b
-    end
-    hash
   end
 
   def self.branch_nodes

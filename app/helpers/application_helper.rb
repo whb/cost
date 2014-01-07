@@ -31,8 +31,8 @@ module ApplicationHelper
     agree ? "label-success" : "label-inverse"
   end
 
-  def ref_budget_for(bill, budgets)
-    presenter = RefBudgetList.new(bill, budgets)
+  def ref_budget_for(bill)
+    presenter = RefBudgetList.new(bill)
     if block_given?
       yield presenter
     else

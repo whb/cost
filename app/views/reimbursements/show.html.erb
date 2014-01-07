@@ -4,7 +4,7 @@
 </div>
 
 <% if @period != nil %>
-  <%= render 'shared/budgets_sidebar', ref_budget_list: ref_budget_for(@reimbursement, @period.budgets) %>
+  <%= render 'shared/budgets_sidebar', ref_budget_list: ref_budget_for(@reimbursement) %>
 <% end %>
 
 <%= render 'reimbursement' %>

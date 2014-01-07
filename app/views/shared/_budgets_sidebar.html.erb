@@ -1,6 +1,6 @@
 <% content_for :sidebar do %>
   <%= javascript_tag do %>
-    window.match_budget_category_hash = <%= raw ref_budget_list.category_matched_budget_category.to_json %>
+    window.category_matched_budget_category = <%= raw ref_budget_list.category_matched_budget_category.to_json %>
   <% end %>
 
   <% ref_budget_list.each do |budget| %>

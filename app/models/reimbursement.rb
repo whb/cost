@@ -102,6 +102,7 @@ class Reimbursement < ActiveRecord::Base
     sum_category_price
   end
 
+  # ref_budget_list 
   def match_category?(budget_c)
     details.each do |detail|
       next unless detail.category

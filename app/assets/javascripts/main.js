@@ -54,7 +54,7 @@ function show_ref_budget() {
   $("select[id*=_attributes_]:visible").each(function(e) {
     var category_id = $(this).val();
     if ( category_id ) {
-      var match_category_id = match_budget_category_hash[category_id];
+      var match_category_id = category_matched_budget_category[category_id];
       var ref_budget = "[id=ref_budget_%ID%]".replace(/%ID%/, match_category_id);
       $(ref_budget).show();
     }
@@ -75,7 +75,7 @@ function cal_ref_budget() {
   $("select[id*=_attributes_]:visible").each(function(e) {
     var category_id = $(this).val();
     if ( !$.isNumeric(category_id) ) return;
-    var match_category_id = match_budget_category_hash[category_id];
+    var match_category_id = category_matched_budget_category[category_id];
 
     var tr = $(this).parents(".fields");
     var price_selector = "input[id*=_attributes_][name$='[price]']";

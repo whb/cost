@@ -1,10 +1,10 @@
 class RefBudgetList
   include Enumerable
 
-  def initialize(bill, budgets)
+  def initialize(bill)
     @bill = bill
     @ref_budgets = []
-    budgets.each do |bu|
+    @bill.peroid.budgets.each do |bu|
       @ref_budgets << ReferenceBudget.new(bu, @bill) if bu.amount
     end
   end

@@ -1,11 +1,10 @@
 <%- model_class = Expense -%>
 
 <% show_ref_budget = true if local_assigns[:show_ref_budget].nil? %>
-<% period = @period if local_assigns[:period].nil? %>
 <% expense = @expense if local_assigns[:expense].nil? %>
 
-<% if show_ref_budget && period != nil %>
-  <%= render  'shared/budgets_sidebar', ref_budget_list: ref_budget_for(expense, period.budgets) %>
+<% if show_ref_budget %>
+  <%= render 'shared/budgets_sidebar', ref_budget_list: ref_budget_for(expense) %>
 <% end %>
 
 <dl class="dl-horizontal">
