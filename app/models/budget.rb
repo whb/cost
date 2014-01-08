@@ -7,12 +7,11 @@ class Budget < ActiveRecord::Base
   default_scope :include => :category, :order => "categories.code"
   scope :this_year, joins(:period).where('periods.year' => Date.today.year)
 
-  #after_save :clear_cache
-  #after_destroy :clear_cache
+  after_save :clear_cache
+  after_destroy :clear_cache
 
   def clear_cache
-     # may be need category to clear
-     # todo
+    Period.clear_cache_of_category_matched_budget_category
   end
 
   def available

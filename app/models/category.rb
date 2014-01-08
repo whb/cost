@@ -9,13 +9,15 @@ class Category < ActiveRecord::Base
 
   default_scope :order => :code
 
-  after_save :clear_class_cache
-  after_destroy :clear_class_cache
+  after_save :clear_cache
+  after_destroy :clear_cache
 
-  def clear_class_cache
+  def clear_cache
     @@father = nil
     # can be more efficiency
     @@branch_leaves = nil
+
+    Period.clear_cache_of_category_matched_budget_category
   end
 
   def code_name

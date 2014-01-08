@@ -49,6 +49,10 @@ class Period < ActiveRecord::Base
     @@period_matched_hash[self.id] ||= build_category_matched_budget_category
   end
 
+  def self.clear_cache_of_category_matched_budget_category
+    @@period_matched_hash = nil
+  end
+
   def matched?(c, budget_c)
     budget_c.id == category_matched_budget_category[c.id]
   end
