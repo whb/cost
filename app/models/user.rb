@@ -91,12 +91,13 @@ class User < ActiveRecord::Base
     save
   end
 
-  def password=(new_password)
-    @password = new_password
-    if defined?(password_digest) && @password.present? && respond_to?(:encrypted_password=)
-      self.encrypted_password = password_digest(@password) 
-    end
-  end
+  # !!! Conflicted with has_secure_password !!!
+  # def password=(new_password)
+  #   @password = new_password
+  #   if defined?(password_digest) && @password.present? && respond_to?(:encrypted_password=)
+  #     self.encrypted_password = password_digest(@password) 
+  #   end
+  # end
 
   # Checks if a resource is valid upon authentication.
   def valid_ldap_authentication?(password)
