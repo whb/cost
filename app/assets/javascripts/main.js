@@ -188,16 +188,19 @@ $(document).ready(function(){
   $("#reimbursement_print").click(function(e) {
     window.frames["reimbursement_pdf"].focus();
     window.frames["reimbursement_pdf"].print();
+    return false;
   });
 
   $("#reimbursement_print_left").click(function(e) {
     window.frames["reimbursement_pdf_left"].focus();
     window.frames["reimbursement_pdf_left"].print();
+    return false;
   });
 
   $("#reimbursement_print_right").click(function(e) {
     window.frames["reimbursement_pdf_right"].focus();
     window.frames["reimbursement_pdf_right"].print();
+    return false;
   });
 
   // auto focus first input EXCEPT expense and reimbursment form
