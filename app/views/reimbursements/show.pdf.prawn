@@ -1,8 +1,9 @@
 require "prawn/measurement_extensions"
 
 # reimbursement real :page_size => [105.mm, 190.mm]
+# A4 :page_size => [210.mm, 297.mm]
 
-prawn_document(:page_size => [210.mm, 297.mm], :margin => 0, :page_layout => :landscape) do |pdf|
+prawn_document(:page_size => [105.mm, 190.mm], :margin => 0, :page_layout => :landscape) do |pdf|
   kai_font = "#{Prawn::BASEDIR}/data/fonts/gkai00mp.ttf"
   hei_font = "#{Prawn::BASEDIR}/data/fonts/simhei.ttf"
   selected_font = FileTest.exists?(hei_font) ? hei_font : kai_font

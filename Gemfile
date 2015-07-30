@@ -43,6 +43,8 @@ gem 'factory_girl_rails'
 
 gem "select2-rails"
 
+gem "useragent"
+
 group :development do
   gem 'capistrano'
   gem 'capistrano-ext'

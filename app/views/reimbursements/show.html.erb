@@ -11,13 +11,17 @@
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              session[:last_reimbursement_collection_url], :class => 'btn'  %>
-  <% if @reimbursement.editable? %>            
+              session[:last_reimbursement_collection_url], :class => 'btn' %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_reimbursement_path(@reimbursement), :class => 'btn' %>
-  <%= link_to t('.print', :default => t("helpers.links.print")),  "",:id => 'reimbursement_print', :class => 'btn btn-primary'  %>
-  <%= link_to t('.print_left', :default => t("helpers.links.print_left")),  "",:id => 'reimbursement_print_left', :class => 'btn btn-primary'  %>
-   <%= link_to t('.print_right', :default => t("helpers.links.print_right")),  "",:id => 'reimbursement_print_right', :class => 'btn btn-primary'  %>
+                  edit_reimbursement_path(@reimbursement), :class => 'btn' %>
+  <% if @reimbursement.editable? %>        
+    <% if @new_version_chrome %>     
+      <%= link_to t('.print', :default => t("helpers.links.print")),  "",:id => 'reimbursement_print', :class => 'btn btn-primary' %>
+    <% else %>
+      <%= link_to t('.print', :default => t("helpers.links.print")),  "",:id => 'reimbursement_print', :class => 'btn btn-primary' %>
+      <%= link_to t('.print_left', :default => t("helpers.links.print_left")),  "",:id => 'reimbursement_print_left', :class => 'btn btn-primary' %>
+      <%= link_to t('.print_right', :default => t("helpers.links.print_right")),  "",:id => 'reimbursement_print_right', :class => 'btn btn-primary' %>
+    <% end %> 
 
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               reimbursement_path(@reimbursement),

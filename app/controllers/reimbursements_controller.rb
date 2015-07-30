@@ -11,6 +11,13 @@ class ReimbursementsController < ApplicationController
     end
   end
 
+  def users_browser_is_new_version
+    user_agent_string = request.env['HTTP_USER_AGENT'] 
+    user_agent = UserAgent.parse(user_agent_string)
+    return true if user_agent.browser.downcase == "chrome" && Gem::Version.new(user_agent.version) > Gem::Version.new('40.0.0.0')
+    return false
+  end
+
   # GET /reimbursements
   # GET /reimbursements.json
   def index
@@ -61,9 +68,15 @@ class ReimbursementsController < ApplicationController
   # GET /reimbursements/1.pdf
   def show
     @reimbursement = Reimbursement.find(params[:id])
-    @fixed_a4_margin = 53
-    @fixed_a4_margin = 0 unless params[:left].blank?
-    @fixed_a4_margin = 104 unless params[:right].blank?
+
+    if users_browser_is_new_version
+      @new_version_chrome = true
+      @fixed_a4_margin = 0
+    else
+      @fixed_a4_margin = 53
+      @fixed_a4_margin = 0 unless params[:left].blank?
+      @fixed_a4_margin = 104 unless params[:right].blank?
+    end
 
     respond_to do |format|
       format.html # show.html.erb
