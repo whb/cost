@@ -29,9 +29,18 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
   <% end %>   
-
-             
 </div>
+
+<% if @new_version_chrome %>
+<blockquote>
+  <p><%= t('.print_remind_title'); %></p>
+  <ul class="list-unstyled">
+    <li><%= t('.print_remind_page_size'); %></li>
+    <li><%= t('.print_remind_page_orientation'); %></li>
+    <li><%= t('.print_remind_page_adapt'); %></li>
+  </ul>  
+</blockquote>
+<% end %> 
 
 <iframe id="reimbursement_pdf" name="reimbursement_pdf" width="0" height="0" frameborder="0" src="<%= reimbursement_path(@reimbursement) + '.pdf' %>"></iframe>
 <iframe id="reimbursement_pdf_left" name="reimbursement_pdf_left" width="0" height="0" frameborder="0" src="<%= reimbursement_path(@reimbursement) + '.pdf?left=true' %>"></iframe>

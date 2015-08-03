@@ -105,6 +105,11 @@ zh-CN:
     STATUS_TYPES: 
       edit: 报销中
       commit: 已报销
+    show:
+      print_remind_title: 打印提示
+      print_remind_page_size: 支出凭证纸张大小设置： 10.5cm X 19.0cm
+      print_remind_page_orientation: 支出凭证进纸方向  ：  “科目”朝外放置
+      print_remind_page_adapt: 打印界面  ：  “不”选  “适合页面大小”
   approvals:
     index:
       title: 待审批费用申请单列表
